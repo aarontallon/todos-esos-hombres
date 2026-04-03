@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Todos esos hombres</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fff; color: #000; font-family: 'Space Mono', monospace; line-height: 1.6; }
+
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            background: #fff; 
+            border-bottom: 3px solid #000; 
+            z-index: 1000; 
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 1.5rem; 
+            line-height: 0.85; 
+            color: #000; 
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 2.5rem; 
+        }
+        nav a { 
+            color: #000; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            letter-spacing: 0.5px; 
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+            padding: 0.5rem 1rem;
+        }
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        nav a.blog-highlight {
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 8rem 2rem 5rem; 
+        }
+        
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        h1 { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: clamp(3rem, 8vw, 6rem); 
+            margin-bottom: 1rem;
+        }
+
+        .subtitle { 
+            font-size: 1.1rem; 
+            line-height: 1.7; 
+            color: #555; 
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .article-card {
+            border: 3px solid #000;
+            background: #fff;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: #000;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .article-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .article-card:hover {
+            transform: translate(-8px, -8px);
+            box-shadow: 8px 8px 0 #000;
+        }
+
+        .article-meta {
+            padding: 1.5rem 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .article-category {
+            background: #000;
+            color: #fff;
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .article-date {
+            font-size: 0.75rem;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .article-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .article-title a {
+            color: #000;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .article-title a:hover {
+            opacity: 0.6;
+        }
+
+        .article-excerpt {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .article-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        .read-more {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .read-more:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: inset 0 0 0 3px #000;
+        }
+
+        .featured-article {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 400px;
+        }
+
+        .featured-article .article-content {
+            padding: 3rem;
+        }
+
+        .featured-highlight {
+            background: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .featured-highlight-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 6rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .featured-highlight-text {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #000;
+        }
+
+        footer { 
+            padding: 4rem; 
+            text-align: center; 
+            border-top: 3px solid #000; 
+            opacity: 0.6; 
+            font-size: 0.8rem; 
+        }
+
+        @media (max-width: 968px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .header-section {
+                flex-direction: column;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-article .article-content {
+                order: 2;
+            }
+
+            .featured-highlight {
+                order: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="teh_index.html" class="logo">
+        TODOS<br>ESOS<br>HOMBRES
+    </a>
+    <ul>
+        <li><a href="teh_index.html">INICIO</a></li>
+        <li><a href="teh_estadisticas.html">ESTADÍSTICAS</a></li>
+        <li><a href="teh_asimetrias.html">ASIMETRÍAS</a></li>
+        <li><a href="teh_blog_dynamic.html" class="blog-highlight">BLOG</a></li>
+        <li><a href="teh_proposito.html">PROPÓSITO</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    
+    <div class="header-section">
+        <div class="header-text">
+            <h1>BLOG</h1>
+            <p class="subtitle">Análisis, datos y reflexiones sobre las realidades que no aparecen en los titulares. Documentado con fuentes oficiales.</p>
+        </div>
+    </div>
+
+    <h2 class="section-title">Artículos recientes</h2>
+
+    <!-- Los artículos se cargan aquí automáticamente -->
+    <div id="articles-container" class="articles-grid">
+        <p style="text-align: center; grid-column: 1/-1;">Cargando artículos...</p>
+    </div>
+
+</div>
+
+<footer>
+    <p>TODOS ESOS HOMBRES © 2026 — FUENTES: INE, SEPE, MINISTERIO DE TRABAJO</p>
+</footer>
+
+<script>
+// Cargar artículos desde JSON
+async function loadArticles() {
+    try {
+        const response = await fetch('articles.json');
+        const articles = await response.json();
+        
+        const container = document.getElementById('articles-container');
+        container.innerHTML = '';
+        
+        // Ordenar: featured primero, luego por fecha
+        const sortedArticles = articles.sort((a, b) => {
+            if (a.featured && !b.featured) return -1;
+            if (!a.featured && b.featured) return 1;
+            return 0;
+        });
+        
+        sortedArticles.forEach(article => {
+            if (article.featured) {
+                container.innerHTML += createFeaturedArticle(article);
+            } else {
+                container.innerHTML += createNormalArticle(article);
+            }
+        });
+        
+    } catch (error) {
+        console.error('Error cargando artículos:', error);
+        document.getElementById('articles-container').innerHTML = 
+            '<p style="text-align: center; grid-column: 1/-1;">Error cargando artículos</p>';
+    }
+}
+
+function createFeaturedArticle(article) {
+    const statsHTML = article.stats.map(stat => `
+        <div class="stat-item">
+            <div class="stat-number">${stat.number}</div>
+            <div class="stat-label">${stat.label}</div>
+        </div>
+    `).join('');
+    
+    const highlightHTML = article.highlight ? `
+        <div class="featured-highlight">
+            <div class="featured-highlight-number">${article.highlight.number1}</div>
+            <div class="featured-highlight-text">${article.highlight.vs}</div>
+            <div class="featured-highlight-number">${article.highlight.number2}</div>
+            <div class="featured-highlight-text">${article.highlight.text}</div>
+        </div>
+    ` : '';
+    
+    return `
+        <article class="article-card featured-article">
+            <div class="article-content">
+                <div class="article-meta">
+                    <span class="article-category">${article.category}</span>
+                    <span class="article-date">${article.date}</span>
+                </div>
+                
+                <h2 class="article-title">
+                    <a href="${article.url}">${article.title}</a>
+                </h2>
+                
+                <p class="article-excerpt">${article.excerpt}</p>
+
+                <div class="article-stats">
+                    ${statsHTML}
+                </div>
+
+                <a href="${article.url}" class="read-more">Leer artículo completo →</a>
+            </div>
+
+            ${highlightHTML}
+        </article>
+    `;
+}
+
+function createNormalArticle(article) {
+    const statsHTML = article.stats.map(stat => `
+        <div class="stat-item">
+            <div class="stat-number">${stat.number}</div>
+            <div class="stat-label">${stat.label}</div>
+        </div>
+    `).join('');
+    
+    return `
+        <article class="article-card">
+            <div class="article-meta">
+                <span class="article-category">${article.category}</span>
+                <span class="article-date">${article.date}</span>
+            </div>
+            
+            <div class="article-content">
+                <h2 class="article-title">
+                    <a href="${article.url}">${article.title}</a>
+                </h2>
+                
+                <p class="article-excerpt">${article.excerpt}</p>
+
+                <div class="article-stats">
+                    ${statsHTML}
+                </div>
+
+                <a href="${article.url}" class="read-more">Leer artículo completo →</a>
+            </div>
+        </article>
+    `;
+}
+
+// Cargar al iniciar la página
+loadArticles();
+</script>
+
+</body>
+</html>

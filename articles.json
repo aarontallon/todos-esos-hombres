@@ -1,0 +1,64 @@
+[
+  {
+    "id": "precio-una-vida-españa",
+    "title": "El precio de una vida en España",
+    "url": "teh_blog_precio_una_vida_españa.html",
+    "category": "Análisis",
+    "date": "30 Marzo 2026",
+    "excerpt": "En 2024, 3.953 personas murieron por suicidio en España. El 73,4% eran hombres. Es la principal causa de muerte no natural. Sin embargo, la inversión pública en prevención es de 4.500€ por fallecimiento (suicidio), frente a 3.600.000€ por víctima de violencia de género. Una comparación que plantea preguntas incómodas sobre cómo priorizamos las vidas.",
+    "featured": true,
+    "stats": [
+      {"number": "3.953", "label": "Suicidios anuales"},
+      {"number": "73,4%", "label": "Son hombres"},
+      {"number": "800x", "label": "Diferencia inversión"}
+    ],
+    "highlight": {
+      "number1": "4.500€",
+      "vs": "VS",
+      "number2": "3.600.000€",
+      "text": "Inversión por vida en prevención"
+    }
+  },
+  {
+    "id": "presuncion-inocencia",
+    "title": "Inocente hasta que se demuestre lo contrario... salvo si eres hombre",
+    "url": "teh_blog_presuncion_inocencia.html",
+    "category": "Análisis Legal",
+    "date": "31 Marzo 2026",
+    "excerpt": "Una orden de alejamiento puede dictarse en 72 horas, sin juicio previo, sin pruebas. Solo el 15% de las denuncias por violencia de género terminan en condena. Pero las medidas cautelares ya han destruido vidas, empleos y relaciones familiares. ¿Dónde queda la presunción de inocencia?",
+    "featured": false,
+    "stats": [
+      {"number": "≈15%", "label": "Denuncias que acaban en condena"},
+      {"number": "72h", "label": "Para orden de alejamiento"},
+      {"number": "10-30k€", "label": "Coste de defenderte"}
+    ]
+  },
+  {
+    "id": "techo-cemento",
+    "title": "El techo de cemento: sectores donde los hombres son el 90%",
+    "url": "teh_blog_techo_cemento.html",
+    "category": "Análisis Laboral",
+    "date": "1 Abril 2026",
+    "excerpt": "Construcción (89% hombres), pesca (91.7%), minería (90.9%), transporte (87.3%). Los trabajos duros, los peligrosos, los que nadie quiere. 431.549 contratos en construcción solo en 6 meses. 91% de las muertes laborales son de hombres. Ahí no hay cuotas. Ahí no hay debate.",
+    "featured": false,
+    "stats": [
+      {"number": "89%", "label": "Hombres en construcción"},
+      {"number": "91%", "label": "Muertes laborales"},
+      {"number": "0", "label": "Cuotas de género"}
+    ]
+  },
+  {  
+    "id": "invisibles-calle", 
+  "title": "Los invisibles de la calle: 77% sin hogar son hombres",
+  "url": "teh_blog_invisibles_calle.html",
+  "category": "Análisis Social",
+  "date": "2 Abril 2026",
+  "excerpt": "28.552 personas sin hogar en España. El 76,7% son hombres. Tres de cada cuatro personas durmiendo en la calle son varones. 60% presenta síntomas depresivos. 40% lleva más de 3 años en la calle. Sin embargo, el sinhogarismo masculino sigue siendo un problema invisible.",
+  "featured": false,
+  "stats": [
+    {"number": "76,7%", "label": "Sin hogar son hombres"},
+    {"number": "60%", "label": "Con síntomas depresivos"},
+    {"number": "28.552", "label": "Personas sin hogar (2022)"
+	]
+  }
+]

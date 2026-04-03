@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propósito — Todos esos hombres</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fff; color: #000; font-family: 'Space Mono', monospace; line-height: 1.6; }
+
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            background: #fff; 
+            border-bottom: 3px solid #000; 
+            z-index: 1000; 
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 1.5rem; 
+            line-height: 0.85; 
+            color: #000; 
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 2.5rem; 
+        }
+        nav a { 
+            color: #000; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            letter-spacing: 0.5px; 
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+            padding: 0.5rem 1rem;
+        }
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        nav a.blog-highlight {
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 8rem 2rem 4rem; }
+        
+        .header-section {
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+        }
+
+        h1 { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: clamp(3rem, 8vw, 6rem); 
+            line-height: 0.9; 
+            margin-bottom: 1rem; 
+        }
+        
+        .manifesto-box { 
+            border: 3px solid #000; 
+            padding: 3rem; 
+            margin-bottom: 4rem; 
+            background: #fff;
+            position: relative;
+        }
+
+        .highlight-bar {
+            border-left: 10px solid #000;
+            padding-left: 2rem;
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; margin-top: 3rem; margin-bottom: 1.5rem; text-transform: uppercase; }
+
+        .principles-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 2rem; 
+            margin: 3rem 0; 
+        }
+
+        .principle-card { 
+            border: 3px solid #000; 
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translate(-6px, -6px);
+            box-shadow: 6px 6px 0 #000;
+        }
+
+        .principle-card h3 { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 1.8rem; 
+            margin-bottom: 1rem; 
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .goal-item {
+            padding: 1rem 0;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            gap: 1rem;
+        }
+        .goal-item::before { content: "→"; font-weight: 700; }
+
+        .help-box { 
+            background: #000; 
+            color: #fff; 
+            padding: 3rem; 
+            margin-top: 4rem; 
+            border: 3px solid #000; 
+        }
+        .help-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; margin-bottom: 1rem; }
+
+        .cta-footer {
+            margin-top: 6rem;
+            text-align: center;
+            border-top: 3px solid #000;
+            padding-top: 4rem;
+        }
+        .btn { 
+            display: inline-block; 
+            padding: 1rem 2.5rem; 
+            background: #000; 
+            color: #fff; 
+            text-decoration: none; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            margin: 1rem;
+            border: 3px solid #000;
+            transition: all 0.3s ease;
+        }
+        .btn:hover { 
+            background: #fff; 
+            color: #000; 
+            transform: translate(-4px, -4px);
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        footer { padding: 4rem; text-align: center; opacity: 0.6; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="teh_index.html" class="logo">
+        TODOS<br>ESOS<br>HOMBRES
+    </a>
+    <ul>
+        <li><a href="teh_index.html">INICIO</a></li>
+        <li><a href="teh_estadisticas.html">ESTADÍSTICAS</a></li>
+        <li><a href="teh_asimetrias.html">ASIMETRÍAS</a></li>
+        <li><a href="teh_blog_dynamic.html" class="blog-highlight">BLOG</a></li>
+        <li><a href="teh_proposito.html">PROPÓSITO</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="header-section">
+        <h1>NUESTRO<br>PROPÓSITO</h1>
+    </div>
+
+    <div class="manifesto-box">
+        <p>Esta plataforma nace de una observación incómoda: existen realidades que, a pesar de estar respaldadas por datos oficiales, permanecen en la periferia del debate público.</p>
+        <div class="highlight-bar">
+            No buscamos crear un discurso de confrontación, sino completar el mapa de la realidad social con los datos que faltan.
+        </div>
+        <p>Cuando los datos muestran que los hombres son la inmensa mayoría de las víctimas en suicidios, accidentes laborales o sinhogarismo, ignorar el factor de género no es neutralidad; es invisibilización.</p>
+    </div>
+
+    <h2>Principios Fundamentales</h2>
+    <div class="principles-grid">
+        <div class="principle-card">
+            <h3>01. DATOS</h3>
+            <p>Solo utilizamos fuentes oficiales: INE, Ministerios, BOE. La realidad no es una opinión.</p>
+        </div>
+        <div class="principle-card">
+            <h3>02. VISIBILIDAD</h3>
+            <p>Hacer que el dolor y la precariedad masculina dejen de ser un "suceso aislado" para verse como un problema estructural.</p>
+        </div>
+        <div class="principle-card">
+            <h3>03. HONESTIDAD</h3>
+            <p>Reconocer estas asimetrías no resta importancia a otros problemas sociales. La justicia es una suma, no una resta.</p>
+        </div>
+    </div>
+
+    <h2>¿Qué buscamos?</h2>
+    <div class="goal-item">Que el suicidio masculino se trate como la emergencia de salud pública que es.</div>
+    <div class="goal-item">Que la siniestralidad laboral masculina reciba recursos y protocolos proporcionales a su mortalidad.</div>
+    <div class="goal-item">Que las leyes garanticen la igualdad real de trato, sin excepciones por razón de sexo.</div>
+    <div class="goal-item">Que cuando se hable de vulnerabilidad, todos esos hombres también sean contados.</div>
+
+    <div class="help-box">
+        <h3>SI NECESITAS AYUDA</h3>
+        <p>Si eres un hombre que está sufriendo en silencio o te sientes superado, no estás solo. Tu vida importa.</p>
+        <p style="margin-top: 1.5rem; font-size: 1.4rem; font-weight: 700;">TELÉFONO 024</p>
+        <p>Atención a la conducta suicida. Gratuito y confidencial. 24h.</p>
+    </div>
+
+    <div class="cta-footer">
+        <h2>EL CAMBIO EMPIEZA POR CONOCER LA VERDAD</h2>
+        <a href="teh_estadisticas.html" class="btn">VER ESTADÍSTICAS</a>
+        <a href="teh_asimetrias.html" class="btn">ASIMETRÍAS LEGALES</a>
+    </div>
+</div>
+
+<footer><p>TODOS ESOS HOMBRES © 2026</p></footer>
+
+</body>
+</html>

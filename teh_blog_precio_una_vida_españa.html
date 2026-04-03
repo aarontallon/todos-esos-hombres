@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El precio de una vida en España — Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fff; color: #000; font-family: 'Space Mono', monospace; line-height: 1.6; }
+
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            background: #fff; 
+            border-bottom: 3px solid #000; 
+            z-index: 1000; 
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 1.5rem; 
+            line-height: 0.85; 
+            color: #000; 
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 2.5rem; 
+        }
+        nav a { 
+            color: #000; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            letter-spacing: 1px; 
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+            padding: 0.5rem 1rem;
+        }
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        nav a.blog-highlight {
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+        }
+
+        .article-header {
+            background: #000;
+            color: #fff;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .article-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .article-meta {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .lead-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f5f5f5;
+            border-left: 10px solid #000;
+        }
+
+        .stat-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .stat-box {
+            border: 3px solid #000;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translate(-6px, -6px);
+            box-shadow: 6px 6px 0 #000;
+        }
+
+        .stat-box.highlight {
+            background: #000;
+            color: #fff;
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-sublabel {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        .comparison-giant {
+            background: #f5f5f5;
+            padding: 4rem 2rem;
+            margin: 5rem -2rem;
+            text-align: center;
+            border-top: 3px solid #000;
+            border-bottom: 3px solid #000;
+        }
+
+        .comparison-giant h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .comparison-numbers {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .vs-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+        }
+
+        .vs-number span {
+            display: block;
+            font-size: 1rem;
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+            margin-top: 1rem;
+        }
+
+        .vs-separator {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        .multiplier {
+            background: #000;
+            color: #fff;
+            padding: 2rem;
+            margin-top: 2rem;
+            display: inline-block;
+        }
+
+        .multiplier-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            margin: 3rem 0 1.5rem;
+            text-transform: uppercase;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .highlight-text {
+            background: #000;
+            color: #fff;
+            padding: 0.3rem 0.6rem;
+            font-weight: 700;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .data-card {
+            border: 3px solid #000;
+            padding: 2rem;
+            background: #f9f9f9;
+        }
+
+        .data-card h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .data-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .data-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .data-card li:last-child {
+            border-bottom: none;
+        }
+
+        .data-card li::before {
+            content: "→ ";
+            font-weight: 700;
+        }
+
+        .callout-box {
+            background: #000;
+            color: #fff;
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 3px solid #000;
+        }
+
+        .callout-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .callout-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .sources {
+            background: #f5f5f5;
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 3px solid #000;
+        }
+
+        .sources h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .sources ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sources li {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .sources li:last-child {
+            border-bottom: none;
+        }
+
+        .sources a {
+            color: #000;
+            text-decoration: underline;
+            word-break: break-all;
+            font-size: 0.9rem;
+        }
+
+        .quote-box {
+            border-left: 10px solid #000;
+            padding-left: 2rem;
+            margin: 3rem 0;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        footer { 
+            padding: 4rem; 
+            text-align: center; 
+            border-top: 3px solid #000; 
+            opacity: 0.6; 
+            font-size: 0.8rem; 
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .stat-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-giant {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .comparison-numbers {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="teh_index.html" class="logo">
+        TODOS<br>ESOS<br>HOMBRES
+    </a>
+    <ul>
+        <li><a href="teh_index.html">INICIO</a></li>
+        <li><a href="teh_estadisticas.html">ESTADÍSTICAS</a></li>
+        <li><a href="teh_asimetrias.html">ASIMETRÍAS</a></li>
+        <li><a href="teh_blog_dynamic.html" class="blog-highlight">BLOG</a></li>
+        <li><a href="teh_proposito.html">PROPÓSITO</a></li>
+    </ul>
+</nav>
+
+<header class="article-header">
+    <h1 class="article-title">El precio de una vida en España</h1>
+    <p class="article-subtitle">Una reflexión sobre el reparto del gasto público en prevención</p>
+    <div class="article-meta">30 de Marzo de 2026 — Análisis</div>
+</header>
+
+<article class="container">
+    
+    <div class="lead-text">
+        En 2024, <strong>3.953 personas murieron por suicidio en España</strong>. Es la principal causa de muerte no natural en el país. Pero hay un dato que rara vez ocupa titulares: <strong>el 73,4% eran hombres</strong>. Casi tres de cada cuatro.
+    </div>
+
+    <h2>Los números del suicidio</h2>
+    
+    <div class="stat-comparison">
+        <div class="stat-box highlight">
+            <div class="stat-number">3.953</div>
+            <div class="stat-label">Muertes por suicidio (2024)</div>
+            <div class="stat-sublabel">Principal causa de muerte no natural</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">73,4%</div>
+            <div class="stat-label">Son hombres</div>
+            <div class="stat-sublabel">2.902 hombres vs 1.051 mujeres</div>
+        </div>
+    </div>
+
+    <p>El suicidio mata más que los homicidios y los accidentes de tráfico combinados. Se trata de una <span class="highlight-text">crisis de salud pública de primer orden</span>. Y afecta, de forma abrumadora, a los hombres.</p>
+
+    <p>A pesar de esta magnitud, el primer plan estatal específico de prevención del suicidio (2025–2027) cuenta con una dotación de:</p>
+
+    <div class="stat-comparison">
+        <div class="stat-box">
+            <div class="stat-number">17,83M€</div>
+            <div class="stat-label">Presupuesto total</div>
+            <div class="stat-sublabel">Plan 2025-2027</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">≈4.500€</div>
+            <div class="stat-label">Por fallecimiento</div>
+            <div class="stat-sublabel">Inversión preventiva anual</div>
+        </div>
+    </div>
+
+    <h2>Los números de la violencia de género</h2>
+
+    <p>En paralelo, el Estado ha aprobado para 2025 una inversión de <span class="highlight-text">179,8 millones de euros</span> destinados a la lucha contra la violencia de género.</p>
+
+    <p>Esta cifra incluye 160 millones para el desarrollo del Pacto de Estado y 19,8 millones para programas específicos de atención y prevención.</p>
+
+    <div class="stat-comparison">
+        <div class="stat-box highlight">
+            <div class="stat-number">179,8M€</div>
+            <div class="stat-label">Presupuesto total</div>
+            <div class="stat-sublabel">Violencia de género 2025</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">≈50</div>
+            <div class="stat-label">Víctimas mortales anuales</div>
+            <div class="stat-sublabel">Mujeres asesinadas por pareja/expareja</div>
+        </div>
+    </div>
+
+    <div class="comparison-giant">
+        <h3>Comparación directa: inversión por vida</h3>
+        <div class="comparison-numbers">
+            <div class="vs-number">
+                4.500€
+                <span>Por muerte por suicidio</span>
+            </div>
+            <div class="vs-separator">VS</div>
+            <div class="vs-number">
+                3.600.000€
+                <span>Por muerte por violencia de género</span>
+            </div>
+        </div>
+        <div class="multiplier">
+            <div class="multiplier-text">La diferencia es de aproximadamente 800 veces</div>
+        </div>
+    </div>
+
+    <h2>Dos modelos distintos de política pública</h2>
+
+    <div class="data-grid">
+        <div class="data-card">
+            <h4>Violencia de género</h4>
+            <ul>
+                <li>Marco legal específico</li>
+                <li>Red institucional estable</li>
+                <li>Financiación sostenida</li>
+                <li>Alta visibilidad política</li>
+                <li>Ministerio propio</li>
+            </ul>
+        </div>
+        <div class="data-card">
+            <h4>Prevención del suicidio</h4>
+            <ul>
+                <li>Incorporación reciente a la agenda</li>
+                <li>Enfoque principalmente sanitario</li>
+                <li>Menor desarrollo estructural</li>
+                <li>Histórica invisibilidad social</li>
+                <li>Sin órgano específico</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout-box">
+        <h3>¿Qué dicen las instituciones?</h3>
+        <p>El Ministerio de Igualdad justifica esta inversión como parte de <strong>una respuesta integral y coordinada</strong>, el mantenimiento de una red de servicios y protección, y programas de prevención, asistencia y recuperación.</p>
+        <p>Es decir, no se trata solo de prevención, sino de todo un sistema estructural consolidado.</p>
+    </div>
+
+    <h2>A quién afecta más</h2>
+
+    <div class="data-grid">
+        <div class="data-card">
+            <h4>Suicidio</h4>
+            <ul>
+                <li>Más del 70% son hombres</li>
+                <li>Mayor incidencia en personas mayores</li>
+                <li>Contextos de soledad</li>
+                <li>Precariedad económica</li>
+                <li>Falta de redes de apoyo</li>
+            </ul>
+        </div>
+        <div class="data-card">
+            <h4>Violencia de género</h4>
+            <ul>
+                <li>Mujeres en ámbito de pareja/expareja</li>
+                <li>Dependencia económica</li>
+                <li>Violencia estructural</li>
+                <li>Antecedentes de abuso</li>
+                <li>Aislamiento social</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>El problema de fondo</h2>
+
+    <p>Esta comparación no pretende restar importancia a ninguna de las dos realidades. <span class="highlight-text">Ambas son tragedias humanas que requieren respuesta pública</span>.</p>
+
+    <p>Pero sí pone sobre la mesa una realidad difícil de ignorar:</p>
+
+    <div class="quote-box">
+        No todas las vidas reciben el mismo nivel de inversión preventiva.
+    </div>
+
+    <p>Y eso plantea preguntas legítimas:</p>
+
+    <ul style="font-size: 1.1rem; line-height: 2; margin: 2rem 0;">
+        <li>¿Se prioriza en función del número de muertes?</li>
+        <li>¿En función de la presión social y mediática?</li>
+        <li>¿O en función de la capacidad de convertir un problema en agenda política?</li>
+    </ul>
+
+    <div class="callout-box">
+        <h3>Reflexión final</h3>
+        <p>El suicidio sigue siendo la mayor causa de muerte evitable no natural en España, pero su inversión específica sigue siendo limitada en comparación con otros ámbitos.</p>
+        <p>Además, afecta de forma abrumadoramente mayoritaria a hombres, un dato que rara vez se traduce en políticas públicas proporcionales a su impacto.</p>
+        <p>La violencia de género, por su parte, cuenta con un modelo estructural consolidado que garantiza recursos, atención y continuidad.</p>
+        <p><strong>La cuestión no es reducir unos esfuerzos, sino preguntarse por qué otros problemas, con mayor impacto en vidas humanas y una clara distribución demográfica, siguen recibiendo menos atención proporcional.</strong></p>
+        <p>Porque al final, detrás de cada cifra, hay una persona. Y toda vida, en teoría, debería tener el mismo valor.</p>
+    </div>
+
+    <div class="sources">
+        <h3>🔎 Fuentes</h3>
+        <ul>
+            <li><strong>Ministerio de Sanidad</strong> — Datos de suicidio 2024 y Plan de prevención 2025–2027<br>
+            <a href="https://www.sanidad.gob.es" target="_blank" rel="noopener">https://www.sanidad.gob.es</a></li>
+            
+            <li><strong>Instituto Nacional de Estadística (INE)</strong> — Defunciones según causa de muerte<br>
+            <a href="https://www.ine.es" target="_blank" rel="noopener">https://www.ine.es</a></li>
+            
+            <li><strong>Infocop</strong> — Resumen del presupuesto estatal<br>
+            <a href="https://www.infocop.es/el-gobierno-destina-229-millones-para-ap-salud-mental-y-prevencion-del-suicidio/" target="_blank" rel="noopener">https://www.infocop.es/el-gobierno-destina-229-millones-para-ap-salud-mental-y-prevencion-del-suicidio/</a></li>
+            
+            <li><strong>Ministerio de Igualdad</strong> — Distribución de fondos (179,8 millones €)<br>
+            <a href="https://www.igualdad.gob.es/comunicacion/sala-de-prensa/igualdad-destina-177-millones-violencias-machistas/" target="_blank" rel="noopener">https://www.igualdad.gob.es/comunicacion/sala-de-prensa/igualdad-destina-177-millones-violencias-machistas/</a></li>
+            
+            <li><strong>Ministerio de Igualdad</strong> — Incremento y distribución con CCAA<br>
+            <a href="https://www.igualdad.gob.es/comunicacion/sala-de-prensa/igualdad-ccaa-incrementar-presupuesto-violencia/" target="_blank" rel="noopener">https://www.igualdad.gob.es/comunicacion/sala-de-prensa/igualdad-ccaa-incrementar-presupuesto-violencia/</a></li>
+            
+            <li><strong>Delegación del Gobierno contra la Violencia de Género</strong> — Estadísticas oficiales<br>
+            <a href="https://violenciagenero.igualdad.gob.es" target="_blank" rel="noopener">https://violenciagenero.igualdad.gob.es</a></li>
+        </ul>
+    </div>
+
+</article>
+
+<footer>
+    <p>TODOS ESOS HOMBRES © 2026 — FUENTES: INE, SEPE, MINISTERIO DE TRABAJO</p>
+</footer>
+
+</body>
+</html>

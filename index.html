@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODOS ESOS HOMBRES — Inicio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fff; color: #000; font-family: 'Space Mono', monospace; line-height: 1.6; overflow-x: hidden; }
+
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            background: #fff; 
+            border-bottom: 3px solid #000; 
+            z-index: 1000; 
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 1.5rem; 
+            line-height: 0.85; 
+            color: #000; 
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 2.5rem; 
+        }
+        nav a { 
+            color: #000; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+            transition: opacity 0.3s;
+            padding: 0.5rem 1rem;
+        }
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        nav a.blog-highlight {
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.7;
+        }
+
+        /* BALANZA */
+        .balance-container {
+            max-width: 900px;
+            margin: 0 auto 5rem;
+            position: relative;
+        }
+
+        .balance-svg {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+        }
+
+        .balance-stand {
+            fill: none;
+            stroke: #000;
+            stroke-width: 6;
+        }
+
+        .balance-bar {
+            fill: none;
+            stroke: #000;
+            stroke-width: 8;
+        }
+
+        .balance-plate {
+            fill: #f5f5f5;
+            stroke: #000;
+            stroke-width: 4;
+        }
+
+        .balance-weight {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            fill: #000;
+        }
+
+        .balance-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            fill: #000;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* STATS GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 6rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-card {
+            background: #fff;
+            border: 3px solid #000;
+            padding: 3rem 2rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .stat-card:hover {
+            transform: translate(-6px, -6px);
+            box-shadow: 6px 6px 0 #000;
+        }
+
+        .stat-card-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        /* DATA BOXES */
+        .data-section {
+            background: #f9f9f9;
+            padding: 6rem 2rem;
+            border-top: 3px solid #000;
+        }
+
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto;
+        }
+
+        .data-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 3rem;
+        }
+        
+        .data-box { 
+            border: 3px solid #000; 
+            padding: 3rem 2.5rem; 
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        .data-box:hover {
+            transform: translate(-6px, -6px);
+            box-shadow: 6px 6px 0 #000;
+        }
+        
+        .data-box h3 { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 5rem; 
+            margin-bottom: 1rem;
+            line-height: 0.9;
+        }
+
+        .data-box p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* MISSION SECTION */
+        .mission {
+            background: #000;
+            color: #fff;
+            padding: 6rem 2rem;
+            border-top: 3px solid #000;
+        }
+
+        .mission h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 3rem;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .mission-content {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .mission p {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 2rem;
+        }
+
+        .mission .highlight {
+            background: #fff;
+            color: #000;
+            padding: 0.3rem 0.6rem;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        /* CTA SECTION */
+        .cta {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: #fff;
+            border-top: 3px solid #000;
+        }
+
+        .cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta .btn {
+            display: inline-block;
+            padding: 1.8rem 4rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            border: 3px solid #000;
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            min-width: 300px;
+        }
+
+        .cta .btn:hover {
+            background: #fff;
+            color: #000;
+            transform: translate(-6px, -6px);
+            box-shadow: 6px 6px 0 #000;
+        }
+
+        footer { 
+            padding: 4rem 2rem; 
+            border-top: 3px solid #000; 
+            text-align: center; 
+            font-size: 0.75rem; 
+            opacity: 0.5;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 968px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta .btn {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="teh_index.html" class="logo">
+        TODOS<br>ESOS<br>HOMBRES
+    </a>
+    <ul>
+        <li><a href="teh_index.html">INICIO</a></li>
+        <li><a href="teh_estadisticas.html">ESTADÍSTICAS</a></li>
+        <li><a href="teh_asimetrias.html">ASIMETRÍAS</a></li>
+        <li><a href="teh_blog_dynamic.html" class="blog-highlight">BLOG</a></li>
+        <li><a href="teh_proposito.html">PROPÓSITO</a></li>
+    </ul>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">
+            LA REALIDAD<br>QUE NADIE CUENTA
+        </h1>
+        <p class="hero-subtitle">
+            Datos oficiales sobre las áreas donde los hombres sufren más, mueren más y reciben menos atención
+        </p>
+
+        <!-- BALANZA SVG -->
+        <div class="balance-container">
+            <svg class="balance-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                <!-- Base triangular -->
+                <polygon points="380,360 400,390 420,360" class="balance-stand"/>
+                <line x1="400" y1="360" x2="400" y2="180" class="balance-stand"/>
+                
+                <!-- Barra horizontal inclinada (lado izquierdo más bajo) -->
+                <line x1="150" y1="220" x2="650" y2="160" class="balance-bar"/>
+                
+                <!-- Plato izquierdo (más bajo - más pesado) -->
+                <line x1="150" y1="220" x2="150" y2="260" class="balance-stand" stroke-width="3"/>
+                <ellipse cx="150" cy="270" rx="100" ry="15" class="balance-plate"/>
+                
+                <!-- Plato derecho (más alto - más ligero) -->
+                <line x1="650" y1="160" x2="650" y2="200" class="balance-stand" stroke-width="3"/>
+                <ellipse cx="650" cy="210" rx="100" ry="15" class="balance-plate"/>
+                
+                <!-- Pesos y etiquetas -->
+                <!-- Lado izquierdo (pesado) -->
+                <text x="150" y="310" text-anchor="middle" class="balance-weight">8</text>
+                <text x="150" y="330" text-anchor="middle" class="balance-label">Suicidios/día</text>
+                <text x="150" y="345" text-anchor="middle" class="balance-label" font-size="12">(hombres)</text>
+                
+                <!-- Lado derecho (ligero) -->
+                <text x="650" y="250" text-anchor="middle" class="balance-weight">1</text>
+                <text x="650" y="270" text-anchor="middle" class="balance-label">Víctima VG/día</text>
+                <text x="650" y="285" text-anchor="middle" class="balance-label" font-size="12">(mujer)</text>
+                
+                <!-- Símbolo de desequilibrio -->
+                <text x="400" y="140" text-anchor="middle" font-family="'Bebas Neue', sans-serif" font-size="36" fill="#000">≠</text>
+                <text x="400" y="160" text-anchor="middle" font-size="11" fill="#000" font-weight="700">INVERSIÓN PÚBLICA</text>
+            </svg>
+        </div>
+
+        <!-- STATS GRID -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-card-number">75%</div>
+                <div class="stat-card-label">De los suicidios<br>son masculinos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-number">91%</div>
+                <div class="stat-card-label">De muertes laborales<br>son hombres</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-number">80%</div>
+                <div class="stat-card-label">De personas sin hogar<br>son hombres</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="data-section">
+    <div class="container">
+        <div class="data-grid">
+            <div class="data-box">
+                <h3>93%</h3>
+                <p>De las personas presas en España son hombres. El sistema penitenciario es masculino en su inmensa mayoría.</p>
+            </div>
+            <div class="data-box">
+                <h3>526</h3>
+                <p>Asimetrías legales documentadas del BOE que discriminan explícitamente por sexo en contra de los hombres.</p>
+            </div>
+            <div class="data-box">
+                <h3>-6</h3>
+                <p>Años de esperanza de vida menos que las mujeres. Los hombres mueren antes de forma sistemática.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mission">
+    <div class="mission-content">
+        <h2>UNA REALIDAD QUE EXISTE</h2>
+        <p>En España, <span class="highlight">cada día se suicidan 8 hombres</span>. Cada día mueren 2 hombres en accidentes laborales. Cada noche, 3 de cada 4 personas durmiendo en la calle son hombres.</p>
+        <p>Estos datos no son opiniones. Son estadísticas oficiales del Instituto Nacional de Estadística, del Ministerio de Trabajo, del Instituto Nacional de Seguridad y Salud en el Trabajo.</p>
+        <p>Esta web existe para <span class="highlight">visibilizar lo invisible</span>. Para documentar, con fuentes oficiales y datos verificables, las áreas donde los hombres enfrentan desventajas sistemáticas, sufren más, mueren más, y reciben menos atención.</p>
+        <p>No es un concurso de víctimas. Es un ejercicio de honestidad. Porque la igualdad real requiere mirar toda la realidad, no solo la mitad que nos resulta cómoda.</p>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>EXPLORA LOS DATOS</h2>
+    <div class="cta-buttons">
+        <a href="teh_estadisticas.html" class="btn">VER ESTADÍSTICAS</a>
+        <a href="teh_asimetrias.html" class="btn">ASIMETRÍAS LEGALES</a>
+    </div>
+</section>
+
+<footer>
+    <p>TODOS ESOS HOMBRES © 2026 — FUENTES: INE, SEPE, MINISTERIO DE TRABAJO</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inocente hasta que se demuestre lo contrario... salvo si eres hombre — Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fff; color: #000; font-family: 'Space Mono', monospace; line-height: 1.6; }
+
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            background: #fff; 
+            border-bottom: 3px solid #000; 
+            z-index: 1000; 
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 1.5rem; 
+            line-height: 0.85; 
+            color: #000; 
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 2.5rem; 
+        }
+        nav a { 
+            color: #000; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            letter-spacing: 1px; 
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+            padding: 0.5rem 1rem;
+        }
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        nav a.blog-highlight {
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+        }
+
+        .article-header {
+            background: #000;
+            color: #fff;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .article-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-meta {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .lead-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f5f5f5;
+            border-left: 10px solid #000;
+        }
+
+        h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            margin: 3rem 0 1.5rem;
+            text-transform: uppercase;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .highlight-text {
+            background: #000;
+            color: #fff;
+            padding: 0.3rem 0.6rem;
+            font-weight: 700;
+        }
+
+        .stat-box {
+            border: 3px solid #000;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translate(-6px, -6px);
+            box-shadow: 6px 6px 0 #000;
+        }
+
+        .stat-box.highlight {
+            background: #000;
+            color: #fff;
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .data-card {
+            border: 3px solid #000;
+            padding: 2rem;
+            background: #f9f9f9;
+        }
+
+        .data-card h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .data-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .data-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .data-card li:last-child {
+            border-bottom: none;
+        }
+
+        .data-card li::before {
+            content: "→ ";
+            font-weight: 700;
+        }
+
+        .callout-box {
+            background: #000;
+            color: #fff;
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 3px solid #000;
+        }
+
+        .callout-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .callout-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .quote-box {
+            border-left: 10px solid #000;
+            padding-left: 2rem;
+            margin: 3rem 0;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        .case-box {
+            background: #f5f5f5;
+            border: 3px solid #000;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .case-box h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .sources {
+            background: #f5f5f5;
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 3px solid #000;
+        }
+
+        .sources h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .sources ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sources li {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .sources li:last-child {
+            border-bottom: none;
+        }
+
+        .sources a {
+            color: #000;
+            text-decoration: underline;
+            word-break: break-all;
+            font-size: 0.9rem;
+        }
+
+        footer { 
+            padding: 4rem; 
+            text-align: center; 
+            border-top: 3px solid #000; 
+            opacity: 0.6; 
+            font-size: 0.8rem; 
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="teh_index.html" class="logo">
+        TODOS<br>ESOS<br>HOMBRES
+    </a>
+    <ul>
+        <li><a href="teh_index.html">INICIO</a></li>
+        <li><a href="teh_estadisticas.html">ESTADÍSTICAS</a></li>
+        <li><a href="teh_asimetrias.html">ASIMETRÍAS</a></li>
+        <li><a href="teh_blog_dynamic.html" class="blog-highlight">BLOG</a></li>
+        <li><a href="teh_proposito.html">PROPÓSITO</a></li>
+    </ul>
+</nav>
+
+<header class="article-header">
+    <h1 class="article-title">Inocente hasta que se demuestre lo contrario... salvo si eres hombre</h1>
+    <p class="article-subtitle">Cuando la presunción de inocencia desaparece antes del juicio</p>
+    <div class="article-meta">31 de Marzo de 2026 — Análisis Legal</div>
+</header>
+
+<article class="container">
+    
+    <div class="lead-text">
+        La presunción de inocencia es un derecho fundamental recogido en el artículo 24.2 de la Constitución Española. <strong>Toda persona es inocente hasta que se demuestre lo contrario.</strong> En teoría. En la práctica, cuando se trata de violencia de género, este principio puede quedar suspendido antes incluso de que exista un juicio.
+    </div>
+
+    <h2>La orden de alejamiento sin juicio previo</h2>
+
+    <p>En España, una denuncia por violencia de género puede derivar en una <span class="highlight-text">orden de alejamiento inmediata</span>, dictada por un juez en las primeras 72 horas tras la denuncia, sin que haya mediado juicio, sin que se haya probado nada, y sin que el denunciado haya podido defenderse.</p>
+
+    <p>Esta medida cautelar, contemplada en la Ley Orgánica 1/2004, supone que:</p>
+
+    <div class="data-card" style="margin: 2rem 0;">
+        <ul>
+            <li>El denunciado debe abandonar el domicilio familiar de forma inmediata</li>
+            <li>No puede acercarse a menos de 500 metros de la denunciante</li>
+            <li>No puede comunicarse con ella por ningún medio</li>
+            <li>Puede perder el contacto con sus hijos de forma temporal o indefinida</li>
+            <li>Todo esto ocurre <strong>antes de que se celebre el juicio</strong></li>
+        </ul>
+    </div>
+
+    <p>La justificación legal es la protección de la víctima. El problema es que <span class="highlight-text">la palabra "presunta" desaparece del discurso público</span> en el momento en que se emite la orden.</p>
+
+    <h2>Los números que no se cuentan</h2>
+
+    <div class="stat-box highlight">
+        <div class="stat-number">≈15%</div>
+        <div class="stat-label">De las denuncias por violencia de género terminan en condena</div>
+    </div>
+
+    <p>Según datos del Observatorio contra la Violencia Doméstica y de Género del CGPJ, solo entre el 10% y el 15% de las denuncias por violencia de género acaban en sentencia condenatoria.</p>
+
+    <p>¿Qué pasa con el otro 85%?</p>
+
+    <div class="data-grid">
+        <div class="data-card">
+            <h4>Archivos y sobreseimientos</h4>
+            <ul>
+                <li>Falta de pruebas</li>
+                <li>Retractación de la denunciante</li>
+                <li>Contradicciones en el testimonio</li>
+                <li>Imposibilidad de acreditar los hechos</li>
+            </ul>
+        </div>
+        <div class="data-card">
+            <h4>Absoluciones</h4>
+            <ul>
+                <li>Inexistencia de los hechos</li>
+                <li>Dudas razonables</li>
+                <li>Presunción de inocencia aplicada</li>
+                <li>Denuncias falsas probadas</li>
+            </ul>
+        </div>
+    </div>
+
+    <p>Pero las medidas cautelares —la orden de alejamiento, la pérdida del domicilio, la restricción de contacto con los hijos— ya han estado en vigor durante meses o incluso años.</p>
+
+    <div class="quote-box">
+        El daño ya está hecho. La absolución no devuelve el tiempo perdido, ni repara la reputación destruida, ni recupera la relación con los hijos.
+    </div>
+
+    <h2>El coste real de defenderte</h2>
+
+    <p>Cuando un hombre es denunciado por violencia de género, se enfrenta a:</p>
+
+    <div class="callout-box">
+        <h3>Costes económicos</h3>
+        <p><strong>Abogado penalista:</strong> Entre 3.000€ y 10.000€ dependiendo de la complejidad del caso.</p>
+        <p><strong>Abogado de familia:</strong> Si hay hijos de por medio, otros 2.000€ - 5.000€ para el procedimiento de custodia.</p>
+        <p><strong>Alquiler de nueva vivienda:</strong> Si debe abandonar el domicilio, necesita buscar otro lugar donde vivir.</p>
+        <p><strong>Manutención:</strong> Incluso sin sentencia, puede estar obligado a pagar pensión alimenticia.</p>
+        <p style="margin-top: 1.5rem; font-size: 1.3rem;"><strong>Total estimado: entre 10.000€ y 30.000€ para defenderse de una acusación que puede no llegar a probarse.</strong></p>
+    </div>
+
+    <div class="callout-box" style="background: #f5f5f5; color: #000;">
+        <h3>Costes personales y profesionales</h3>
+        <p><strong>Reputación:</strong> La denuncia suele ser pública en el entorno cercano. Aunque sea absuelto, la sombra permanece.</p>
+        <p><strong>Empleo:</strong> Muchas empresas suspenden o despiden a trabajadores denunciados por violencia de género antes de que haya sentencia.</p>
+        <p><strong>Salud mental:</strong> Ansiedad, depresión, estrés postraumático. El proceso judicial puede durar años.</p>
+        <p><strong>Relación con los hijos:</strong> Meses o años sin ver a sus hijos, o viéndolos solo en régimen de visitas supervisadas.</p>
+    </div>
+
+    <h2>Denuncias falsas: el tema tabú</h2>
+
+    <p>Hablar de denuncias falsas en el contexto de violencia de género es polémicamente delicado. Pero los datos existen.</p>
+
+    <p>Aunque <span class="highlight-text">no hay estadísticas oficiales centralizadas sobre denuncias falsas probadas</span>, las sentencias judiciales muestran que:</p>
+
+    <div class="case-box">
+        <h4>Sentencia del Tribunal Supremo, Sala de lo Penal, Sentencia 194/2017</h4>
+        <p>El TS reconoce expresamente que "la denuncia falsa existe" y condena a una mujer por acusar falsamente a su expareja de maltrato para obtener ventaja en el proceso de custodia.</p>
+        <p style="margin-top: 1rem; font-style: italic; opacity: 0.8;">Extracto: "La acusada, con ánimo de perjudicar a su expareja y obtener ventajas en el procedimiento de divorcio, formuló denuncia por malos tratos a sabiendas de su falsedad."</p>
+    </div>
+
+    <p>El problema no es solo que las denuncias falsas existan —que existen—, sino que:</p>
+
+    <div class="data-card" style="margin: 2rem 0;">
+        <ul>
+            <li>Las penas por denuncia falsa son muy bajas (6 meses a 2 años de prisión)</li>
+            <li>Rara vez se investigan de oficio</li>
+            <li>El denunciado debe probar la falsedad, lo cual es extremadamente difícil</li>
+            <li>Aunque se demuestre la falsedad, el daño causado es irreparable</li>
+        </ul>
+    </div>
+
+    <h2>Casos reales, consecuencias reales</h2>
+
+    <div class="case-box">
+        <h4>Caso: Javier, 42 años, Madrid</h4>
+        <p>Denunciado por su expareja durante el proceso de divorcio. Orden de alejamiento inmediata. 18 meses sin ver a sus hijos. Perdió su empleo como profesor tras conocerse la denuncia en el centro educativo.</p>
+        <p style="margin-top: 1rem;"><strong>Resultado: Absuelto por falta de pruebas.</strong> La denuncia fue archivada. Jamás recuperó su puesto de trabajo. La relación con sus hijos, dañada irreparablemente.</p>
+    </div>
+
+    <div class="case-box">
+        <h4>Caso: Miguel, 35 años, Valencia</h4>
+        <p>Denuncia por agresión. Pasó 3 días en calabozos. Orden de alejamiento de 500 metros. Tuvo que mudarse y contratar abogado.</p>
+        <p style="margin-top: 1rem;"><strong>Resultado: Sobreseimiento por contradicciones en el testimonio de la denunciante.</strong> Coste total de su defensa: 8.500€. Coste emocional: incalculable.</p>
+    </div>
+
+    <h2>El desequilibrio estructural</h2>
+
+    <p>La Ley Orgánica 1/2004 parte de un principio: la mujer es víctima, el hombre es agresor. Este punto de partida genera un desequilibrio estructural:</p>
+
+    <div class="data-grid">
+        <div class="data-card">
+            <h4>Para la denunciante</h4>
+            <ul>
+                <li>Asistencia jurídica gratuita</li>
+                <li>Servicios de atención especializada</li>
+                <li>Protección policial inmediata</li>
+                <li>Ayudas económicas</li>
+                <li>Presunción de veracidad de facto</li>
+            </ul>
+        </div>
+        <div class="data-card">
+            <h4>Para el denunciado</h4>
+            <ul>
+                <li>Debe pagar su defensa</li>
+                <li>Orden de alejamiento sin juicio</li>
+                <li>Pérdida del domicilio</li>
+                <li>Restricción de contacto con hijos</li>
+                <li>Carga de demostrar su inocencia</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="quote-box">
+        No se trata de negar la violencia de género ni de restar protección a las víctimas reales. Se trata de que la presunción de inocencia no puede ser un derecho a la carta.
+    </div>
+
+    <h2>El problema de fondo</h2>
+
+    <p>El debate no es si debe protegerse a las víctimas de violencia. <span class="highlight-text">Por supuesto que sí.</span> El debate es si esa protección puede construirse sobre la suspensión de derechos fundamentales de otra persona antes de que se demuestre nada.</p>
+
+    <p>Y la respuesta, según la Constitución, debería ser clara: <strong>no</strong>.</p>
+
+    <p>Pero en la práctica, cuando se cruza el umbral de una comisaría con una denuncia de violencia de género, el hombre denunciado deja de ser inocente hasta que se demuestre lo contrario.</p>
+
+    <p>Pasa a ser <span class="highlight-text">culpable hasta que demuestre su inocencia</span>.</p>
+
+    <div class="callout-box">
+        <h3>Reflexión final</h3>
+        <p>Un sistema judicial justo protege a las víctimas sin destruir a los inocentes. Cuando la protección se construye sobre la presunción de culpabilidad, algo falla.</p>
+        <p>Las víctimas de violencia merecen protección real y efectiva. Los inocentes acusados falsamente merecen que su vida no quede destrozada antes de que exista una sentencia.</p>
+        <p><strong>Ambas cosas pueden —y deben— coexistir en un Estado de Derecho.</strong></p>
+    </div>
+
+    <div class="sources">
+        <h3>🔎 Fuentes</h3>
+        <ul>
+            <li><strong>Constitución Española</strong> — Artículo 24.2: Presunción de inocencia<br>
+            <a href="https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229" target="_blank" rel="noopener">https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229</a></li>
+            
+            <li><strong>Ley Orgánica 1/2004</strong> — Medidas de Protección Integral contra la Violencia de Género<br>
+            <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-21760" target="_blank" rel="noopener">https://www.boe.es/buscar/act.php?id=BOE-A-2004-21760</a></li>
+            
+            <li><strong>Consejo General del Poder Judicial</strong> — Observatorio contra la Violencia Doméstica y de Género<br>
+            <a href="http://www.poderjudicial.es/cgpj/es/Temas/Violencia-Domestica-y-de-Genero/" target="_blank" rel="noopener">http://www.poderjudicial.es/cgpj/es/Temas/Violencia-Domestica-y-de-Genero/</a></li>
+            
+            <li><strong>Tribunal Supremo</strong> — Sentencia 194/2017, Sala de lo Penal<br>
+            <a href="https://www.poderjudicial.es" target="_blank" rel="noopener">https://www.poderjudicial.es</a></li>
+            
+            <li><strong>Instituto Nacional de Estadística</strong> — Estadísticas judiciales<br>
+            <a href="https://www.ine.es" target="_blank" rel="noopener">https://www.ine.es</a></li>
+        </ul>
+    </div>
+
+</article>
+
+<footer>
+    <p>TODOS ESOS HOMBRES © 2026 — FUENTES: BOE, CGPJ, TRIBUNAL SUPREMO</p>
+</footer>
+
+</body>
+</html>

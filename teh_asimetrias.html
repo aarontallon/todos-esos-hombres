@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asimetrías Legales — Todos esos hombres</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fff; color: #000; font-family: 'Space Mono', monospace; line-height: 1.6; }
+
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            background: #fff; 
+            border-bottom: 3px solid #000; 
+            z-index: 1000; 
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 1.5rem; 
+            line-height: 0.85; 
+            color: #000; 
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 2.5rem; 
+        }
+        nav a { 
+            color: #000; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            letter-spacing: 0.5px; 
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+            padding: 0.5rem 1rem;
+        }
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        nav a.blog-highlight {
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 8rem 2rem 4rem; }
+        
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 1rem; }
+
+        .btn-submit-top {
+            background: #000;
+            color: #fff;
+            padding: 1rem 2rem;
+            border: 3px solid #000;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            align-self: flex-start;
+        }
+
+        .btn-submit-top:hover {
+            background: #fff;
+            color: #000;
+            transform: translate(-4px, -4px);
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .search-panel { background: #f4f4f4; padding: 2.5rem; margin-bottom: 4rem; border: 3px solid #000; }
+        .search-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        #lawSearch { flex-grow: 1; padding: 1rem; border: 2px solid #000; font-family: 'Space Mono', monospace; font-size: 1rem; min-width: 250px; }
+        
+        .filter-group { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1rem; }
+        .filter-btn { padding: 0.6rem 1.2rem; border: 2px solid #000; background: transparent; cursor: pointer; font-family: 'Space Mono', monospace; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; transition: all 0.2s; }
+        .filter-btn:hover { background: #333; color: #fff; }
+        .filter-btn.active { background: #000; color: #fff; }
+
+        .search-options { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; padding-top: 1rem; border-top: 2px solid #ddd; margin-top: 1rem; }
+        .search-option { display: flex; align-items: center; gap: 0.5rem; }
+        .search-option label { font-size: 0.8rem; text-transform: uppercase; cursor: pointer; }
+        .search-option input[type="checkbox"] { cursor: pointer; width: 18px; height: 18px; }
+
+        .results-info { background: #000; color: #fff; padding: 1rem 1.5rem; margin-bottom: 2rem; font-size: 0.9rem; display: none; }
+        .results-info.show { display: block; }
+
+        .law-card { border: 3px solid #000; margin-bottom: 3rem; padding: 2.5rem; position: relative; transition: box-shadow 0.3s; }
+        .law-card:hover { box-shadow: 8px 8px 0 #000; }
+        .law-card.highlighted { background: #fffacd; }
+        .tag { background: #000; color: #fff; padding: 0.3rem 0.8rem; font-size: 0.7rem; font-weight: 700; display: inline-block; margin-bottom: 1rem; }
+        .law-card h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; margin-bottom: 1rem; }
+        
+        .asymmetry-box {
+            border-left: 10px solid #000;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+        }
+        .asymmetry-box strong { display: block; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 0.5rem; }
+
+        .source-link { font-size: 0.8rem; font-weight: 700; color: #000; text-decoration: underline; display: inline-block; margin-top: 1rem; word-break: break-all; }
+
+        .no-results { text-align: center; padding: 4rem 2rem; font-size: 1.2rem; opacity: 0.6; }
+
+        .form-section { background: #000; color: #fff; padding: 4rem 2rem; margin-top: 6rem; }
+        .form-section h3 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; margin-bottom: 2rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase; }
+        .form-group input, .form-group textarea { width: 100%; padding: 1rem; border: 2px solid #fff; background: #000; color: #fff; font-family: 'Space Mono', monospace; }
+        .submit-btn { background: #fff; color: #000; padding: 1rem 2.5rem; border: none; font-weight: 700; cursor: pointer; text-transform: uppercase; }
+
+        footer { padding: 4rem; text-align: center; border-top: 3px solid #000; opacity: 0.6; font-size: 0.8rem; }
+
+        mark { background: #ffff00; font-weight: 700; padding: 0 0.2rem; }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .header-section {
+                flex-direction: column;
+            }
+            
+            .btn-submit-top {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .search-row { flex-direction: column; }
+            #lawSearch { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="teh_index.html" class="logo">
+        TODOS<br>ESOS<br>HOMBRES
+    </a>
+    <ul>
+        <li><a href="teh_index.html">INICIO</a></li>
+        <li><a href="teh_estadisticas.html">ESTADÍSTICAS</a></li>
+        <li><a href="teh_asimetrias.html">ASIMETRÍAS</a></li>
+        <li><a href="teh_blog_dynamic.html" class="blog-highlight">BLOG</a></li>
+        <li><a href="teh_proposito.html">PROPÓSITO</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="header-section">
+        <div class="header-text">
+            <h1>ASIMETRÍAS LEGALES</h1>
+            <p>Recopilación detallada de discriminaciones legales por sexo extraídas del BOE y fuentes oficiales del Gobierno.</p>
+        </div>
+        <a href="#formulario-envio" class="btn-submit-top">+ Enviar Asimetría</a>
+    </div>
+
+    <div class="search-panel">
+        <div class="search-row">
+            <input type="text" id="lawSearch" placeholder="BUSCAR POR LEY, PALABRA CLAVE O REFERENCIA BOE...">
+        </div>
+        <div class="filter-group">
+            <button class="filter-btn active" data-filter="all">Todas</button>
+            <button class="filter-btn" data-filter="PENAL">Penal</button>
+            <button class="filter-btn" data-filter="SOCIAL">Seguridad Social</button>
+            <button class="filter-btn" data-filter="EMPLEO">Empleo/Empresa</button>
+            <button class="filter-btn" data-filter="ADMIN">Admin/Varios</button>
+            <button class="filter-btn" data-filter="EDUCACIÓN">Educación</button>
+            <button class="filter-btn" data-filter="VIVIENDA">Vivienda</button>
+        </div>
+        <div class="search-options">
+            <div class="search-option">
+                <input type="checkbox" id="searchTitle" checked>
+                <label for="searchTitle">Buscar en título</label>
+            </div>
+            <div class="search-option">
+                <input type="checkbox" id="searchDesc" checked>
+                <label for="searchDesc">Buscar en descripción</label>
+            </div>
+            <div class="search-option">
+                <input type="checkbox" id="searchAsym" checked>
+                <label for="searchAsym">Buscar en asimetría</label>
+            </div>
+            <div class="search-option">
+                <input type="checkbox" id="searchRef">
+                <label for="searchRef">Buscar en referencia</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="results-info" id="resultsInfo"></div>
+
+    <div id="lawsContainer"></div>
+    <div id="noResults" class="no-results" style="display: none;">
+        No se encontraron resultados para tu búsqueda.
+    </div>
+
+    <div class="form-section" id="formulario-envio">
+        <h3>ENVIAR NUEVA ASIMETRÍA</h3>
+        <p style="margin-bottom: 2rem;">Si conoces una ley oficial que falte, envíala indicando la referencia del BOE.</p>
+        <form id="asymmetryForm">
+            <div class="form-group"><label>Título de la Ley *</label><input type="text" required></div>
+            <div class="form-group"><label>Descripción Detallada *</label><textarea rows="4" required></textarea></div>
+            <div class="form-group"><label>Enlace BOE / Oficial *</label><input type="url" required></div>
+            <button type="submit" class="submit-btn">ENVIAR PARA REVISIÓN</button>
+        </form>
+    </div>
+</div>
+
+<footer><p>TODOS ESOS HOMBRES © 2026</p></footer>
+
+<script>
+const laws = [
+    {
+        cat: "SOCIAL",
+        title: "Incremento en la Pensión por Hijos (Complemento de Brecha)",
+        desc: "RD-ley 3/2021 y LGSS. Complemento destinado a las pensiones contributivas.",
+        asym: "Las mujeres con un hijo o más cobran el complemento por defecto. El incremento empieza en un 5% por dos hijos y llega hasta el 15%. Para que un hombre lo cobre, debe demostrar requisitos de perjuicio en su carrera que no se exigen a la mujer. Además, el hombre queda excluido si tiene condena por violencia de género, pero la mujer no queda excluida si tiene condena por violencia doméstica.",
+        ref: "BOE-A-2021-1529"
+    },
+    {
+        cat: "PENAL",
+        title: "Diferenciación de Tipo Delictivo (Ley Orgánica 1/2004)",
+        desc: "Medidas de Protección Integral contra la Violencia de Género.",
+        asym: "Un mismo hecho (amenazas o coacciones leves) se considera delito grave con pena de 6 meses a 1 año de prisión si el agresor es hombre y la víctima mujer. Si la mujer es la agresora, el acto es un delito leve. Esto elimina el derecho a no ser juzgado por 'derecho de autor' (quién eres en vez de qué has hecho).",
+        ref: "BOE-A-2004-21760"
+    },
+    {
+        cat: "SOCIAL",
+        title: "Deducción por Maternidad en IRPF (Art. 81)",
+        desc: "Ayuda fiscal para progenitores trabajadores con hijos menores de 3 años.",
+        asym: "Derecho a una deducción de 100 euros al mes (1.200€ anuales) exclusivo para madres trabajadoras. Para que un hombre tenga derecho a esta cuantía, debe demostrar judicialmente que posee la custodia exclusiva total del menor.",
+        ref: "BOE-A-2006-20764"
+    },
+    {
+        cat: "EMPLEO",
+        title: "Incentivos a la Contratación con Dinero Público",
+        desc: "Ley 11/2013 de medidas urgentes de fomento del empleo.",
+        asym: "Establece cuantías superiores en las bonificaciones de cuotas a la Seguridad Social si la persona contratada es mujer frente a un hombre en igualdad de condiciones (desempleados, jóvenes, etc.), incentivando económicamente la exclusión del varón.",
+        ref: "BOE-A-2013-2030"
+    },
+    {
+        cat: "ADMIN",
+        title: "Baremos Físicos de Acceso al Empleo Público",
+        desc: "Convocatorias oficiales de Fuerzas y Cuerpos de Seguridad.",
+        asym: "Las mujeres acceden a plazas de funcionario (Policía, Guardia Civil, Bomberos) con marcas físicas significativamente más bajas. Esto permite que una mujer obtenga plaza sobre un hombre que ha demostrado mejores capacidades físicas y notas, rompiendo el principio de mérito y capacidad en favor del sexo.",
+        ref: "BOE Convocatorias Guardia Civil/CNP"
+    },
+    {
+        cat: "SOCIAL",
+        title: "Renta Activa de Inserción (RAI) Asimétrica",
+        desc: "Subsidio de desempleo para colectivos con especiales dificultades.",
+        asym: "La mujer víctima de violencia de género accede a esta ayuda (aprox. 480€/mes o 80% del IPREM) con menores requisitos de acreditación (basta un informe de servicios sociales). Las víctimas de violencia doméstica (hombres) tienen procesos de acreditación mucho más restrictivos para la misma cuantía.",
+        ref: "Real Decreto 1369/2006"
+    },
+    {
+        cat: "ADMIN",
+        title: "Derecho a Notificación Automática (Estatuto de la Víctima)",
+        desc: "Ley 4/2015, Artículo 7.3.",
+        asym: "Derecho a que se notifiquen, sin solicitud previa, las resoluciones sobre prisión, libertad o fuga del infractor. Este derecho es automático para mujeres víctimas de violencia de género, pero no existe de la misma forma para hombres víctimas de violencia doméstica.",
+        ref: "BOE-A-2015-4606"
+    },
+    {
+        cat: "EMPLEO",
+        title: "Ayudas al Emprendimiento Femenino (Programa EMEGA)",
+        desc: "Fomento del empleo autónomo y creación de empresas.",
+        asym: "Concesión de subvenciones y capital semilla exclusivos para mujeres. Los hombres emprendedores están legalmente excluidos de estas convocatorias oficiales de financiación inicial para sus negocios por el hecho de ser hombres.",
+        ref: "DOG/BOE Ayudas Emprendimiento"
+    },
+    {
+        cat: "ADMIN",
+        title: "Reserva de Plazas en Oposiciones (Cuotas)",
+        desc: "Proyectos de ley derivados del Pacto de Estado.",
+        asym: "Derecho a la reserva de como mínimo un 2% de las plazas en oposiciones públicas exclusivamente para mujeres víctimas de violencia de género, una reserva que no existe para hombres víctimas de violencia doméstica o asaltos violentos.",
+        ref: "Pacto de Estado contra la VG"
+    },
+    {
+        cat: "ADMIN",
+        title: "Competencia Territorial Especial (Art. 15 bis LECrim)",
+        desc: "Ley de Enjuiciamiento Criminal.",
+        asym: "En denuncias de mujer a hombre, el juicio se celebra en el juzgado del domicilio de la mujer. En cualquier otro delito (incluyendo de mujer a hombre), se celebra donde se cometió el delito. Esto otorga una ventaja de comodidad procesal y protección logística exclusiva a la mujer.",
+        ref: "BOE-A-1882-6036"
+    },
+    {
+        cat: "EMPLEO",
+        title: "Bonificaciones Mayores por Contratar Mujeres",
+        desc: "Real Decreto-ley 16/2022, medidas de apoyo al empleo.",
+        asym: "Las empresas reciben bonificaciones económicas más elevadas por contratar mujeres que por contratar hombres en igualdad de condiciones, incentivando la discriminación laboral contra los varones.",
+        ref: "BOE-A-2022-14682"
+    },
+    {
+        cat: "EDUCACIÓN",
+        title: "Matrícula Gratuita en Universidad para Víctimas de Violencia de Género",
+        desc: "Andalucía y UNED.",
+        asym: "Las mujeres reconocidas como víctimas de violencia de género tienen derecho a matrícula gratuita en universidades públicas. Los hombres víctimas de violencia doméstica no tienen este derecho.",
+        ref: "Normativa Autonómica Andalucía/UNED"
+    },
+    {
+        cat: "VIVIENDA",
+        title: "Prioridad en Acceso a Vivienda Protegida",
+        desc: "Para víctimas de violencia de género.",
+        asym: "Las mujeres víctimas de violencia de género tienen prioridad en el acceso a viviendas protegidas y residencias públicas. Los hombres víctimas de violencia doméstica no cuentan con esta prioridad.",
+        ref: "Ley Orgánica 1/2004"
+    },
+    {
+        cat: "ADMIN",
+        title: "Servicio 016 Exclusivo para Mujeres",
+        desc: "Servicio telefónico 24/7 en 52 idiomas.",
+        asym: "El servicio 016 de información y asesoramiento sobre violencia de género está disponible exclusivamente para mujeres, sin equivalente para hombres víctimas de violencia doméstica.",
+        ref: "Ministerio de Igualdad"
+    },
+    {
+        cat: "SOCIAL",
+        title: "Anticipos por Impago de Pensiones Alimenticias",
+        desc: "Fondo de garantía de pago de pensiones.",
+        asym: "Prioridad y facilidades para mujeres víctimas de violencia de género en el acceso a anticipos por impago de pensiones alimenticias, sin equivalente para hombres en situaciones similares.",
+        ref: "Real Decreto 1618/2007"
+    },
+    {
+        cat: "EMPLEO",
+        title: "Incentivos para Empresas que Contraten Víctimas de Violencia de Género",
+        desc: "Bonificaciones de la Seguridad Social.",
+        asym: "Las empresas que contraten a mujeres víctimas de violencia de género reciben importantes bonificaciones. No existe incentivo equivalente para contratar a hombres víctimas de violencia doméstica.",
+        ref: "Ley Orgánica 1/2004, Art. 22"
+    },
+    {
+        cat: "ADMIN",
+        title: "Autorización de Residencia por Violencia de Género",
+        desc: "Para mujeres extranjeras en situación irregular.",
+        asym: "Las mujeres extranjeras víctimas de violencia de género pueden obtener autorización de residencia y trabajo incluso estando en situación irregular. No existe mecanismo equivalente para hombres víctimas.",
+        ref: "Ley Orgánica 4/2000, modificada"
+    },
+    {
+        cat: "EDUCACIÓN",
+        title: "Escolarización Inmediata Prioritaria",
+        desc: "Para hijos de víctimas de violencia de género.",
+        asym: "Los hijos de mujeres víctimas de violencia de género tienen derecho a escolarización inmediata con carácter prioritario. Los hijos de hombres víctimas de violencia doméstica no cuentan con esta prioridad.",
+        ref: "Ley Orgánica 1/2004, Art. 8"
+    },
+    {
+        cat: "SOCIAL",
+        title: "Pensión de Viudedad sin Requisito de Pensión Compensatoria",
+        desc: "Para víctimas de violencia de género.",
+        asym: "Las mujeres víctimas de violencia de género tienen derecho a pensión de viudedad aunque no sean acreedoras de pensión compensatoria tras separación o divorcio. Los hombres no cuentan con este derecho en casos de violencia doméstica.",
+        ref: "Ley General de la Seguridad Social"
+    },
+    {
+        cat: "EMPLEO",
+        title: "Movilidad Geográfica para Víctimas de Violencia de Género",
+        desc: "En el empleo público y privado.",
+        asym: "Las trabajadoras víctimas de violencia de género tienen derecho preferente a la movilidad geográfica y al cambio de centro de trabajo. Los trabajadores víctimas de violencia doméstica no tienen reconocido este derecho de forma explícita.",
+        ref: "Estatuto de los Trabajadores, Art. 40"
+    }
+];
+
+const container = document.getElementById('lawsContainer');
+const searchInput = document.getElementById('lawSearch');
+const resultsInfo = document.getElementById('resultsInfo');
+const noResults = document.getElementById('noResults');
+
+const searchTitle = document.getElementById('searchTitle');
+const searchDesc = document.getElementById('searchDesc');
+const searchAsym = document.getElementById('searchAsym');
+const searchRef = document.getElementById('searchRef');
+
+function highlightText(text, query) {
+    if (!query) return text;
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
+}
+
+function render(filter = 'all', query = '') {
+    container.innerHTML = '';
+    noResults.style.display = 'none';
+    
+    const queryLower = query.toLowerCase();
+    
+    const filtered = laws.filter(l => {
+        const matchesFilter = filter === 'all' || l.cat === filter;
+        
+        if (!matchesFilter) return false;
+        if (!query) return true;
+        
+        let matchesQuery = false;
+        
+        if (searchTitle.checked && l.title.toLowerCase().includes(queryLower)) matchesQuery = true;
+        if (searchDesc.checked && l.desc.toLowerCase().includes(queryLower)) matchesQuery = true;
+        if (searchAsym.checked && l.asym.toLowerCase().includes(queryLower)) matchesQuery = true;
+        if (searchRef.checked && l.ref.toLowerCase().includes(queryLower)) matchesQuery = true;
+        
+        return matchesQuery;
+    });
+
+    if (filtered.length === 0) {
+        noResults.style.display = 'block';
+        resultsInfo.classList.remove('show');
+        return;
+    }
+
+    if (query) {
+        resultsInfo.textContent = `Se encontraron ${filtered.length} resultado${filtered.length !== 1 ? 's' : ''} para "${query}"`;
+        resultsInfo.classList.add('show');
+    } else {
+        resultsInfo.classList.remove('show');
+    }
+
+    filtered.forEach(l => {
+        const div = document.createElement('div');
+        div.className = 'law-card';
+        if (query) div.classList.add('highlighted');
+        
+        div.innerHTML = `
+            <span class="tag">${l.cat}</span>
+            <h2>${highlightText(l.title, query)}</h2>
+            <p><strong>Contexto Oficial:</strong> ${highlightText(l.desc, query)}</p>
+            <div class="asymmetry-box">
+                <strong>La Asimetría Legal:</strong>
+                ${highlightText(l.asym, query)}
+            </div>
+            <a href="https://www.boe.es/buscar/doc.php?id=${l.ref}" class="source-link" target="_blank" rel="noopener">FUENTE: ${highlightText(l.ref, query)} →</a>
+        `;
+        container.appendChild(div);
+    });
+}
+
+let searchTimeout;
+searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+        render(activeFilter, e.target.value);
+    }, 300);
+});
+
+[searchTitle, searchDesc, searchAsym, searchRef].forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+        render(activeFilter, searchInput.value);
+    });
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(f => f.classList.remove('active'));
+        btn.classList.add('active');
+        render(btn.dataset.filter, searchInput.value);
+    });
+});
+
+render();
+
+// Smooth scroll para el botón
+document.querySelector('.btn-submit-top').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector('#formulario-envio').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+    });
+});
+</script>
+
+</body>
+</html>

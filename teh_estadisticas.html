@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas — Todos esos hombres</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fff; color: #000; font-family: 'Space Mono', monospace; line-height: 1.6; }
+
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            background: #fff; 
+            border-bottom: 3px solid #000; 
+            z-index: 1000; 
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 1.5rem; 
+            line-height: 0.85; 
+            color: #000; 
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 2.5rem; 
+        }
+        nav a { 
+            color: #000; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            letter-spacing: 0.5px; 
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+            padding: 0.5rem 1rem;
+        }
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        nav a.blog-highlight {
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 8rem 2rem 4rem; }
+        
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 1rem; }
+        
+        .subtitle { 
+            font-size: 1.1rem; 
+            line-height: 1.7; 
+            color: #555; 
+        }
+
+        .btn-submit-top {
+            background: #000;
+            color: #fff;
+            padding: 1rem 2rem;
+            border: 3px solid #000;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            align-self: flex-start;
+        }
+
+        .btn-submit-top:hover {
+            background: #fff;
+            color: #000;
+            transform: translate(-4px, -4px);
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .stat-card {
+            border: 3px solid #000;
+            padding: 3rem;
+            transition: all 0.3s ease;
+            position: relative;
+            background: #f9f9f9;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: #000;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-card:hover {
+            transform: translate(-6px, -6px);
+            box-shadow: 6px 6px 0 #000;
+            background: #fff;
+        }
+
+        .stat-category {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .stat-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .stat-source {
+            font-size: 0.75rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ddd;
+            color: #777;
+        }
+
+        .coming-soon {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: #f5f5f5;
+            border: 3px solid #000;
+            margin: 4rem 0;
+        }
+
+        .coming-soon h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .coming-soon p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .form-section { 
+            background: #000; 
+            color: #fff; 
+            padding: 4rem 2rem; 
+            margin-top: 6rem; 
+        }
+        .form-section h3 { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 3rem; 
+            margin-bottom: 2rem; 
+        }
+        .form-group { 
+            margin-bottom: 1.5rem; 
+        }
+        .form-group label { 
+            display: block; 
+            margin-bottom: 0.5rem; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+        }
+        .form-group input, .form-group textarea { 
+            width: 100%; 
+            padding: 1rem; 
+            border: 2px solid #fff; 
+            background: #000; 
+            color: #fff; 
+            font-family: 'Space Mono', monospace; 
+        }
+        .submit-btn { 
+            background: #fff; 
+            color: #000; 
+            padding: 1rem 2.5rem; 
+            border: none; 
+            font-weight: 700; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+        }
+
+        footer { 
+            padding: 4rem; 
+            text-align: center; 
+            border-top: 3px solid #000; 
+            opacity: 0.6; 
+            font-size: 0.8rem; 
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .header-section {
+                flex-direction: column;
+            }
+            
+            .btn-submit-top {
+                width: 100%;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="teh_index.html" class="logo">
+        TODOS<br>ESOS<br>HOMBRES
+    </a>
+    <ul>
+        <li><a href="teh_index.html">INICIO</a></li>
+        <li><a href="teh_estadisticas.html">ESTADÍSTICAS</a></li>
+        <li><a href="teh_asimetrias.html">ASIMETRÍAS</a></li>
+        <li><a href="teh_blog_dynamic.html" class="blog-highlight">BLOG</a></li>
+        <li><a href="teh_proposito.html">PROPÓSITO</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="header-section">
+        <div class="header-text">
+            <h1>ESTADÍSTICAS</h1>
+            <p class="subtitle">Datos oficiales del INE, Ministerio de Trabajo, INSST y otras fuentes gubernamentales sobre áreas donde los hombres enfrentan desventajas sistemáticas.</p>
+        </div>
+        <a href="#formulario-datos" class="btn-submit-top">+ Enviar Datos</a>
+    </div>
+
+    <div class="stats-grid">
+        
+        <div class="stat-card">
+            <div class="stat-category">Salud Mental</div>
+            <div class="stat-number">75%</div>
+            <div class="stat-label">De los suicidios son masculinos</div>
+            <div class="stat-description">
+                En 2024, 3.953 personas murieron por suicidio en España. 2.902 eran hombres (73,4%). Cada día, 8 hombres se suicidan en España.
+            </div>
+            <div class="stat-source">Fuente: INE, Ministerio de Sanidad</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-category">Seguridad Laboral</div>
+            <div class="stat-number">91%</div>
+            <div class="stat-label">De muertes laborales son hombres</div>
+            <div class="stat-description">
+                En 2023, 746 personas murieron en accidentes de trabajo. 679 eran hombres. Cada día, 2 hombres mueren en el lugar de trabajo.
+            </div>
+            <div class="stat-source">Fuente: INSST, Ministerio de Trabajo</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-category">Exclusión Social</div>
+            <div class="stat-number">80%</div>
+            <div class="stat-label">De personas sin hogar son hombres</div>
+            <div class="stat-description">
+                Según el INE, de las personas en situación de sin hogarismo en España, aproximadamente el 80% son hombres.
+            </div>
+            <div class="stat-source">Fuente: INE, Encuesta sobre personas sin hogar</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-category">Sistema Penitenciario</div>
+            <div class="stat-number">93%</div>
+            <div class="stat-label">De la población reclusa son hombres</div>
+            <div class="stat-description">
+                De las aproximadamente 60.000 personas en prisión en España, más de 55.000 son hombres. El sistema penitenciario es abrumadoramente masculino.
+            </div>
+            <div class="stat-source">Fuente: Ministerio del Interior, SGIP</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-category">Esperanza de Vida</div>
+            <div class="stat-number">-6</div>
+            <div class="stat-label">Años menos de esperanza de vida</div>
+            <div class="stat-description">
+                Los hombres viven de media 6 años menos que las mujeres en España. Una brecha que persiste desde hace décadas.
+            </div>
+            <div class="stat-source">Fuente: INE, Indicadores demográficos</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-category">Educación</div>
+            <div class="stat-number">41%</div>
+            <div class="stat-label">De graduados universitarios son hombres</div>
+            <div class="stat-description">
+                Los hombres representan solo el 41% de los graduados universitarios en España. La brecha educativa se ha invertido.
+            </div>
+            <div class="stat-source">Fuente: Ministerio de Universidades, INE</div>
+        </div>
+
+    </div>
+
+    <div class="coming-soon">
+        <h2>MÁS ESTADÍSTICAS PRÓXIMAMENTE</h2>
+        <p>Estamos recopilando y verificando más datos oficiales sobre siniestralidad laboral, fracaso escolar, custodia de menores, violencia doméstica, adicciones y otras áreas donde existen asimetrías documentadas.</p>
+    </div>
+
+    <div class="form-section" id="formulario-datos">
+        <h3>ENVIAR NUEVA ESTADÍSTICA</h3>
+        <p style="margin-bottom: 2rem;">Si conoces una estadística oficial que no aparece aquí, envíanosla con su fuente.</p>
+        <form id="statsForm">
+            <div class="form-group"><label>Categoría *</label><input type="text" placeholder="ej: Salud, Empleo, Educación..." required></div>
+            <div class="form-group"><label>Dato Estadístico *</label><input type="text" placeholder="ej: 85% de..." required></div>
+            <div class="form-group"><label>Descripción Detallada *</label><textarea rows="4" placeholder="Contexto y detalles del dato..." required></textarea></div>
+            <div class="form-group"><label>Fuente Oficial *</label><input type="text" placeholder="INE, Ministerio X, Instituto Y..." required></div>
+            <div class="form-group"><label>Enlace a la Fuente</label><input type="url" placeholder="https://..."></div>
+            <button type="submit" class="submit-btn">ENVIAR PARA REVISIÓN</button>
+        </form>
+    </div>
+</div>
+
+<footer><p>TODOS ESOS HOMBRES © 2026 — FUENTES: INE, INSST, MINISTERIO DE TRABAJO</p></footer>
+
+<script>
+// Smooth scroll para el botón
+document.querySelector('.btn-submit-top').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector('#formulario-datos').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+    });
+});
+
+// Placeholder para manejo de formulario
+document.getElementById('statsForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Función de envío en desarrollo. Gracias por tu interés en contribuir.');
+});
+</script>
+
+</body>
+</html>
