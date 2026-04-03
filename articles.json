@@ -1,6 +1,6 @@
 [
   {
-    "id": "precio-una-vida-españa",
+    "id": "precio-vida-espana",
     "title": "El precio de una vida en España",
     "url": "teh_blog_precio_una_vida_españa.html",
     "category": "Análisis",
@@ -47,18 +47,18 @@
       {"number": "0", "label": "Cuotas de género"}
     ]
   },
-  {  
-    "id": "invisibles-calle", 
-  "title": "Los invisibles de la calle: 77% sin hogar son hombres",
-  "url": "teh_blog_invisibles_calle.html",
-  "category": "Análisis Social",
-  "date": "2 Abril 2026",
-  "excerpt": "28.552 personas sin hogar en España. El 76,7% son hombres. Tres de cada cuatro personas durmiendo en la calle son varones. 60% presenta síntomas depresivos. 40% lleva más de 3 años en la calle. Sin embargo, el sinhogarismo masculino sigue siendo un problema invisible.",
-  "featured": false,
-  "stats": [
-    {"number": "76,7%", "label": "Sin hogar son hombres"},
-    {"number": "60%", "label": "Con síntomas depresivos"},
-    {"number": "28.552", "label": "Personas sin hogar (2022)"
-	]
+  {
+    "id": "invisibles-calle",
+    "title": "Los invisibles de la calle: 77% sin hogar son hombres",
+    "url": "teh_blog_invisibles_calle.html",
+    "category": "Análisis Social",
+    "date": "2 Abril 2026",
+    "excerpt": "28.552 personas sin hogar en España. El 76,7% son hombres. Tres de cada cuatro personas durmiendo en la calle son varones. 60% presenta síntomas depresivos. 40% lleva más de 3 años en la calle. Sin embargo, el sinhogarismo masculino sigue siendo un problema invisible.",
+    "featured": false,
+    "stats": [
+      {"number": "76,7%", "label": "Sin hogar son hombres"},
+      {"number": "60%", "label": "Con síntomas depresivos"},
+      {"number": "28.552", "label": "Personas sin hogar (2022)"}
+    ]
   }
 ]
