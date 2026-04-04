@@ -356,11 +356,11 @@
         TODOS<br>ESOS<br>HOMBRES
     </a>
     <ul>
-        <li><a href="index.html">INICIO</a></li>
-        <li><a href="teh_estadisticas.html">ESTADÍSTICAS</a></li>
-        <li><a href="teh_asimetrias.html">ASIMETRÍAS</a></li>
-        <li><a href="teh_blog_dynamic.html" class="blog-highlight">BLOG</a></li>
-        <li><a href="teh_proposito.html">PROPÓSITO</a></li>
+        <li><a href="index.html" data-i18n="nav.inicio">INICIO</a></li>
+        <li><a href="teh_estadisticas.html" data-i18n="nav.estadisticas">ESTADÍSTICAS</a></li>
+        <li><a href="teh_asimetrias.html" data-i18n="nav.asimetrias">ASIMETRÍAS</a></li>
+        <li><a href="teh_blog_dynamic.html" class="blog-highlight" data-i18n="nav.blog">BLOG</a></li>
+        <li><a href="teh_proposito.html" data-i18n="nav.proposito">PROPÓSITO</a></li>
     </ul>
 </nav>
 
@@ -368,22 +368,22 @@
     
     <div class="header-section">
         <div class="header-text">
-            <h1>BLOG</h1>
-            <p class="subtitle">Análisis, datos y reflexiones sobre las realidades que no aparecen en los titulares. Documentado con fuentes oficiales.</p>
+            <h1 data-i18n="blog.title">BLOG</h1>
+            <p class="subtitle" data-i18n="blog.subtitle">Análisis, datos y reflexiones sobre las realidades que no aparecen en los titulares. Documentado con fuentes oficiales.</p>
         </div>
     </div>
 
-    <h2 class="section-title">Artículos recientes</h2>
+    <h2 class="section-title" data-i18n="blog.section.recent">Artículos recientes</h2>
 
     <!-- Los artículos se cargan aquí automáticamente -->
     <div id="articles-container" class="articles-grid">
-        <p style="text-align: center; grid-column: 1/-1;">Cargando artículos...</p>
+        <p style="text-align: center; grid-column: 1/-1;" data-i18n="blog.loading">Cargando artículos...</p>
     </div>
 
 </div>
 
 <footer>
-    <p>TODOS ESOS HOMBRES © 2026 — FUENTES: INE, SEPE, MINISTERIO DE TRABAJO</p>
+    <p data-i18n="footer.copy">TODOS ESOS HOMBRES © 2026 — FUENTES: INE, SEPE, MINISTERIO DE TRABAJO</p>
 </footer>
 
 <script>
@@ -414,8 +414,12 @@ async function loadArticles() {
     } catch (error) {
         console.error('Error cargando artículos:', error);
         document.getElementById('articles-container').innerHTML = 
-            '<p style="text-align: center; grid-column: 1/-1;">Error cargando artículos</p>';
+            `<p style="text-align: center; grid-column: 1/-1;">${window.TEH_i18n ? window.TEH_i18n.t('blog.error') : 'Error cargando artículos'}</p>`;
     }
+}
+
+function getReadMore() {
+    return window.TEH_i18n ? window.TEH_i18n.t('blog.readmore') : 'Leer artículo completo →';
 }
 
 function createFeaturedArticle(article) {
@@ -453,7 +457,7 @@ function createFeaturedArticle(article) {
                     ${statsHTML}
                 </div>
 
-                <a href="${article.url}" class="read-more">Leer artículo completo →</a>
+                <a href="${article.url}" class="read-more">${getReadMore()}</a>
             </div>
 
             ${highlightHTML}
@@ -487,7 +491,7 @@ function createNormalArticle(article) {
                     ${statsHTML}
                 </div>
 
-                <a href="${article.url}" class="read-more">Leer artículo completo →</a>
+                <a href="${article.url}" class="read-more">${getReadMore()}</a>
             </div>
         </article>
     `;
@@ -495,7 +499,11 @@ function createNormalArticle(article) {
 
 // Cargar al iniciar la página
 loadArticles();
+
+// Reload on language change
+window.addEventListener('langchange', loadArticles);
 </script>
+<script src="teh_i18n.js"></script>
 
 </body>
 </html>

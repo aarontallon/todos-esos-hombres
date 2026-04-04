@@ -217,52 +217,52 @@
         TODOS<br>ESOS<br>HOMBRES
     </a>
     <ul>
-        <li><a href="index.html">INICIO</a></li>
-        <li><a href="teh_estadisticas.html">ESTADÍSTICAS</a></li>
-        <li><a href="teh_asimetrias.html">ASIMETRÍAS</a></li>
-        <li><a href="teh_blog_dynamic.html" class="blog-highlight">BLOG</a></li>
-        <li><a href="teh_proposito.html">PROPÓSITO</a></li>
+        <li><a href="index.html" data-i18n="nav.inicio">INICIO</a></li>
+        <li><a href="teh_estadisticas.html" data-i18n="nav.estadisticas">ESTADÍSTICAS</a></li>
+        <li><a href="teh_asimetrias.html" data-i18n="nav.asimetrias">ASIMETRÍAS</a></li>
+        <li><a href="teh_blog_dynamic.html" class="blog-highlight" data-i18n="nav.blog">BLOG</a></li>
+        <li><a href="teh_proposito.html" data-i18n="nav.proposito">PROPÓSITO</a></li>
     </ul>
 </nav>
 
 <div class="container">
     <div class="header-section">
         <div class="header-text">
-            <h1>ASIMETRÍAS LEGALES</h1>
-            <p>Recopilación detallada de discriminaciones legales por sexo extraídas del BOE y fuentes oficiales del Gobierno.</p>
+            <h1 data-i18n="asym.title">ASIMETRÍAS LEGALES</h1>
+            <p data-i18n="asym.subtitle">Recopilación detallada de discriminaciones legales por sexo extraídas del BOE y fuentes oficiales del Gobierno.</p>
         </div>
-        <a href="#formulario-envio" class="btn-submit-top">+ Enviar Asimetría</a>
+        <a href="#formulario-envio" class="btn-submit-top" data-i18n="asym.btn.enviar">+ Enviar Asimetría</a>
     </div>
 
     <div class="search-panel">
         <div class="search-row">
-            <input type="text" id="lawSearch" placeholder="BUSCAR POR LEY, PALABRA CLAVE O REFERENCIA BOE...">
+            <input type="text" id="lawSearch" data-i18n-placeholder="asym.search.ph" placeholder="BUSCAR POR LEY, PALABRA CLAVE O REFERENCIA BOE...">
         </div>
         <div class="filter-group">
-            <button class="filter-btn active" data-filter="all">Todas</button>
-            <button class="filter-btn" data-filter="PENAL">Penal</button>
-            <button class="filter-btn" data-filter="SOCIAL">Seguridad Social</button>
-            <button class="filter-btn" data-filter="EMPLEO">Empleo/Empresa</button>
-            <button class="filter-btn" data-filter="ADMIN">Admin/Varios</button>
-            <button class="filter-btn" data-filter="EDUCACIÓN">Educación</button>
-            <button class="filter-btn" data-filter="VIVIENDA">Vivienda</button>
+            <button class="filter-btn active" data-filter="all" data-i18n="asym.filter.todas">Todas</button>
+            <button class="filter-btn" data-filter="PENAL" data-i18n="asym.filter.penal">Penal</button>
+            <button class="filter-btn" data-filter="SOCIAL" data-i18n="asym.filter.social">Seguridad Social</button>
+            <button class="filter-btn" data-filter="EMPLEO" data-i18n="asym.filter.empleo">Empleo/Empresa</button>
+            <button class="filter-btn" data-filter="ADMIN" data-i18n="asym.filter.admin">Admin/Varios</button>
+            <button class="filter-btn" data-filter="EDUCACIÓN" data-i18n="asym.filter.edu">Educación</button>
+            <button class="filter-btn" data-filter="VIVIENDA" data-i18n="asym.filter.viv">Vivienda</button>
         </div>
         <div class="search-options">
             <div class="search-option">
                 <input type="checkbox" id="searchTitle" checked>
-                <label for="searchTitle">Buscar en título</label>
+                <label for="searchTitle" data-i18n="asym.search.titulo">Buscar en título</label>
             </div>
             <div class="search-option">
                 <input type="checkbox" id="searchDesc" checked>
-                <label for="searchDesc">Buscar en descripción</label>
+                <label for="searchDesc" data-i18n="asym.search.desc">Buscar en descripción</label>
             </div>
             <div class="search-option">
                 <input type="checkbox" id="searchAsym" checked>
-                <label for="searchAsym">Buscar en asimetría</label>
+                <label for="searchAsym" data-i18n="asym.search.asym">Buscar en asimetría</label>
             </div>
             <div class="search-option">
                 <input type="checkbox" id="searchRef">
-                <label for="searchRef">Buscar en referencia</label>
+                <label for="searchRef" data-i18n="asym.search.ref">Buscar en referencia</label>
             </div>
         </div>
     </div>
@@ -270,23 +270,23 @@
     <div class="results-info" id="resultsInfo"></div>
 
     <div id="lawsContainer"></div>
-    <div id="noResults" class="no-results" style="display: none;">
+    <div id="noResults" class="no-results" style="display: none;" data-i18n="asym.noresults">
         No se encontraron resultados para tu búsqueda.
     </div>
 
     <div class="form-section" id="formulario-envio">
-        <h3>ENVIAR NUEVA ASIMETRÍA</h3>
-        <p style="margin-bottom: 2rem;">Si conoces una ley oficial que falte, envíala indicando la referencia del BOE.</p>
+        <h3 data-i18n="asym.form.title">ENVIAR NUEVA ASIMETRÍA</h3>
+        <p style="margin-bottom: 2rem;" data-i18n="asym.form.intro">Si conoces una ley oficial que falte, envíala indicando la referencia del BOE.</p>
         <form id="asymmetryForm">
-            <div class="form-group"><label>Título de la Ley *</label><input type="text" required></div>
-            <div class="form-group"><label>Descripción Detallada *</label><textarea rows="4" required></textarea></div>
-            <div class="form-group"><label>Enlace BOE / Oficial *</label><input type="url" required></div>
-            <button type="submit" class="submit-btn">ENVIAR PARA REVISIÓN</button>
+            <div class="form-group"><label data-i18n="asym.form.ley">Título de la Ley *</label><input type="text" required></div>
+            <div class="form-group"><label data-i18n="asym.form.desc">Descripción Detallada *</label><textarea rows="4" required></textarea></div>
+            <div class="form-group"><label data-i18n="asym.form.enlace">Enlace BOE / Oficial *</label><input type="url" required></div>
+            <button type="submit" class="submit-btn" data-i18n="asym.form.submit">ENVIAR PARA REVISIÓN</button>
         </form>
     </div>
 </div>
 
-<footer><p>TODOS ESOS HOMBRES © 2026</p></footer>
+<footer><p data-i18n="footer.copy.short">TODOS ESOS HOMBRES © 2026</p></footer>
 
 <script>
 const laws = [
@@ -478,7 +478,9 @@ function render(filter = 'all', query = '') {
     }
 
     if (query) {
-        resultsInfo.textContent = `Se encontraron ${filtered.length} resultado${filtered.length !== 1 ? 's' : ''} para "${query}"`;
+        const lang = window.TEH_i18n ? window.TEH_i18n.currentLang() : 'es';
+        const tpl = window.TEH_i18n ? window.TEH_i18n.t('asym.results') : 'Se encontraron {n} resultado{s} para "{q}"';
+        resultsInfo.textContent = tpl.replace('{n}', filtered.length).replace('{s}', filtered.length !== 1 ? 's' : '').replace('{s2}', filtered.length !== 1 ? 'it' : 'a').replace('{q}', query);
         resultsInfo.classList.add('show');
     } else {
         resultsInfo.classList.remove('show');
@@ -489,15 +491,19 @@ function render(filter = 'all', query = '') {
         div.className = 'law-card';
         if (query) div.classList.add('highlighted');
         
+        const ctxLabel = window.TEH_i18n ? window.TEH_i18n.t('asym.card.contexto') : 'Contexto Oficial:';
+        const asymLabel = window.TEH_i18n ? window.TEH_i18n.t('asym.card.asimetria') : 'La Asimetría Legal:';
+        const srcLabel = window.TEH_i18n ? window.TEH_i18n.t('asym.card.fuente') : 'FUENTE:';
+        
         div.innerHTML = `
             <span class="tag">${l.cat}</span>
             <h2>${highlightText(l.title, query)}</h2>
-            <p><strong>Contexto Oficial:</strong> ${highlightText(l.desc, query)}</p>
+            <p><strong>${ctxLabel}</strong> ${highlightText(l.desc, query)}</p>
             <div class="asymmetry-box">
-                <strong>La Asimetría Legal:</strong>
+                <strong>${asymLabel}</strong>
                 ${highlightText(l.asym, query)}
             </div>
-            <a href="https://www.boe.es/buscar/doc.php?id=${l.ref}" class="source-link" target="_blank" rel="noopener">FUENTE: ${highlightText(l.ref, query)} →</a>
+            <a href="https://www.boe.es/buscar/doc.php?id=${l.ref}" class="source-link" target="_blank" rel="noopener">${srcLabel} ${highlightText(l.ref, query)} →</a>
         `;
         container.appendChild(div);
     });
@@ -537,7 +543,21 @@ document.querySelector('.btn-submit-top').addEventListener('click', function(e) 
         block: 'start'
     });
 });
+
+// Re-render on language change
+window.addEventListener('langchange', function() {
+    const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+    render(activeFilter, searchInput.value);
+});
+
+// Form alert with i18n
+document.getElementById('asymmetryForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const msg = window.TEH_i18n ? window.TEH_i18n.t('asym.form.alert') : 'Función de envío en desarrollo.';
+    alert(msg);
+});
 </script>
+<script src="teh_i18n.js"></script>
 
 </body>
 </html>
