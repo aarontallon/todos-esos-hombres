@@ -53,7 +53,6 @@ E se guardam organizacions que trabalhen dirèctament en carrèr, es percentatge
             <li>Edats: 18-34 ans (58%)</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>HOGAR SÍ</h4>
         <ul>
@@ -62,7 +61,6 @@ E se guardam organizacions que trabalhen dirèctament en carrèr, es percentatge
             <li>Chifra reau: enquiath 37.000 persones</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>Comptatges Nueitius</h4>
         <ul>
@@ -147,7 +145,6 @@ A mès:
             <li>vs 6-10% poblacion joena generau</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>Salut mentau</h4>
         <ul>
@@ -173,7 +170,6 @@ Eth problèma ei era <span class="highlight-text">distribucion de recorsi e espe
         <p>Especializats en violéncia de gènre: 7,4%</p>
         <p><strong>Titularitat publica:</strong> 57,8% des especializats en VG</p>
     </div>
-
     <div class="comparison-item">
         <h4>Centres que solet accèpten òmes</h4>
         <p style="font-size: 3rem; font-family: 'Bebas Neue', sans-serif; margin: 1rem 0;">13,2%</p>

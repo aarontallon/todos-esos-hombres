@@ -54,7 +54,6 @@ Construcció no és un cas aïllat. És la norma en desenes de sectors.
             <span>8.766</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>⛏️ Indústries extractives</h4>
         <div class="sector-stat">
@@ -66,7 +65,6 @@ Construcció no és un cas aïllat. És la norma en desenes de sectors.
             <span>2.374</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🔧 Reparació de maquinària</h4>
         <div class="sector-stat">
@@ -78,7 +76,6 @@ Construcció no és un cas aïllat. És la norma en desenes de sectors.
             <span>27.343</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🏗️ Construcció (total)</h4>
         <div class="sector-stat">
@@ -90,7 +87,6 @@ Construcció no és un cas aïllat. És la norma en desenes de sectors.
             <span>431.549</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🔩 Metal·lúrgia</h4>
         <div class="sector-stat">
@@ -102,7 +98,6 @@ Construcció no és un cas aïllat. És la norma en desenes de sectors.
             <span>20.537</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🚚 Transport terrestre</h4>
         <div class="sector-stat">
@@ -114,7 +109,6 @@ Construcció no és un cas aïllat. És la norma en desenes de sectors.
             <span>195.292</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🪵 Indústria de la fusta</h4>
         <div class="sector-stat">
@@ -126,7 +120,6 @@ Construcció no és un cas aïllat. És la norma en desenes de sectors.
             <span>14.037</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🌲 Silvicultura</h4>
         <div class="sector-stat">
@@ -138,7 +131,6 @@ Construcció no és un cas aïllat. És la norma en desenes de sectors.
             <span>17.556</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>⚙️ Fabricació de maquinària</h4>
         <div class="sector-stat">
@@ -150,7 +142,6 @@ Construcció no és un cas aïllat. És la norma en desenes de sectors.
             <span>22.438</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🌾 Agricultura</h4>
         <div class="sector-stat">

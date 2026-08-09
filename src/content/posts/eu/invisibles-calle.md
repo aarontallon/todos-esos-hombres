@@ -53,7 +53,6 @@ Eta kalean zuzenean lan egiten duten erakundeei begiratzen badiegu, ehunekoak ar
             <li>Adinak: 18-34 urte (%58)</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>HOGAR SÍ</h4>
         <ul>
@@ -62,7 +61,6 @@ Eta kalean zuzenean lan egiten duten erakundeei begiratzen badiegu, ehunekoak ar
             <li>Benetako zenbakia: 37.000 pertsonaraino</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>Gaueko Zenbaketak</h4>
         <ul>
@@ -147,7 +145,6 @@ Gainera:
             <li>vs %6-10 gazte biztanleria orokorra</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>Osasun mentala</h4>
         <ul>
@@ -173,7 +170,6 @@ Arazoa <span class="highlight-text">baliabideen banaketa eta espezializazioa</sp
         <p>Genero-indarkerian espezializatuak: %7,4</p>
         <p><strong>Titulartasun publikoa:</strong> GI espezializatuen %57,8</p>
     </div>
-
     <div class="comparison-item">
         <h4>Gizonak soilik onartzen dituzten zentroak</h4>
         <p style="font-size: 3rem; font-family: 'Bebas Neue', sans-serif; margin: 1rem 0;">%13,2</p>
