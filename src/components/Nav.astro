@@ -34,10 +34,10 @@ function isActive(href: string) {
         align-items: center;
     }
 
-    .logo {
+    nav .logo {
         font-family: 'Bebas Neue', sans-serif;
-        font-size: 1.5rem;
-        line-height: 0.85;
+        font-size: 2.6rem;
+        line-height: 0.8;
         color: #000;
         text-decoration: none;
         text-transform: uppercase;
@@ -76,6 +76,10 @@ function isActive(href: string) {
             padding: 1rem;
         }
 
+        nav .logo {
+            font-size: 2rem;
+        }
+
         nav ul {
             gap: 0.5rem;
             flex-wrap: wrap;
@@ -89,6 +93,10 @@ function isActive(href: string) {
     }
 
     @media (max-width: 480px) {
+        nav .logo {
+            font-size: 1.7rem;
+        }
+
         nav a {
             font-size: 0.7rem;
             padding: 0.35rem 0.6rem;
