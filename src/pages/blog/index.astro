@@ -1,0 +1,355 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = await getCollection('posts');
+const sortedPosts = posts.sort((a, b) => {
+    if (a.data.featured && !b.data.featured) return -1;
+    if (!a.data.featured && b.data.featured) return 1;
+    return 0;
+});
+---
+<Layout title="Blog — Todos esos hombres">
+    <div class="container">
+
+        <div class="header-section">
+            <div class="header-text">
+                <h1 data-i18n="blog.title">BLOG</h1>
+                <p class="subtitle" data-i18n="blog.subtitle">Análisis, datos y reflexiones sobre las realidades que no aparecen en los titulares. Documentado con fuentes oficiales.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title" data-i18n="blog.section.recent">Artículos recientes</h2>
+
+        <div class="articles-grid">
+            {sortedPosts.map((post) => (
+                post.data.featured ? (
+                    <article class="article-card featured-article">
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">{post.data.category}</span>
+                                <span class="article-date">{post.data.date}</span>
+                            </div>
+
+                            <h2 class="article-title">
+                                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                            </h2>
+
+                            <p class="article-excerpt">{post.data.excerpt}</p>
+
+                            <div class="article-stats">
+                                {post.data.stats.map((stat) => (
+                                    <div class="stat-item">
+                                        <div class="stat-number">{stat.number}</div>
+                                        <div class="stat-label">{stat.label}</div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <a href={`/blog/${post.id}/`} class="read-more" data-i18n="blog.readmore">Leer artículo completo →</a>
+                        </div>
+
+                        {post.data.highlight && (
+                            <div class="featured-highlight">
+                                <div class="featured-highlight-number">{post.data.highlight.number1}</div>
+                                <div class="featured-highlight-text">{post.data.highlight.vs}</div>
+                                <div class="featured-highlight-number">{post.data.highlight.number2}</div>
+                                <div class="featured-highlight-text">{post.data.highlight.text}</div>
+                            </div>
+                        )}
+                    </article>
+                ) : (
+                    <article class="article-card">
+                        <div class="article-meta">
+                            <span class="article-category">{post.data.category}</span>
+                            <span class="article-date">{post.data.date}</span>
+                        </div>
+
+                        <div class="article-content">
+                            <h2 class="article-title">
+                                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                            </h2>
+
+                            <p class="article-excerpt">{post.data.excerpt}</p>
+
+                            <div class="article-stats">
+                                {post.data.stats.map((stat) => (
+                                    <div class="stat-item">
+                                        <div class="stat-number">{stat.number}</div>
+                                        <div class="stat-label">{stat.label}</div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <a href={`/blog/${post.id}/`} class="read-more" data-i18n="blog.readmore">Leer artículo completo →</a>
+                        </div>
+                    </article>
+                )
+            ))}
+        </div>
+
+    </div>
+</Layout>
+
+<style>
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 8rem 2rem 5rem;
+    }
+
+    .header-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .header-text {
+        flex: 1;
+    }
+
+    h1 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(3rem, 8vw, 6rem);
+        margin-bottom: 1rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #555;
+    }
+
+    .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 3rem;
+        margin-top: 3rem;
+    }
+
+    .article-card {
+        border: 3px solid #000;
+        background: #fff;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .article-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background: #000;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+        transform-origin: left;
+    }
+
+    .article-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .article-card:hover {
+        transform: translate(-8px, -8px);
+        box-shadow: 8px 8px 0 #000;
+    }
+
+    .article-meta {
+        padding: 1.5rem 2rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .article-category {
+        background: #000;
+        color: #fff;
+        padding: 0.4rem 1rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .article-date {
+        font-size: 0.75rem;
+        opacity: 0.6;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .article-content {
+        padding: 2rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .article-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2.5rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+    }
+
+    .article-title a {
+        color: #000;
+        text-decoration: none;
+        transition: opacity 0.3s;
+    }
+
+    .article-title a:hover {
+        opacity: 0.6;
+    }
+
+    .article-excerpt {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+
+    .article-stats {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+        padding-top: 1rem;
+        border-top: 2px solid #f0f0f0;
+    }
+
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .stat-number {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2rem;
+        line-height: 1;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        opacity: 0.6;
+    }
+
+    .read-more {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: #000;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        align-self: flex-start;
+    }
+
+    .read-more:hover {
+        background: #fff;
+        color: #000;
+        box-shadow: inset 0 0 0 3px #000;
+    }
+
+    .featured-article {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        min-height: 400px;
+    }
+
+    .featured-article .article-content {
+        padding: 3rem;
+    }
+
+    .featured-highlight {
+        background: #000;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem;
+        text-align: center;
+    }
+
+    .featured-highlight-number {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 6rem;
+        line-height: 1;
+        margin-bottom: 1rem;
+    }
+
+    .featured-highlight-text {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .section-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 3rem;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid #000;
+    }
+
+    @media (max-width: 968px) {
+        .container {
+            padding: 17rem 1.5rem 4rem;
+        }
+
+        .header-section {
+            flex-direction: column;
+        }
+
+        .articles-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .featured-article {
+            grid-template-columns: 1fr;
+        }
+
+        .featured-article .article-content {
+            order: 2;
+            padding: 2rem 1.5rem;
+        }
+
+        .featured-highlight {
+            order: 1;
+            padding: 2rem 1.5rem;
+        }
+
+        .featured-highlight-number {
+            font-size: 4rem;
+        }
+
+        .article-stats {
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .article-title {
+            font-size: 2rem;
+        }
+    }
+</style>
