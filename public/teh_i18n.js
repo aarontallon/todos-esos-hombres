@@ -239,10 +239,18 @@
 
         // Elements with data-lang-block="xx" → show only the block matching
         // the current language (used for full editorial content authored
-        // per-language, e.g. blog posts, instead of the T dictionary)
+        // per-language, e.g. blog posts, instead of the T dictionary).
+        // A global CSS rule hides every non-"es" block by default, so the
+        // visible one needs an explicit inline display value (not '') to
+        // actually win over that rule — '' just removes the inline style
+        // and falls back to the CSS, which would still say "none".
         document.querySelectorAll('[data-lang-block]').forEach(el => {
             const lang = el.getAttribute('data-lang-block');
-            el.style.display = (lang === currentLang) ? '' : 'none';
+            if (lang === currentLang) {
+                el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
+            } else {
+                el.style.display = 'none';
+            }
         });
 
         // Update html lang attribute
