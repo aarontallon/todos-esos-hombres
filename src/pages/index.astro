@@ -1,10 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+
+const LANGS = ['es', 'ca', 'gl', 'eu', 'oc'];
 const base = import.meta.env.BASE_URL;
+
+const allPosts = await getCollection('posts');
+const grouped: Record<string, Record<string, CollectionEntry<'posts'>>> = {};
+for (const post of allPosts) {
+    const [locale, slug] = post.id.split('/');
+    grouped[slug] ??= {};
+    grouped[slug][locale] = post;
+}
+const featuredSlug = Object.keys(grouped).find((slug) => grouped[slug].es?.data.featured);
+const featuredLangs = featuredSlug ? grouped[featuredSlug] : null;
+
+function localeOf(langs: Record<string, CollectionEntry<'posts'>>, locale: string) {
+    return langs[locale] ?? langs.es;
+}
 ---
 <Layout title="TODOS ESOS HOMBRES — Inicio">
     <header class="hero">
         <div class="hero-content">
+            <p class="hero-eyebrow" data-i18n="index.hero.eyebrow">DATOS OFICIALES · INE, SEPE, MINISTERIO DE TRABAJO</p>
             <h1 class="hero-title" data-i18n="index.hero.title">
                 LA REALIDAD<br>QUE NADIE CUENTA
             </h1>
@@ -58,11 +76,29 @@ const base = import.meta.env.BASE_URL;
         </div>
     </section>
 
+    {featuredLangs && (
+        <section class="featured">
+            <div class="container">
+                <p class="featured-kicker" data-i18n="index.featured.kicker">ÚLTIMO ANÁLISIS</p>
+                <a href={`${base}blog/${featuredSlug}/`} class="featured-card">
+                    <h2 class="featured-title">
+                        {LANGS.map((locale) => <span data-lang-block={locale}>{localeOf(featuredLangs, locale).data.title}</span>)}
+                    </h2>
+                    <p class="featured-excerpt">
+                        {LANGS.map((locale) => <span data-lang-block={locale}>{localeOf(featuredLangs, locale).data.excerpt}</span>)}
+                    </p>
+                    <span class="featured-readmore" data-i18n="blog.readmore">Leer artículo completo →</span>
+                </a>
+            </div>
+        </section>
+    )}
+
     <section class="cta">
         <h2 data-i18n="index.cta.title">EXPLORA LOS DATOS</h2>
         <div class="cta-buttons">
             <a href={`${base}estadisticas/`} class="btn" data-i18n="index.cta.stats">VER ESTADÍSTICAS</a>
             <a href={`${base}asimetrias/`} class="btn" data-i18n="index.cta.asym">ASIMETRÍAS LEGALES</a>
+            <a href={`${base}blog/`} class="btn" data-i18n="index.cta.blog">LEER EL BLOG</a>
         </div>
     </section>
 </Layout>
@@ -79,9 +115,18 @@ const base = import.meta.env.BASE_URL;
     }
 
     .hero-content {
-        max-width: 1200px;
+        max-width: 1100px;
         width: 100%;
         text-align: center;
+    }
+
+    .hero-eyebrow {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        opacity: 0.55;
+        margin-bottom: 1.5rem;
     }
 
     .hero-title {
@@ -213,6 +258,59 @@ const base = import.meta.env.BASE_URL;
         display: inline-block;
     }
 
+    .featured {
+        background: #fff;
+        padding: 6rem 2rem;
+        border-top: 3px solid #000;
+    }
+
+    .featured-kicker {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        margin-bottom: 1.5rem;
+    }
+
+    .featured-card {
+        display: block;
+        border: 3px solid #000;
+        padding: 3rem;
+        text-decoration: none;
+        color: #000;
+        transition: all 0.3s ease;
+    }
+
+    .featured-card:hover {
+        transform: translate(-6px, -6px);
+        box-shadow: 6px 6px 0 #000;
+    }
+
+    .featured-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.05;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    .featured-excerpt {
+        font-size: 1rem;
+        line-height: 1.7;
+        opacity: 0.75;
+        margin-bottom: 2rem;
+        max-width: 800px;
+    }
+
+    .featured-readmore {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: #000;
+        color: #fff;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+    }
+
     .cta {
         text-align: center;
         padding: 6rem 2rem;
@@ -284,6 +382,14 @@ const base = import.meta.env.BASE_URL;
 
         .mission {
             padding: 4rem 1.5rem;
+        }
+
+        .featured {
+            padding: 4rem 1.5rem;
+        }
+
+        .featured-card {
+            padding: 2rem 1.5rem;
         }
 
         .cta {

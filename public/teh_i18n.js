@@ -47,6 +47,7 @@
         // =====================================================================
         // INDEX PAGE
         // =====================================================================
+        'index.hero.eyebrow':  { es: 'DATOS OFICIALES · INE, SEPE, MINISTERIO DE TRABAJO', ca: 'DADES OFICIALS · INE, SEPE, MINISTERI DE TREBALL', gl: 'DATOS OFICIAIS · INE, SEPE, MINISTERIO DE TRABALLO', eu: 'DATU OFIZIALAK · INE, SEPE, LAN MINISTERIOA', oc: 'DONADES OFICIAU · INE, SEPE, MINISTÈRI DE TRABALH' },
         'index.hero.title':    { es: 'LA REALIDAD<br>QUE NADIE CUENTA', ca: 'LA REALITAT<br>QUE NINGÚ EXPLICA', gl: 'A REALIDADE<br>QUE NINGUÉN CONTA', eu: 'INORK<br>KONTATZEN EZ DUEN ERREALITATEA', oc: 'LA REALITAT<br>QUE DEGUN CÒNTE' },
         'index.hero.subtitle': { es: 'Datos oficiales sobre las áreas donde los hombres sufren más, mueren más y reciben menos atención', ca: 'Dades oficials sobre les àrees on els homes pateixen més, moren més i reben menys atenció', gl: 'Datos oficiais sobre as áreas onde os homes sofren máis, morren máis e reciben menos atención', eu: 'Gizonak gehiago sufritzen, gehiago hiltzen eta arreta gutxiago jasotzen duten arloei buruzko datu ofizialak', oc: 'Donades oficiau sus las arees on los òmes soòfren mès, mòren mès e receben mens atencion' },
         'index.stat1.number':  { es: '75%', ca: '75%', gl: '75%', eu: '%75', oc: '75%' },
@@ -72,6 +73,9 @@
         'index.cta.title':     { es: 'EXPLORA LOS DATOS', ca: 'EXPLORA LES DADES', gl: 'EXPLORA OS DATOS', eu: 'ESPLORATU DATUAK', oc: 'EXPLÒRA LAS DONADES' },
         'index.cta.stats':     { es: 'VER ESTADÍSTICAS', ca: 'VEURE ESTADÍSTIQUES', gl: 'VER ESTATÍSTICAS', eu: 'IKUSI ESTATISTIKAK', oc: 'VÉDER ESTADISTIQUES' },
         'index.cta.asym':      { es: 'ASIMETRÍAS LEGALES', ca: 'ASIMETRIES LEGALS', gl: 'ASIMETRÍAS LEGAIS', eu: 'LEGEZKO ASIMETRIAK', oc: 'ASIMETRIES LEGAUS' },
+        'index.cta.blog':      { es: 'LEER EL BLOG', ca: 'LLEGIR EL BLOG', gl: 'LER O BLOG', eu: 'BLOGA IRAKURRI', oc: 'LEGIR LO BLOG' },
+
+        'index.featured.kicker': { es: 'ÚLTIMO ANÁLISIS', ca: 'ÚLTIMA ANÀLISI', gl: 'ÚLTIMA ANÁLISE', eu: 'AZKEN ANALISIA', oc: 'DARRÈR ANALISI' },
 
         // =====================================================================
         // ESTADÍSTICAS PAGE
