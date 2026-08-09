@@ -244,7 +244,8 @@ function localeOf(langs: Record<string, CollectionEntry<'posts'>>, locale: strin
 
     .article-stats {
         display: flex;
-        gap: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem 1.5rem;
         margin-bottom: 1.5rem;
         padding-top: 1rem;
         border-top: 2px solid #f0f0f0;
@@ -254,12 +255,14 @@ function localeOf(langs: Record<string, CollectionEntry<'posts'>>, locale: strin
         display: flex;
         flex-direction: column;
         gap: 0.3rem;
+        min-width: 0;
     }
 
     .stat-number {
         font-family: 'Bebas Neue', sans-serif;
         font-size: 2rem;
         line-height: 1;
+        overflow-wrap: break-word;
     }
 
     .stat-label {
@@ -352,12 +355,12 @@ function localeOf(langs: Record<string, CollectionEntry<'posts'>>, locale: strin
         }
 
         .featured-article .article-content {
-            order: 2;
+            order: 1;
             padding: 2rem 1.5rem;
         }
 
         .featured-highlight {
-            order: 1;
+            order: 2;
             padding: 2rem 1.5rem;
         }
 
