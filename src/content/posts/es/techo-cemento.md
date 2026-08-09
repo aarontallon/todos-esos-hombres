@@ -54,7 +54,6 @@ Construcción no es un caso aislado. Es la norma en decenas de sectores.
             <span>8.766</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>⛏️ Industrias extractivas</h4>
         <div class="sector-stat">
@@ -66,7 +65,6 @@ Construcción no es un caso aislado. Es la norma en decenas de sectores.
             <span>2.374</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🔧 Reparación maquinaria</h4>
         <div class="sector-stat">
@@ -78,7 +76,6 @@ Construcción no es un caso aislado. Es la norma en decenas de sectores.
             <span>27.343</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🏗️ Construcción (total)</h4>
         <div class="sector-stat">
@@ -90,7 +87,6 @@ Construcción no es un caso aislado. Es la norma en decenas de sectores.
             <span>431.549</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🔩 Metalurgia</h4>
         <div class="sector-stat">
@@ -102,7 +98,6 @@ Construcción no es un caso aislado. Es la norma en decenas de sectores.
             <span>20.537</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🚚 Transporte terrestre</h4>
         <div class="sector-stat">
@@ -114,7 +109,6 @@ Construcción no es un caso aislado. Es la norma en decenas de sectores.
             <span>195.292</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🪵 Industria de la madera</h4>
         <div class="sector-stat">
@@ -126,7 +120,6 @@ Construcción no es un caso aislado. Es la norma en decenas de sectores.
             <span>14.037</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🌲 Silvicultura</h4>
         <div class="sector-stat">
@@ -138,7 +131,6 @@ Construcción no es un caso aislado. Es la norma en decenas de sectores.
             <span>17.556</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>⚙️ Fabricación maquinaria</h4>
         <div class="sector-stat">
@@ -150,7 +142,6 @@ Construcción no es un caso aislado. Es la norma en decenas de sectores.
             <span>22.438</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🌾 Agricultura</h4>
         <div class="sector-stat">

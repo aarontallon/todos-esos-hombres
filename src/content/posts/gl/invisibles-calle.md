@@ -53,7 +53,6 @@ E se miramos organizacións que traballan directamente na rúa, as porcentaxes s
             <li>Idades: 18-34 anos (58%)</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>HOGAR SÍ</h4>
         <ul>
@@ -62,7 +61,6 @@ E se miramos organizacións que traballan directamente na rúa, as porcentaxes s
             <li>Cifra real: ata 37.000 persoas</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>Reconto Nocturnos</h4>
         <ul>
@@ -147,7 +145,6 @@ Ademais:
             <li>vs 6-10% poboación nova xeral</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>Saúde mental</h4>
         <ul>
@@ -173,7 +170,6 @@ O problema é a <span class="highlight-text">distribución de recursos e especia
         <p>Especializados en violencia de xénero: 7,4%</p>
         <p><strong>Titularidade pública:</strong> 57,8% dos especializados en VX</p>
     </div>
-
     <div class="comparison-item">
         <h4>Centros que só aceptan homes</h4>
         <p style="font-size: 3rem; font-family: 'Bebas Neue', sans-serif; margin: 1rem 0;">13,2%</p>

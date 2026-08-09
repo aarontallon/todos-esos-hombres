@@ -53,7 +53,6 @@ Y si miramos organizaciones que trabajan directamente en calle, los porcentajes 
             <li>Edades: 18-34 años (58%)</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>HOGAR SÍ</h4>
         <ul>
@@ -62,7 +61,6 @@ Y si miramos organizaciones que trabajan directamente en calle, los porcentajes 
             <li>Cifra real: hasta 37.000 personas</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>Recuentos Nocturnos</h4>
         <ul>
@@ -147,7 +145,6 @@ Además:
             <li>vs 6-10% población joven general</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>Salud mental</h4>
         <ul>
@@ -173,7 +170,6 @@ El problema es la <span class="highlight-text">distribución de recursos y espec
         <p>Especializados en violencia de género: 7,4%</p>
         <p><strong>Titularidad pública:</strong> 57,8% de los especializados en VG</p>
     </div>
-
     <div class="comparison-item">
         <h4>Centros que solo aceptan hombres</h4>
         <p style="font-size: 3rem; font-family: 'Bebas Neue', sans-serif; margin: 1rem 0;">13,2%</p>

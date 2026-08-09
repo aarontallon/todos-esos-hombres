@@ -53,7 +53,6 @@ I si mirem organitzacions que treballen directament al carrer, els percentatges 
             <li>Edats: 18-34 anys (58%)</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>HOGAR SÍ</h4>
         <ul>
@@ -62,7 +61,6 @@ I si mirem organitzacions que treballen directament al carrer, els percentatges 
             <li>Xifra real: fins a 37.000 persones</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>Recomptes Nocturns</h4>
         <ul>
@@ -147,7 +145,6 @@ A més:
             <li>vs 6-10% població jove general</li>
         </ul>
     </div>
-
     <div class="data-card">
         <h4>Salut mental</h4>
         <ul>
@@ -173,7 +170,6 @@ El problema és la <span class="highlight-text">distribució de recursos i espec
         <p>Especialitzats en violència de gènere: 7,4%</p>
         <p><strong>Titularitat pública:</strong> 57,8% dels especialitzats en VG</p>
     </div>
-
     <div class="comparison-item">
         <h4>Centres que només accepten homes</h4>
         <p style="font-size: 3rem; font-family: 'Bebas Neue', sans-serif; margin: 1rem 0;">13,2%</p>

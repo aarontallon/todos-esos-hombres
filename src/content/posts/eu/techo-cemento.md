@@ -54,7 +54,6 @@ Eraikuntza ez da salbuespen bat. Dozenaka sektoretan da araua.
             <span>8.766</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>⛏️ Erauzketa-industriak</h4>
         <div class="sector-stat">
@@ -66,7 +65,6 @@ Eraikuntza ez da salbuespen bat. Dozenaka sektoretan da araua.
             <span>2.374</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🔧 Makineriaren konponketa</h4>
         <div class="sector-stat">
@@ -78,7 +76,6 @@ Eraikuntza ez da salbuespen bat. Dozenaka sektoretan da araua.
             <span>27.343</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🏗️ Eraikuntza (guztira)</h4>
         <div class="sector-stat">
@@ -90,7 +87,6 @@ Eraikuntza ez da salbuespen bat. Dozenaka sektoretan da araua.
             <span>431.549</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🔩 Metalurgia</h4>
         <div class="sector-stat">
@@ -102,7 +98,6 @@ Eraikuntza ez da salbuespen bat. Dozenaka sektoretan da araua.
             <span>20.537</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🚚 Lehorreko garraioa</h4>
         <div class="sector-stat">
@@ -114,7 +109,6 @@ Eraikuntza ez da salbuespen bat. Dozenaka sektoretan da araua.
             <span>195.292</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🪵 Zurgintza-industria</h4>
         <div class="sector-stat">
@@ -126,7 +120,6 @@ Eraikuntza ez da salbuespen bat. Dozenaka sektoretan da araua.
             <span>14.037</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🌲 Basogintza</h4>
         <div class="sector-stat">
@@ -138,7 +131,6 @@ Eraikuntza ez da salbuespen bat. Dozenaka sektoretan da araua.
             <span>17.556</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>⚙️ Makineria-fabrikazioa</h4>
         <div class="sector-stat">
@@ -150,7 +142,6 @@ Eraikuntza ez da salbuespen bat. Dozenaka sektoretan da araua.
             <span>22.438</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🌾 Nekazaritza</h4>
         <div class="sector-stat">

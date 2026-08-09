@@ -54,7 +54,6 @@ Era construccion non ei un cas isolat. Ei era nòrma en detzenes de sectors.
             <span>8.766</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>⛏️ Industries extractives</h4>
         <div class="sector-stat">
@@ -66,7 +65,6 @@ Era construccion non ei un cas isolat. Ei era nòrma en detzenes de sectors.
             <span>2.374</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🔧 Reparacion de maquinaria</h4>
         <div class="sector-stat">
@@ -78,7 +76,6 @@ Era construccion non ei un cas isolat. Ei era nòrma en detzenes de sectors.
             <span>27.343</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🏗️ Construccion (totau)</h4>
         <div class="sector-stat">
@@ -90,7 +87,6 @@ Era construccion non ei un cas isolat. Ei era nòrma en detzenes de sectors.
             <span>431.549</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🔩 Metallurgia</h4>
         <div class="sector-stat">
@@ -102,7 +98,6 @@ Era construccion non ei un cas isolat. Ei era nòrma en detzenes de sectors.
             <span>20.537</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🚚 Transpòrt terrèstre</h4>
         <div class="sector-stat">
@@ -114,7 +109,6 @@ Era construccion non ei un cas isolat. Ei era nòrma en detzenes de sectors.
             <span>195.292</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🪵 Industria dera husta</h4>
         <div class="sector-stat">
@@ -126,7 +120,6 @@ Era construccion non ei un cas isolat. Ei era nòrma en detzenes de sectors.
             <span>14.037</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🌲 Silvicultura</h4>
         <div class="sector-stat">
@@ -138,7 +131,6 @@ Era construccion non ei un cas isolat. Ei era nòrma en detzenes de sectors.
             <span>17.556</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>⚙️ Fabricacion de maquinaria</h4>
         <div class="sector-stat">
@@ -150,7 +142,6 @@ Era construccion non ei un cas isolat. Ei era nòrma en detzenes de sectors.
             <span>22.438</span>
         </div>
     </div>
-
     <div class="sector-card">
         <h4>🌾 Agricultura</h4>
         <div class="sector-stat">
