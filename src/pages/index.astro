@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 const LANGS = ['es', 'ca', 'gl', 'eu', 'oc'];
 const base = import.meta.env.BASE_URL;
@@ -21,66 +21,73 @@ function localeOf(langs: Record<string, CollectionEntry<'posts'>>, locale: strin
 ---
 <Layout title="TODOS ESOS HOMBRES — Inicio">
     <header class="hero">
-        <div class="hero-content">
-            <p class="hero-eyebrow" data-i18n="index.hero.eyebrow">DATOS OFICIALES · INE, SEPE, MINISTERIO DE TRABAJO</p>
-            <h1 class="hero-title" data-i18n="index.hero.title">
-                LA REALIDAD<br>QUE NADIE CUENTA
-            </h1>
-            <p class="hero-subtitle" data-i18n="index.hero.subtitle">
-                Datos oficiales sobre las áreas donde los hombres sufren más, mueren más y reciben menos atención
-            </p>
+        <div class="hero-inner">
+            <div class="hero-left">
+                <p class="eyebrow" data-i18n="index.hero.eyebrow">DATOS OFICIALES · INE, SEPE, MINISTERIO DE TRABAJO</p>
+                <h1 class="hero-title" data-i18n="index.hero.title">
+                    LA REALIDAD<br>QUE NADIE CUENTA
+                </h1>
+                <p class="hero-subtitle" data-i18n="index.hero.subtitle">
+                    Datos oficiales sobre las áreas donde los hombres sufren más, mueren más y reciben menos atención
+                </p>
+                <a href={`${base}estadisticas/`} class="hero-link">
+                    <span data-i18n="index.cta.stats">VER ESTADÍSTICAS</span> <span class="arrow">→</span>
+                </a>
+            </div>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-card-number" data-i18n="index.stat1.number">75%</div>
-                    <div class="stat-card-label" data-i18n="index.stat1.label">De los suicidios<br>son masculinos</div>
+            <div class="hero-right">
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-i18n="index.stat1.number">75%</div>
+                    <div class="hero-stat-label" data-i18n="index.stat1.label">De los suicidios<br>son masculinos</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-card-number" data-i18n="index.stat2.number">91%</div>
-                    <div class="stat-card-label" data-i18n="index.stat2.label">De muertes laborales<br>son hombres</div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-i18n="index.stat2.number">91%</div>
+                    <div class="hero-stat-label" data-i18n="index.stat2.label">De muertes laborales<br>son hombres</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-card-number" data-i18n="index.stat3.number">80%</div>
-                    <div class="stat-card-label" data-i18n="index.stat3.label">De personas sin hogar<br>son hombres</div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-i18n="index.stat3.number">80%</div>
+                    <div class="hero-stat-label" data-i18n="index.stat3.label">De personas sin hogar<br>son hombres</div>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="data-section">
+    <section class="facts">
         <div class="container">
-            <div class="data-grid">
-                <div class="data-box">
-                    <h3 data-i18n="index.data1.number">93%</h3>
-                    <p data-i18n="index.data1.text">De las personas presas en España son hombres. El sistema penitenciario es masculino en su inmensa mayoría.</p>
-                </div>
-                <div class="data-box">
-                    <h3 data-i18n="index.data2.number">526</h3>
-                    <p data-i18n="index.data2.text">Asimetrías legales documentadas del BOE que discriminan explícitamente por sexo en contra de los hombres.</p>
-                </div>
-                <div class="data-box">
-                    <h3 data-i18n="index.data3.number">-6</h3>
-                    <p data-i18n="index.data3.text">Años de esperanza de vida menos que las mujeres. Los hombres mueren antes de forma sistemática.</p>
-                </div>
+            <div class="fact-row">
+                <div class="fact-number" data-i18n="index.data1.number">93%</div>
+                <p class="fact-text" data-i18n="index.data1.text">De las personas presas en España son hombres. El sistema penitenciario es masculino en su inmensa mayoría.</p>
+            </div>
+            <div class="fact-row">
+                <div class="fact-number" data-i18n="index.data2.number">526</div>
+                <p class="fact-text" data-i18n="index.data2.text">Asimetrías legales documentadas del BOE que discriminan explícitamente por sexo en contra de los hombres.</p>
+            </div>
+            <div class="fact-row">
+                <div class="fact-number" data-i18n="index.data3.number">-6</div>
+                <p class="fact-text" data-i18n="index.data3.text">Años de esperanza de vida menos que las mujeres. Los hombres mueren antes de forma sistemática.</p>
             </div>
         </div>
     </section>
 
     <section class="mission">
-        <div class="mission-content">
+        <div class="container mission-grid">
             <h2 data-i18n="index.mission.title">UNA REALIDAD QUE EXISTE</h2>
-            <p data-i18n="index.mission.p1">En España, <span class="highlight">cada día se suicidan 8 hombres</span>. Cada día mueren 2 hombres en accidentes laborales. Cada noche, 3 de cada 4 personas durmiendo en la calle son hombres.</p>
-            <p data-i18n="index.mission.p2">Estos datos no son opiniones. Son estadísticas oficiales del Instituto Nacional de Estadística, del Ministerio de Trabajo, del Instituto Nacional de Seguridad y Salud en el Trabajo.</p>
-            <p data-i18n="index.mission.p3">Esta web existe para <span class="highlight">visibilizar lo invisible</span>. Para documentar, con fuentes oficiales y datos verificables, las áreas donde los hombres enfrentan desventajas sistemáticas, sufren más, mueren más, y reciben menos atención.</p>
-            <p data-i18n="index.mission.p4">No es un concurso de víctimas. Es un ejercicio de honestidad. Porque la igualdad real requiere mirar toda la realidad, no solo la mitad que nos resulta cómoda.</p>
+            <div class="mission-text">
+                <p data-i18n="index.mission.p1">En España, <span class="highlight">cada día se suicidan 8 hombres</span>. Cada día mueren 2 hombres en accidentes laborales. Cada noche, 3 de cada 4 personas durmiendo en la calle son hombres.</p>
+                <p data-i18n="index.mission.p2">Estos datos no son opiniones. Son estadísticas oficiales del Instituto Nacional de Estadística, del Ministerio de Trabajo, del Instituto Nacional de Seguridad y Salud en el Trabajo.</p>
+                <p data-i18n="index.mission.p3">Esta web existe para <span class="highlight">visibilizar lo invisible</span>. Para documentar, con fuentes oficiales y datos verificables, las áreas donde los hombres enfrentan desventajas sistemáticas, sufren más, mueren más, y reciben menos atención.</p>
+                <p data-i18n="index.mission.p4">No es un concurso de víctimas. Es un ejercicio de honestidad. Porque la igualdad real requiere mirar toda la realidad, no solo la mitad que nos resulta cómoda.</p>
+            </div>
         </div>
     </section>
 
     {featuredLangs && (
         <section class="featured">
-            <div class="container">
-                <p class="featured-kicker" data-i18n="index.featured.kicker">ÚLTIMO ANÁLISIS</p>
-                <a href={`${base}blog/${featuredSlug}/`} class="featured-card">
+            <div class="container featured-grid">
+                <div class="featured-side">
+                    <p class="featured-kicker" data-i18n="index.featured.kicker">ÚLTIMO ANÁLISIS</p>
+                </div>
+                <a href={`${base}blog/${featuredSlug}/`} class="featured-main">
                     <h2 class="featured-title">
                         {LANGS.map((locale) => <span data-lang-block={locale}>{localeOf(featuredLangs, locale).data.title}</span>)}
                     </h2>
@@ -94,160 +101,195 @@ function localeOf(langs: Record<string, CollectionEntry<'posts'>>, locale: strin
     )}
 
     <section class="cta">
-        <h2 data-i18n="index.cta.title">EXPLORA LOS DATOS</h2>
-        <div class="cta-buttons">
-            <a href={`${base}estadisticas/`} class="btn" data-i18n="index.cta.stats">VER ESTADÍSTICAS</a>
-            <a href={`${base}asimetrias/`} class="btn" data-i18n="index.cta.asym">ASIMETRÍAS LEGALES</a>
-            <a href={`${base}blog/`} class="btn" data-i18n="index.cta.blog">LEER EL BLOG</a>
+        <div class="container cta-grid">
+            <h2 data-i18n="index.cta.title">EXPLORA LOS DATOS</h2>
+            <div class="cta-links">
+                <a href={`${base}estadisticas/`} class="cta-link">
+                    <span data-i18n="index.cta.stats">VER ESTADÍSTICAS</span>
+                    <span class="arrow">→</span>
+                </a>
+                <a href={`${base}asimetrias/`} class="cta-link">
+                    <span data-i18n="index.cta.asym">ASIMETRÍAS LEGALES</span>
+                    <span class="arrow">→</span>
+                </a>
+                <a href={`${base}blog/`} class="cta-link">
+                    <span data-i18n="index.cta.blog">LEER EL BLOG</span>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
         </div>
     </section>
 </Layout>
 
 <style>
+    /* ============ HERO ============ */
     .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding: 12rem 2rem 6rem;
         background: #fff;
-        padding: 8rem 2rem 4rem;
-        position: relative;
     }
 
-    .hero-content {
-        max-width: 1100px;
-        width: 100%;
-        text-align: center;
+    .hero-inner {
+        max-width: 1300px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 5rem;
+        align-items: end;
     }
 
-    .hero-eyebrow {
+    .eyebrow {
         font-size: 0.8rem;
         font-weight: 700;
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        opacity: 0.55;
+        opacity: 0.5;
         margin-bottom: 1.5rem;
     }
 
     .hero-title {
         font-family: 'Bebas Neue', sans-serif;
-        font-size: clamp(3rem, 8vw, 7rem);
-        line-height: 0.9;
+        font-size: clamp(3.5rem, 8vw, 8rem);
+        line-height: 0.88;
         margin-bottom: 2rem;
         text-transform: uppercase;
+        letter-spacing: -1px;
     }
 
     .hero-subtitle {
-        font-size: clamp(1rem, 2vw, 1.3rem);
-        margin-bottom: 5rem;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-        opacity: 0.7;
+        font-size: clamp(1rem, 1.6vw, 1.2rem);
+        max-width: 520px;
+        opacity: 0.65;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
     }
 
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3rem;
-        margin-top: 6rem;
-        max-width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .stat-card {
-        background: #fff;
-        border: 3px solid #000;
-        padding: 3rem 2rem;
-        transition: all 0.3s ease;
-        text-align: center;
-    }
-
-    .stat-card:hover {
-        transform: translate(-6px, -6px);
-        box-shadow: 6px 6px 0 #000;
-    }
-
-    .stat-card-number {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 5rem;
-        line-height: 1;
-        margin-bottom: 1rem;
-    }
-
-    .stat-card-label {
+    .hero-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: #000;
+        text-decoration: none;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
         font-size: 0.9rem;
+        border-bottom: 3px solid #000;
+        padding-bottom: 0.4rem;
+        transition: gap 0.2s ease;
+    }
+
+    .hero-link:hover {
+        gap: 1rem;
+    }
+
+    .hero-right {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-stat {
+        padding: 1.5rem 0;
+        border-top: 2px solid #000;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+    }
+
+    .hero-right .hero-stat:last-child {
+        border-bottom: 2px solid #000;
+    }
+
+    .hero-stat-number {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 4rem;
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    .hero-stat-label {
+        font-size: 0.8rem;
         text-transform: uppercase;
         font-weight: 700;
         line-height: 1.5;
+        text-align: right;
+        opacity: 0.7;
     }
 
-    .data-section {
-        background: #f9f9f9;
-        padding: 6rem 2rem;
-        border-top: 3px solid #000;
-    }
-
+    /* ============ FACTS ============ */
     .container {
         max-width: 1100px;
         margin: 0 auto;
+        padding: 0 2rem;
     }
 
-    .data-grid {
+    .facts {
+        padding: 5rem 0;
+        border-top: 3px solid #000;
+    }
+
+    .fact-row {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: 240px 1fr;
         gap: 3rem;
+        align-items: center;
+        padding: 2.5rem 0;
+        border-bottom: 2px solid #eee;
     }
 
-    .data-box {
-        border: 3px solid #000;
-        padding: 3rem 2.5rem;
-        background: #fff;
-        transition: all 0.3s ease;
+    .fact-row:first-child {
+        padding-top: 0;
     }
 
-    .data-box:hover {
-        transform: translate(-6px, -6px);
-        box-shadow: 6px 6px 0 #000;
+    .fact-row:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
     }
 
-    .data-box h3 {
+    .fact-number {
         font-family: 'Bebas Neue', sans-serif;
-        font-size: 5rem;
-        margin-bottom: 1rem;
+        font-size: 5.5rem;
         line-height: 0.9;
     }
 
-    .data-box p {
-        font-size: 0.95rem;
+    .fact-text {
+        font-size: 1.05rem;
         line-height: 1.7;
+        max-width: 620px;
     }
 
+    /* ============ MISSION ============ */
     .mission {
         background: #000;
         color: #fff;
-        padding: 6rem 2rem;
+        padding: 6rem 0;
         border-top: 3px solid #000;
+    }
+
+    .mission-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 4rem;
     }
 
     .mission h2 {
         font-family: 'Bebas Neue', sans-serif;
-        font-size: clamp(3rem, 6vw, 5rem);
-        margin-bottom: 3rem;
-        text-align: center;
-        letter-spacing: 2px;
+        font-size: clamp(2.5rem, 4vw, 4rem);
+        line-height: 1;
+        letter-spacing: 1px;
+        position: sticky;
+        top: 8rem;
+        align-self: start;
     }
 
-    .mission-content {
-        max-width: 850px;
-        margin: 0 auto;
-    }
-
-    .mission p {
-        font-size: 1.1rem;
-        line-height: 2;
+    .mission-text p {
+        font-size: 1.05rem;
+        line-height: 1.9;
         margin-bottom: 2rem;
+    }
+
+    .mission-text p:last-child {
+        margin-bottom: 0;
     }
 
     .mission .highlight {
@@ -258,47 +300,52 @@ function localeOf(langs: Record<string, CollectionEntry<'posts'>>, locale: strin
         display: inline-block;
     }
 
+    /* ============ FEATURED ============ */
     .featured {
         background: #fff;
-        padding: 6rem 2rem;
+        padding: 6rem 0;
         border-top: 3px solid #000;
+    }
+
+    .featured-grid {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 3rem;
     }
 
     .featured-kicker {
         font-family: 'Bebas Neue', sans-serif;
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         letter-spacing: 2px;
-        margin-bottom: 1.5rem;
     }
 
-    .featured-card {
+    .featured-main {
         display: block;
-        border: 3px solid #000;
-        padding: 3rem;
         text-decoration: none;
         color: #000;
-        transition: all 0.3s ease;
-    }
-
-    .featured-card:hover {
-        transform: translate(-6px, -6px);
-        box-shadow: 6px 6px 0 #000;
+        border-top: 3px solid #000;
+        padding-top: 2.5rem;
     }
 
     .featured-title {
         font-family: 'Bebas Neue', sans-serif;
-        font-size: clamp(2rem, 4vw, 3rem);
-        line-height: 1.05;
+        font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+        line-height: 1.02;
         margin-bottom: 1.5rem;
         text-transform: uppercase;
+        transition: opacity 0.2s ease;
+    }
+
+    .featured-main:hover .featured-title {
+        opacity: 0.6;
     }
 
     .featured-excerpt {
-        font-size: 1rem;
+        font-size: 1.05rem;
         line-height: 1.7;
-        opacity: 0.75;
+        opacity: 0.7;
         margin-bottom: 2rem;
-        max-width: 800px;
+        max-width: 750px;
     }
 
     .featured-readmore {
@@ -311,119 +358,122 @@ function localeOf(langs: Record<string, CollectionEntry<'posts'>>, locale: strin
         font-size: 0.85rem;
     }
 
+    /* ============ CTA ============ */
     .cta {
-        text-align: center;
-        padding: 6rem 2rem;
+        padding: 6rem 0;
         background: #fff;
         border-top: 3px solid #000;
+        border-bottom: 3px solid #000;
+    }
+
+    .cta-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
     }
 
     .cta h2 {
         font-family: 'Bebas Neue', sans-serif;
-        font-size: clamp(3rem, 6vw, 5rem);
-        margin-bottom: 4rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+        font-size: clamp(2.5rem, 4vw, 4rem);
+        line-height: 1;
+        letter-spacing: 1px;
     }
 
-    .cta-buttons {
+    .cta-links {
         display: flex;
-        gap: 2.5rem;
-        justify-content: center;
-        flex-wrap: wrap;
+        flex-direction: column;
     }
 
-    .cta .btn {
-        display: inline-block;
-        padding: 1.8rem 4rem;
-        background: #000;
-        color: #fff;
+    .cta-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 0;
+        border-bottom: 2px solid #000;
+        color: #000;
         text-decoration: none;
         font-family: 'Bebas Neue', sans-serif;
-        font-size: 1.5rem;
-        border: 3px solid #000;
-        transition: all 0.3s ease;
-        letter-spacing: 2px;
+        font-size: 1.6rem;
+        letter-spacing: 1px;
         text-transform: uppercase;
-        min-width: 300px;
+        transition: padding-left 0.2s ease;
     }
 
-    .cta .btn:hover {
-        background: #fff;
-        color: #000;
-        transform: translate(-6px, -6px);
-        box-shadow: 6px 6px 0 #000;
+    .cta-links .cta-link:first-child {
+        border-top: 2px solid #000;
     }
 
+    .cta-link .arrow {
+        transition: transform 0.2s ease;
+    }
+
+    .cta-link:hover {
+        padding-left: 0.75rem;
+    }
+
+    .cta-link:hover .arrow {
+        transform: translateX(6px);
+    }
+
+    /* ============ MOBILE ============ */
     @media (max-width: 968px) {
         .hero {
-            padding: 17rem 1.5rem 4rem;
-            min-height: auto;
+            padding: 19rem 1.5rem 4rem;
         }
 
-        .hero-subtitle {
-            margin-bottom: 3rem;
-        }
-
-        .stats-grid {
+        .hero-inner {
             grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 3rem;
+            gap: 3rem;
         }
 
-        .data-grid {
+        .fact-row {
             grid-template-columns: 1fr;
-            gap: 1.5rem;
+            gap: 1rem;
+            padding: 2rem 0;
         }
 
-        .data-section {
-            padding: 4rem 1.5rem;
-        }
-
-        .mission {
-            padding: 4rem 1.5rem;
-        }
-
-        .featured {
-            padding: 4rem 1.5rem;
-        }
-
-        .featured-card {
-            padding: 2rem 1.5rem;
-        }
-
-        .cta {
-            padding: 4rem 1.5rem;
-        }
-
-        .cta-buttons {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .cta .btn {
-            width: 100%;
-            max-width: 320px;
-            min-width: unset;
-            padding: 1.4rem 2rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .stat-card-number {
+        .fact-number {
             font-size: 4rem;
         }
 
-        .data-box h3 {
-            font-size: 3.5rem;
+        .mission-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
         }
 
-        .data-box {
-            padding: 2rem 1.5rem;
+        .mission h2 {
+            position: static;
         }
 
-        .stat-card {
-            padding: 2rem 1.5rem;
+        .featured-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .cta-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .cta-link {
+            font-size: 1.3rem;
+        }
+
+        .facts {
+            padding: 3rem 0;
+        }
+
+        .mission {
+            padding: 4rem 0;
+        }
+
+        .featured {
+            padding: 4rem 0;
+        }
+
+        .cta {
+            padding: 4rem 0;
         }
     }
 </style>
