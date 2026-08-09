@@ -1,25 +1,47 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 
+const LANGS = ['es', 'ca', 'gl', 'eu', 'oc'];
+
 export async function getStaticPaths() {
-    const posts = await getCollection('posts');
-    return posts.map((post) => ({
-        params: { slug: post.id },
-        props: { post },
+    const allPosts = await getCollection('posts');
+    const grouped: Record<string, Record<string, CollectionEntry<'posts'>>> = {};
+    for (const post of allPosts) {
+        const [locale, slug] = post.id.split('/');
+        grouped[slug] ??= {};
+        grouped[slug][locale] = post;
+    }
+
+    return Object.entries(grouped).map(([slug, langs]) => ({
+        params: { slug },
+        props: { langs },
     }));
 }
 
-const { post } = Astro.props;
-const { Content } = await render(post);
+const { langs } = Astro.props as { langs: Record<string, CollectionEntry<'posts'>> };
+const es = langs.es;
+
+const rendered = await Promise.all(
+    LANGS.map(async (locale) => {
+        const entry = langs[locale] ?? es;
+        const { Content } = await render(entry);
+        return { locale, entry, Content };
+    })
+);
 ---
 <BlogPost
-    title={post.data.title}
-    subtitle={post.data.subtitle}
-    category={post.data.category}
-    date={post.data.date}
-    footerCopy={post.data.footerCopy}
-    sources={post.data.sources}
+    langs={LANGS}
+    titles={Object.fromEntries(rendered.map((r) => [r.locale, r.entry.data.title]))}
+    subtitles={Object.fromEntries(rendered.map((r) => [r.locale, r.entry.data.subtitle]))}
+    categories={Object.fromEntries(rendered.map((r) => [r.locale, r.entry.data.category]))}
+    date={es.data.date}
+    footerCopy={es.data.footerCopy}
+    sources={es.data.sources}
 >
-    <Content />
+    {rendered.map(({ locale, Content }) => (
+        <div data-lang-block={locale} class="lang-body">
+            <Content />
+        </div>
+    ))}
 </BlogPost>

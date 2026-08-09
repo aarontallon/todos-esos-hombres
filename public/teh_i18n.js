@@ -237,6 +237,14 @@
             if (val !== null) el.placeholder = val;
         });
 
+        // Elements with data-lang-block="xx" → show only the block matching
+        // the current language (used for full editorial content authored
+        // per-language, e.g. blog posts, instead of the T dictionary)
+        document.querySelectorAll('[data-lang-block]').forEach(el => {
+            const lang = el.getAttribute('data-lang-block');
+            el.style.display = (lang === currentLang) ? '' : 'none';
+        });
+
         // Update html lang attribute
         document.documentElement.lang = currentLang;
 

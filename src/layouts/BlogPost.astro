@@ -7,18 +7,20 @@ interface Source {
 }
 
 interface Props {
-    title: string;
-    subtitle?: string;
-    category: string;
+    langs: string[];
+    titles: Record<string, string>;
+    subtitles: Record<string, string | undefined>;
+    categories: Record<string, string>;
     date: string;
     footerCopy?: string;
     sources?: Source[];
 }
 
 const {
-    title,
-    subtitle,
-    category,
+    langs,
+    titles,
+    subtitles,
+    categories,
     date,
     footerCopy = 'TODOS ESOS HOMBRES © 2026 — FUENTES: INE, SEPE, MINISTERIO DE TRABAJO',
     sources = [],
@@ -30,7 +32,7 @@ const base = import.meta.env.BASE_URL;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title} — Blog</title>
+    <title>{titles.es} — Blog</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -38,9 +40,15 @@ const base = import.meta.env.BASE_URL;
 <Nav />
 
 <header class="article-header">
-    <h1 class="article-title">{title}</h1>
-    {subtitle && <p class="article-subtitle">{subtitle}</p>}
-    <div class="article-meta">{date} — {category}</div>
+    <h1 class="article-title">
+        {langs.map((locale) => <span data-lang-block={locale}>{titles[locale]}</span>)}
+    </h1>
+    {langs.map((locale) => subtitles[locale] && (
+        <p class="article-subtitle" data-lang-block={locale}>{subtitles[locale]}</p>
+    ))}
+    <div class="article-meta">
+        {date} — {langs.map((locale) => <span data-lang-block={locale}>{categories[locale]}</span>)}
+    </div>
 </header>
 
 <article class="container">
@@ -70,6 +78,9 @@ const base = import.meta.env.BASE_URL;
 <style is:global>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #fff; color: #000; font-family: 'Space Mono', monospace; line-height: 1.6; }
+
+    /* Evita el parpadeo de todos los idiomas apilados antes de que cargue teh_i18n.js */
+    [data-lang-block]:not([data-lang-block="es"]) { display: none; }
 
     .article-header {
         background: #000;
