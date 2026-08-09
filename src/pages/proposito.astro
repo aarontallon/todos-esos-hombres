@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 <Layout title="Propósito — Todos esos hombres" footerCopy="TODOS ESOS HOMBRES © 2026">
     <div class="container">
@@ -46,8 +47,8 @@ import Layout from '../layouts/Layout.astro';
 
         <div class="cta-footer">
             <h2 data-i18n="prop.cta.title">EL CAMBIO EMPIEZA POR CONOCER LA VERDAD</h2>
-            <a href="/estadisticas/" class="btn" data-i18n="index.cta.stats">VER ESTADÍSTICAS</a>
-            <a href="/asimetrias/" class="btn" data-i18n="index.cta.asym">ASIMETRÍAS LEGALES</a>
+            <a href={`${base}estadisticas/`} class="btn" data-i18n="index.cta.stats">VER ESTADÍSTICAS</a>
+            <a href={`${base}asimetrias/`} class="btn" data-i18n="index.cta.asym">ASIMETRÍAS LEGALES</a>
         </div>
     </div>
 </Layout>

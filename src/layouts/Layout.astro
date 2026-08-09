@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { title, footerCopy = 'TODOS ESOS HOMBRES © 2026 — FUENTES: INE, SEPE, MINISTERIO DE TRABAJO' } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -26,7 +27,7 @@ const { title, footerCopy = 'TODOS ESOS HOMBRES © 2026 — FUENTES: INE, SEPE, 
     <p data-i18n="footer.copy">{footerCopy}</p>
 </footer>
 
-<script src="/teh_i18n.js" is:inline></script>
+<script src={`${base}teh_i18n.js`} is:inline></script>
 
 <style is:global>
     * { margin: 0; padding: 0; box-sizing: border-box; }
