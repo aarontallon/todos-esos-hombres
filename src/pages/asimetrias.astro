@@ -65,153 +65,515 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
+type LangText = { es: string; ca: string; gl: string; eu: string; oc: string };
+
 interface Law {
     cat: string;
-    title: string;
-    desc: string;
-    asym: string;
+    title: LangText;
+    desc: LangText;
+    asym: LangText;
     ref: string;
 }
 
 const laws: Law[] = [
     {
         cat: "SOCIAL",
-        title: "Incremento en la Pensión por Hijos (Complemento de Brecha)",
-        desc: "RD-ley 3/2021 y LGSS. Complemento destinado a las pensiones contributivas.",
-        asym: "Las mujeres con un hijo o más cobran el complemento por defecto. El incremento empieza en un 5% por dos hijos y llega hasta el 15%. Para que un hombre lo cobre, debe demostrar requisitos de perjuicio en su carrera que no se exigen a la mujer. Además, el hombre queda excluido si tiene condena por violencia de género, pero la mujer no queda excluida si tiene condena por violencia doméstica.",
+        title: {
+            es: "Incremento en la Pensión por Hijos (Complemento de Brecha)",
+            ca: "Increment en la Pensió per Fills (Complement de Bretxa)",
+            gl: "Incremento na Pensión por Fillos (Complemento de Fenda)",
+            eu: "Seme-alabengatiko Pentsio Igoera (Arrakala Osagarria)",
+            oc: "Aumentacion dera Pension per Hilhs (Complement de Bretxa)"
+        },
+        desc: {
+            es: "RD-ley 3/2021 y LGSS. Complemento destinado a las pensiones contributivas.",
+            ca: "RD-llei 3/2021 i LGSS. Complement destinat a les pensions contributives.",
+            gl: "RD-lei 3/2021 e LXSS. Complemento destinado ás pensións contributivas.",
+            eu: "3/2021 LED eta LGSS. Kotizazio-pentsioetarako osagarria.",
+            oc: "RD-lei 3/2021 e LGSS. Complement destinat ara pensions contributives."
+        },
+        asym: {
+            es: "Las mujeres con un hijo o más cobran el complemento por defecto. El incremento empieza en un 5% por dos hijos y llega hasta el 15%. Para que un hombre lo cobre, debe demostrar requisitos de perjuicio en su carrera que no se exigen a la mujer. Además, el hombre queda excluido si tiene condena por violencia de género, pero la mujer no queda excluida si tiene condena por violencia doméstica.",
+            ca: "Les dones amb un fill o més cobren el complement per defecte. L'increment comença en un 5% per dos fills i arriba fins al 15%. Perquè un home el cobri, ha de demostrar requisits de perjudici en la seva carrera que no s'exigeixen a la dona. A més, l'home queda exclòs si té condemna per violència de gènere, però la dona no queda exclosa si té condemna per violència domèstica.",
+            gl: "As mulleres cun fillo ou máis cobran o complemento por defecto. O incremento comeza nun 5% por dous fillos e chega ata o 15%. Para que un home o cobre, debe demostrar requisitos de prexuízo na súa carreira que non se esixen á muller. Ademais, o home queda excluído se ten condena por violencia de xénero, pero a muller non queda excluída se ten condena por violencia doméstica.",
+            eu: "Seme-alaba bat edo gehiago dituzten emakumeek osagarria automatikoki jasotzen dute. Igoera %5ekoa da bi seme-alabengatik eta %15era iritsi daiteke. Gizon batek jasotzeko, emakumeari eskatzen ez zaizkion lan-ibilbideko kalte-baldintzak frogatu behar ditu. Gainera, gizona kanpo geratzen da genero-indarkeriagatik kondena badu, baina emakumea ez da kanpo geratzen etxeko indarkeriagatik kondena badu.",
+            oc: "Las hemnas damb un hilh o mès percebon eth complement per defècte. Era aumentacion comence en un 5% per dus hilhs e arribe enquiath 15%. Entà qu'un òme lo percebi, a de demostrar requisits de perjudici ena sua carrèra que non s'exigeishen ara hemna. A mès, er òme rèste exclús se a condemna per violéncia de gènre, mès era hemna non rèste exclusa se a condemna per violéncia domestica."
+        },
         ref: "BOE-A-2021-1529"
     },
     {
         cat: "PENAL",
-        title: "Diferenciación de Tipo Delictivo (Ley Orgánica 1/2004)",
-        desc: "Medidas de Protección Integral contra la Violencia de Género.",
-        asym: "Un mismo hecho (amenazas o coacciones leves) se considera delito grave con pena de 6 meses a 1 año de prisión si el agresor es hombre y la víctima mujer. Si la mujer es la agresora, el acto es un delito leve. Esto elimina el derecho a no ser juzgado por 'derecho de autor' (quién eres en vez de qué has hecho).",
+        title: {
+            es: "Diferenciación de Tipo Delictivo (Ley Orgánica 1/2004)",
+            ca: "Diferenciació de Tipus Delictiu (Llei Orgànica 1/2004)",
+            gl: "Diferenciación de Tipo Delitivo (Lei Orgánica 1/2004)",
+            eu: "Delitu Motaren Bereizketa (1/2004 Lege Organikoa)",
+            oc: "Diferenciacion de Tipe Delictiu (Lei Organica 1/2004)"
+        },
+        desc: {
+            es: "Medidas de Protección Integral contra la Violencia de Género.",
+            ca: "Mesures de Protecció Integral contra la Violència de Gènere.",
+            gl: "Medidas de Protección Integral contra a Violencia de Xénero.",
+            eu: "Genero Indarkeriaren aurkako Babes Integraleko Neurriak.",
+            oc: "Mesures de Proteccion Integrau contra era Violéncia de Gènre."
+        },
+        asym: {
+            es: "Un mismo hecho (amenazas o coacciones leves) se considera delito grave con pena de 6 meses a 1 año de prisión si el agresor es hombre y la víctima mujer. Si la mujer es la agresora, el acto es un delito leve. Esto elimina el derecho a no ser juzgado por 'derecho de autor' (quién eres en vez de qué has hecho).",
+            ca: "Un mateix fet (amenaces o coaccions lleus) es considera delicte greu amb pena de 6 mesos a 1 any de presó si l'agressor és home i la víctima dona. Si la dona és l'agressora, l'acte és un delicte lleu. Això elimina el dret a no ser jutjat per 'dret d'autor' (qui ets en comptes de què has fet).",
+            gl: "Un mesmo feito (ameazas ou coaccións leves) considérase delito grave con pena de 6 meses a 1 ano de prisión se o agresor é home e a vítima muller. Se a muller é a agresora, o acto é un delito leve. Isto elimina o dereito a non ser xulgado por 'dereito de autor' (quen es en vez de que fixeches).",
+            eu: "Egitate berbera (mehatxu edo behartze arinak) delitu larritzat jotzen da, 6 hilabetetik urtebetera arteko espetxe zigorrarekin, erasotzailea gizona eta biktima emakumea bada. Emakumea erasotzailea bada, egitatea delitu arina da. Honek 'egile-eskubidearen' arabera epaitua ez izateko eskubidea ezabatzen du (zer egin duzun eta ez nor zaren araberako epaiketa).",
+            oc: "Un madeish hèit (menaças o coaccions leugères) se considère delicte grèu damb pena de 6 mes a 1 an de preson se er agressor ei òme e era victima hemna. Se era hemna ei era agressora, er acte ei un delicte leugèr. Aquerò elimine eth dret a non èster jutjat per 'dret d'autor' (qui ès en lòc de qué as hèt)."
+        },
         ref: "BOE-A-2004-21760"
     },
     {
         cat: "SOCIAL",
-        title: "Deducción por Maternidad en IRPF (Art. 81)",
-        desc: "Ayuda fiscal para progenitores trabajadores con hijos menores de 3 años.",
-        asym: "Derecho a una deducción de 100 euros al mes (1.200€ anuales) exclusivo para madres trabajadoras. Para que un hombre tenga derecho a esta cuantía, debe demostrar judicialmente que posee la custodia exclusiva total del menor.",
+        title: {
+            es: "Deducción por Maternidad en IRPF (Art. 81)",
+            ca: "Deducció per Maternitat a l'IRPF (Art. 81)",
+            gl: "Dedución por Maternidade no IRPF (Art. 81)",
+            eu: "Amatasunagatiko Kenkaria PFEZn (81. art.)",
+            oc: "Deduccion per Maternitat en IRPF (Art. 81)"
+        },
+        desc: {
+            es: "Ayuda fiscal para progenitores trabajadores con hijos menores de 3 años.",
+            ca: "Ajut fiscal per a progenitors treballadors amb fills menors de 3 anys.",
+            gl: "Axuda fiscal para proxenitores traballadores con fillos menores de 3 anos.",
+            eu: "3 urtetik beherako seme-alabak dituzten guraso langileentzako laguntza fiskala.",
+            oc: "Ajuda fiscau entà progenitors trabalhadors damb hilhs de mens de 3 ans."
+        },
+        asym: {
+            es: "Derecho a una deducción de 100 euros al mes (1.200€ anuales) exclusivo para madres trabajadoras. Para que un hombre tenga derecho a esta cuantía, debe demostrar judicialmente que posee la custodia exclusiva total del menor.",
+            ca: "Dret a una deducció de 100 euros al mes (1.200€ anuals) exclusiu per a mares treballadores. Perquè un home tingui dret a aquesta quantia, ha de demostrar judicialment que té la custòdia exclusiva total del menor.",
+            gl: "Dereito a unha dedución de 100 euros ao mes (1.200€ anuais) exclusivo para nais traballadoras. Para que un home teña dereito a esta contía, debe demostrar xudicialmente que posúe a custodia exclusiva total do menor.",
+            eu: "Hilean 100 euroko kenkaria (urtean 1.200€) jasotzeko eskubidea, ama langileentzat esklusiboa. Gizon batek zenbateko hori jasotzeko eskubidea izateko, adingabearen zaintza esklusibo osoa duela judizialki frogatu behar du.",
+            oc: "Dret a ua deduccion de 100 èuros ath mes (1.200€ anuaus) exclusiu entà mairs trabalhadoras. Entà qu'un òme age dret ad aguesta quantitat, a de demostrar judiciaument que possedís era gàrdia exclusiva totau deth menor."
+        },
         ref: "BOE-A-2006-20764"
     },
     {
         cat: "EMPLEO",
-        title: "Incentivos a la Contratación con Dinero Público",
-        desc: "Ley 11/2013 de medidas urgentes de fomento del empleo.",
-        asym: "Establece cuantías superiores en las bonificaciones de cuotas a la Seguridad Social si la persona contratada es mujer frente a un hombre en igualdad de condiciones (desempleados, jóvenes, etc.), incentivando económicamente la exclusión del varón.",
+        title: {
+            es: "Incentivos a la Contratación con Dinero Público",
+            ca: "Incentius a la Contractació amb Diners Públics",
+            gl: "Incentivos á Contratación con Diñeiro Público",
+            eu: "Diru Publikoarekin Kontratatzeko Pizgarriak",
+            oc: "Incentius ara Contractacion damb Argent Public"
+        },
+        desc: {
+            es: "Ley 11/2013 de medidas urgentes de fomento del empleo.",
+            ca: "Llei 11/2013 de mesures urgents de foment de l'ocupació.",
+            gl: "Lei 11/2013 de medidas urxentes de fomento do emprego.",
+            eu: "11/2013 Legea, enplegua sustatzeko presako neurriei buruzkoa.",
+            oc: "Lei 11/2013 de mesures urgentes de foment der emplec."
+        },
+        asym: {
+            es: "Establece cuantías superiores en las bonificaciones de cuotas a la Seguridad Social si la persona contratada es mujer frente a un hombre en igualdad de condiciones (desempleados, jóvenes, etc.), incentivando económicamente la exclusión del varón.",
+            ca: "Estableix quanties superiors en les bonificacions de quotes a la Seguretat Social si la persona contractada és dona enfront d'un home en igualtat de condicions (aturats, joves, etc.), incentivant econòmicament l'exclusió del baró.",
+            gl: "Establece contías superiores nas bonificacións de cotas á Seguridade Social se a persoa contratada é muller fronte a un home en igualdade de condicións (desempregados, mozos, etc.), incentivando economicamente a exclusión do varón.",
+            eu: "Gizarte Segurantzako kotei bonifikazio handiagoak ezartzen ditu kontratatutakoa emakumea denean, baldintza berdinetan dagoen gizon batekin alderatuta (langabeak, gazteak, etab.), gizonaren esklusioa ekonomikoki bultzatuz.",
+            oc: "Establís quantitats superiores enes bonificacions de quòtas ara Seguretat Sociau se era persona contractada ei hemna en front d'un òme en egaudat de condicions (chomaires, joens, etc.), incentivant economicament era exclusion deth baron."
+        },
         ref: "BOE-A-2013-2030"
     },
     {
         cat: "ADMIN",
-        title: "Baremos Físicos de Acceso al Empleo Público",
-        desc: "Convocatorias oficiales de Fuerzas y Cuerpos de Seguridad.",
-        asym: "Las mujeres acceden a plazas de funcionario (Policía, Guardia Civil, Bomberos) con marcas físicas significativamente más bajas. Esto permite que una mujer obtenga plaza sobre un hombre que ha demostrado mejores capacidades físicas y notas, rompiendo el principio de mérito y capacidad en favor del sexo.",
+        title: {
+            es: "Baremos Físicos de Acceso al Empleo Público",
+            ca: "Barems Físics d'Accés a l'Ocupació Pública",
+            gl: "Baremos Físicos de Acceso ao Emprego Público",
+            eu: "Enplegu Publikorako Sarbidearen Baremo Fisikoak",
+            oc: "Barèmes Fisics d'Accès ar Emplec Public"
+        },
+        desc: {
+            es: "Convocatorias oficiales de Fuerzas y Cuerpos de Seguridad.",
+            ca: "Convocatòries oficials de Forces i Cossos de Seguretat.",
+            gl: "Convocatorias oficiais de Forzas e Corpos de Seguridade.",
+            eu: "Segurtasun Indar eta Kidegoen deialdi ofizialak.",
+            oc: "Convocatòries oficiaus de Fòrças e Còssi de Seguretat."
+        },
+        asym: {
+            es: "Las mujeres acceden a plazas de funcionario (Policía, Guardia Civil, Bomberos) con marcas físicas significativamente más bajas. Esto permite que una mujer obtenga plaza sobre un hombre que ha demostrado mejores capacidades físicas y notas, rompiendo el principio de mérito y capacidad en favor del sexo.",
+            ca: "Les dones accedeixen a places de funcionari (Policia, Guàrdia Civil, Bombers) amb marques físiques significativament més baixes. Això permet que una dona obtingui plaça per sobre d'un home que ha demostrat millors capacitats físiques i notes, trencant el principi de mèrit i capacitat en favor del sexe.",
+            gl: "As mulleres acceden a prazas de funcionario (Policía, Garda Civil, Bombeiros) con marcas físicas significativamente máis baixas. Isto permite que unha muller obteña praza sobre un home que demostrou mellores capacidades físicas e notas, rompendo o principio de mérito e capacidade en favor do sexo.",
+            eu: "Emakumeek funtzionario-plazetara (Polizia, Guardia Zibila, Suhiltzaileak) sartzen dira nabarmen marka fisiko baxuagoekin. Honek gizon bati plaza kentzea ahalbidetzen dio, gaitasun fisiko eta nota hobeak frogatu dituen arren, merezimendu eta gaitasun printzipioa sexuaren aldeko printzipioaren azpian jarriz.",
+            oc: "Eras hemnas accedissen a plaças de foncionari (Polícia, Garda Civila, Pompièrs) damb marcas fisicas significativament mès baishas. Aquerò permet qu'ua hemna obtengui plaça dessús d'un òme qu'a demostrat melhores capacitats fisicas e nòtas, copant eth principi de mérit e capacitat en favor deth sèxe."
+        },
         ref: "BOE Convocatorias Guardia Civil/CNP"
     },
     {
         cat: "SOCIAL",
-        title: "Renta Activa de Inserción (RAI) Asimétrica",
-        desc: "Subsidio de desempleo para colectivos con especiales dificultades.",
-        asym: "La mujer víctima de violencia de género accede a esta ayuda (aprox. 480€/mes o 80% del IPREM) con menores requisitos de acreditación (basta un informe de servicios sociales). Las víctimas de violencia doméstica (hombres) tienen procesos de acreditación mucho más restrictivos para la misma cuantía.",
+        title: {
+            es: "Renta Activa de Inserción (RAI) Asimétrica",
+            ca: "Renda Activa d'Inserció (RAI) Asimètrica",
+            gl: "Renda Activa de Inserción (RAI) Asimétrica",
+            eu: "Txertatze Errenta Aktiboa (RAI) Asimetrikoa",
+            oc: "Renda Activa d'Insercion (RAI) Asimetrica"
+        },
+        desc: {
+            es: "Subsidio de desempleo para colectivos con especiales dificultades.",
+            ca: "Subsidi d'atur per a col·lectius amb especials dificultats.",
+            gl: "Subsidio de desemprego para colectivos con especiais dificultades.",
+            eu: "Zailtasun bereziak dituzten kolektiboentzako langabezia-subsidioa.",
+            oc: "Subsidi de chomatge entà collectius damb especiaus dificultats."
+        },
+        asym: {
+            es: "La mujer víctima de violencia de género accede a esta ayuda (aprox. 480€/mes o 80% del IPREM) con menores requisitos de acreditación (basta un informe de servicios sociales). Las víctimas de violencia doméstica (hombres) tienen procesos de acreditación mucho más restrictivos para la misma cuantía.",
+            ca: "La dona víctima de violència de gènere accedeix a aquest ajut (aprox. 480€/mes o 80% de l'IPREM) amb menors requisits d'acreditació (n'hi ha prou amb un informe de serveis socials). Les víctimes de violència domèstica (homes) tenen processos d'acreditació molt més restrictius per a la mateixa quantia.",
+            gl: "A muller vítima de violencia de xénero accede a esta axuda (aprox. 480€/mes ou 80% do IPREM) con menores requisitos de acreditación (abonda un informe de servizos sociais). As vítimas de violencia doméstica (homes) teñen procesos de acreditación moito máis restritivos para a mesma contía.",
+            eu: "Genero-indarkeriaren biktima den emakumeak laguntza hau (hilean ≈480€ edo IPREMaren %80) egiaztapen-baldintza txikiagoekin jasotzen du (gizarte-zerbitzuen txosten bat nahikoa da). Etxeko indarkeriaren biktimek (gizonek) egiaztapen-prozesu askoz murriztaileagoak dituzte zenbateko berdinerako.",
+            oc: "Era hemna victima de violéncia de gènre accedís ad aguesta ajuda (aprox. 480€/mes o 80% deth IPREM) damb mens requesits d'acreditacion (basta un informe de servicis sociaus). Eras victimas de violéncia domestica (òmes) an prcessus d'acreditacion mès restrictius entara madeisha quantitat."
+        },
         ref: "Real Decreto 1369/2006"
     },
     {
         cat: "ADMIN",
-        title: "Derecho a Notificación Automática (Estatuto de la Víctima)",
-        desc: "Ley 4/2015, Artículo 7.3.",
-        asym: "Derecho a que se notifiquen, sin solicitud previa, las resoluciones sobre prisión, libertad o fuga del infractor. Este derecho es automático para mujeres víctimas de violencia de género, pero no existe de la misma forma para hombres víctimas de violencia doméstica.",
+        title: {
+            es: "Derecho a Notificación Automática (Estatuto de la Víctima)",
+            ca: "Dret a Notificació Automàtica (Estatut de la Víctima)",
+            gl: "Dereito a Notificación Automática (Estatuto da Vítima)",
+            eu: "Jakinarazpen Automatikorako Eskubidea (Biktimaren Estatutua)",
+            oc: "Dret a Notificacion Automatica (Estatut dera Victima)"
+        },
+        desc: {
+            es: "Ley 4/2015, Artículo 7.3.",
+            ca: "Llei 4/2015, Article 7.3.",
+            gl: "Lei 4/2015, Artigo 7.3.",
+            eu: "4/2015 Legea, 7.3 artikulua.",
+            oc: "Lei 4/2015, Article 7.3."
+        },
+        asym: {
+            es: "Derecho a que se notifiquen, sin solicitud previa, las resoluciones sobre prisión, libertad o fuga del infractor. Este derecho es automático para mujeres víctimas de violencia de género, pero no existe de la misma forma para hombres víctimas de violencia doméstica.",
+            ca: "Dret que se li notifiquin, sense sol·licitud prèvia, les resolucions sobre presó, llibertat o fuga de l'infractor. Aquest dret és automàtic per a dones víctimes de violència de gènere, però no existeix de la mateixa manera per a homes víctimes de violència domèstica.",
+            gl: "Dereito a que se notifiquen, sen solicitude previa, as resolucións sobre prisión, liberdade ou fuga do infractor. Este dereito é automático para mulleres vítimas de violencia de xénero, pero non existe do mesmo xeito para homes vítimas de violencia doméstica.",
+            eu: "Aurretiazko eskaerarik gabe, hausleaz espetxeratzeari, askatasunari edo ihesari buruzko ebazpenak jakinarazteko eskubidea. Eskubide hori automatikoa da genero-indarkeriaren biktima diren emakumeentzat, baina ez dago modu berean etxeko indarkeriaren biktima diren gizonentzat.",
+            oc: "Dret a que se li notifiquen, sense demanda prealabla, eras resolucions sus preson, libertat o hujuda deth infractor. Aguest dret ei automatic entà hemnas victimas de violéncia de gènre, mès non existís dera madeisha manèra entà òmes victimas de violéncia domestica."
+        },
         ref: "BOE-A-2015-4606"
     },
     {
         cat: "EMPLEO",
-        title: "Ayudas al Emprendimiento Femenino (Programa EMEGA)",
-        desc: "Fomento del empleo autónomo y creación de empresas.",
-        asym: "Concesión de subvenciones y capital semilla exclusivos para mujeres. Los hombres emprendedores están legalmente excluidos de estas convocatorias oficiales de financiación inicial para sus negocios por el hecho de ser hombres.",
+        title: {
+            es: "Ayudas al Emprendimiento Femenino (Programa EMEGA)",
+            ca: "Ajuts a l'Emprenedoria Femenina (Programa EMEGA)",
+            gl: "Axudas ao Emprendemento Feminino (Programa EMEGA)",
+            eu: "Emakumeen Ekintzailetzarako Laguntzak (EMEGA Programa)",
+            oc: "Ajudas ar Emprenedoriat Femenin (Programa EMEGA)"
+        },
+        desc: {
+            es: "Fomento del empleo autónomo y creación de empresas.",
+            ca: "Foment de l'ocupació autònoma i creació d'empreses.",
+            gl: "Fomento do emprego autónomo e creación de empresas.",
+            eu: "Autoenplegua eta enpresak sortzea sustatzea.",
+            oc: "Foment der emplec autonòm e creacion d'empreses."
+        },
+        asym: {
+            es: "Concesión de subvenciones y capital semilla exclusivos para mujeres. Los hombres emprendedores están legalmente excluidos de estas convocatorias oficiales de financiación inicial para sus negocios por el hecho de ser hombres.",
+            ca: "Concessió de subvencions i capital llavor exclusius per a dones. Els homes emprenedors estan legalment exclosos d'aquestes convocatòries oficials de finançament inicial per als seus negocis pel simple fet de ser homes.",
+            gl: "Concesión de subvencións e capital semente exclusivos para mulleres. Os homes emprendedores están legalmente excluídos destas convocatorias oficiais de financiamento inicial para os seus negocios polo feito de seren homes.",
+            eu: "Emakumeentzako esklusiboak diren diru-laguntzak eta hasierako kapitala ematea. Ekintzaile gizonak legez kanpo geratzen dira euren negozioetarako hasierako finantzaketa-deialdi ofizial hauetatik, gizonak izate hutsagatik.",
+            oc: "Concession de subvencions e capitau lheva exclusius entà hemnas. Es òmes emprenedors son legaument exclús d'aguestes convocatòries oficiaus de finançament iniciau entàs sons negòcis peth simple hèt d'èster òmes."
+        },
         ref: "DOG/BOE Ayudas Emprendimiento"
     },
     {
         cat: "ADMIN",
-        title: "Reserva de Plazas en Oposiciones (Cuotas)",
-        desc: "Proyectos de ley derivados del Pacto de Estado.",
-        asym: "Derecho a la reserva de como mínimo un 2% de las plazas en oposiciones públicas exclusivamente para mujeres víctimas de violencia de género, una reserva que no existe para hombres víctimas de violencia doméstica o asaltos violentos.",
+        title: {
+            es: "Reserva de Plazas en Oposiciones (Cuotas)",
+            ca: "Reserva de Places en Oposicions (Quotes)",
+            gl: "Reserva de Prazas en Oposicións (Cotas)",
+            eu: "Oposizioetako Plaza Erreserba (Kuotak)",
+            oc: "Reserva de Plaças en Oposicions (Quòtas)"
+        },
+        desc: {
+            es: "Proyectos de ley derivados del Pacto de Estado.",
+            ca: "Projectes de llei derivats del Pacte d'Estat.",
+            gl: "Proxectos de lei derivados do Pacto de Estado.",
+            eu: "Estatu Ituneak eratorritako lege-proiektuak.",
+            oc: "Projèctes de lei derivats deth Pacte d'Estat."
+        },
+        asym: {
+            es: "Derecho a la reserva de como mínimo un 2% de las plazas en oposiciones públicas exclusivamente para mujeres víctimas de violencia de género, una reserva que no existe para hombres víctimas de violencia doméstica o asaltos violentos.",
+            ca: "Dret a la reserva d'almenys un 2% de les places en oposicions públiques exclusivament per a dones víctimes de violència de gènere, una reserva que no existeix per a homes víctimes de violència domèstica o assalts violents.",
+            gl: "Dereito á reserva de como mínimo un 2% das prazas en oposicións públicas exclusivamente para mulleres vítimas de violencia de xénero, unha reserva que non existe para homes vítimas de violencia doméstica ou asaltos violentos.",
+            eu: "Oposizio publikoetako plazen gutxienez %2 erreserbatzeko eskubidea, genero-indarkeriaren biktima diren emakumeentzat esklusiboki; erreserba hori ez dago etxeko indarkeriaren edo eraso bortitzen biktima diren gizonentzat.",
+            oc: "Dret ara reserva d'aumens un 2% des plaças en oposicions publiques exclusivament entà hemnas victimas de violéncia de gènre, ua reserva que non existís entà òmes victimas de violéncia domestica o assauts violents."
+        },
         ref: "Pacto de Estado contra la VG"
     },
     {
         cat: "ADMIN",
-        title: "Competencia Territorial Especial (Art. 15 bis LECrim)",
-        desc: "Ley de Enjuiciamiento Criminal.",
-        asym: "En denuncias de mujer a hombre, el juicio se celebra en el juzgado del domicilio de la mujer. En cualquier otro delito (incluyendo de mujer a hombre), se celebra donde se cometió el delito. Esto otorga una ventaja de comodidad procesal y protección logística exclusiva a la mujer.",
+        title: {
+            es: "Competencia Territorial Especial (Art. 15 bis LECrim)",
+            ca: "Competència Territorial Especial (Art. 15 bis LECrim)",
+            gl: "Competencia Territorial Especial (Art. 15 bis LECrim)",
+            eu: "Lurralde Eskumen Berezia (LECrim 15 bis art.)",
+            oc: "Competéncia Territoriau Especiau (Art. 15 bis LECrim)"
+        },
+        desc: {
+            es: "Ley de Enjuiciamiento Criminal.",
+            ca: "Llei d'Enjudiciament Criminal.",
+            gl: "Lei de Axuizamento Criminal.",
+            eu: "Prozedura Kriminalaren Legea.",
+            oc: "Lei d'Enjudiciament Criminau."
+        },
+        asym: {
+            es: "En denuncias de mujer a hombre, el juicio se celebra en el juzgado del domicilio de la mujer. En cualquier otro delito (incluyendo de mujer a hombre), se celebra donde se cometió el delito. Esto otorga una ventaja de comodidad procesal y protección logística exclusiva a la mujer.",
+            ca: "En denúncies de dona a home, el judici se celebra en el jutjat del domicili de la dona. En qualsevol altre delicte (incloent-hi el de dona a home), se celebra on es va cometre el delicte. Això atorga un avantatge de comoditat processal i protecció logística exclusiva a la dona.",
+            gl: "En denuncias de muller a home, o xuízo celébrase no xulgado do domicilio da muller. En calquera outro delito (incluíndo de muller a home), celébrase onde se cometeu o delito. Isto outorga unha vantaxe de comodidade procesual e protección loxística exclusiva á muller.",
+            eu: "Emakumeak gizonaren aurka egindako salaketetan, epaiketa emakumearen egoitzako epaitegian egiten da. Beste edozein delitutan (baita emakumearen aurkakoak ere), delitua egin zen lekuan egiten da. Honek erosotasun prozesal eta babes logistiko esklusiboa ematen dio emakumeari.",
+            oc: "En denóncies de hemna a òme, eth jutjament se celèbre en jutjat deth domicili dera hemna. En un aute delicte quinconqui (tanben de hemna a òme), se celèbre a on se comet eth delicte. Aquerò balha un avantatge de comoditat procesau e proteccion logistica exclusiva ara hemna."
+        },
         ref: "BOE-A-1882-6036"
     },
     {
         cat: "EMPLEO",
-        title: "Bonificaciones Mayores por Contratar Mujeres",
-        desc: "Real Decreto-ley 16/2022, medidas de apoyo al empleo.",
-        asym: "Las empresas reciben bonificaciones económicas más elevadas por contratar mujeres que por contratar hombres en igualdad de condiciones, incentivando la discriminación laboral contra los varones.",
+        title: {
+            es: "Bonificaciones Mayores por Contratar Mujeres",
+            ca: "Bonificacions Majors per Contractar Dones",
+            gl: "Bonificacións Maiores por Contratar Mulleres",
+            eu: "Bonifikazio Handiagoak Emakumeak Kontratatzeagatik",
+            oc: "Bonificacions Màgers per Contractar Hemnas"
+        },
+        desc: {
+            es: "Real Decreto-ley 16/2022, medidas de apoyo al empleo.",
+            ca: "Reial Decret-llei 16/2022, mesures de suport a l'ocupació.",
+            gl: "Real Decreto-lei 16/2022, medidas de apoio ao emprego.",
+            eu: "16/2022 Errege Lege Dekretua, enpleguari laguntzeko neurriak.",
+            oc: "Reiau Decrèt-lei 16/2022, mesures de sosten ar emplec."
+        },
+        asym: {
+            es: "Las empresas reciben bonificaciones económicas más elevadas por contratar mujeres que por contratar hombres en igualdad de condiciones, incentivando la discriminación laboral contra los varones.",
+            ca: "Les empreses reben bonificacions econòmiques més elevades per contractar dones que per contractar homes en igualtat de condicions, incentivant la discriminació laboral contra els barons.",
+            gl: "As empresas reciben bonificacións económicas máis elevadas por contratar mulleres que por contratar homes en igualdade de condicións, incentivando a discriminación laboral contra os varóns.",
+            eu: "Enpresek diru-bonifikazio handiagoak jasotzen dituzte emakumeak kontratatzeagatik gizonak baldintza berdinetan kontratatzeagatik baino, gizonen aurkako lan-diskriminazioa bultzatuz.",
+            oc: "Eras empreses recebon bonificacions economiques mès nautas per contractar hemnas que per contractar òmes en egaudat de condicions, incentivant era discriminacion laborau contra es barons."
+        },
         ref: "BOE-A-2022-14682"
     },
     {
         cat: "EDUCACIÓN",
-        title: "Matrícula Gratuita en Universidad para Víctimas de Violencia de Género",
-        desc: "Andalucía y UNED.",
-        asym: "Las mujeres reconocidas como víctimas de violencia de género tienen derecho a matrícula gratuita en universidades públicas. Los hombres víctimas de violencia doméstica no tienen este derecho.",
+        title: {
+            es: "Matrícula Gratuita en Universidad para Víctimas de Violencia de Género",
+            ca: "Matrícula Gratuïta a la Universitat per a Víctimes de Violència de Gènere",
+            gl: "Matrícula Gratuíta na Universidade para Vítimas de Violencia de Xénero",
+            eu: "Unibertsitateko Matrikula Doakoa Genero Indarkeriaren Biktimentzat",
+            oc: "Matricula Gratuita ena Universitat entà Victimas de Violéncia de Gènre"
+        },
+        desc: {
+            es: "Andalucía y UNED.",
+            ca: "Andalusia i UNED.",
+            gl: "Andalucía e UNED.",
+            eu: "Andaluzia eta UNED.",
+            oc: "Andalosia e UNED."
+        },
+        asym: {
+            es: "Las mujeres reconocidas como víctimas de violencia de género tienen derecho a matrícula gratuita en universidades públicas. Los hombres víctimas de violencia doméstica no tienen este derecho.",
+            ca: "Les dones reconegudes com a víctimes de violència de gènere tenen dret a matrícula gratuïta en universitats públiques. Els homes víctimes de violència domèstica no tenen aquest dret.",
+            gl: "As mulleres recoñecidas como vítimas de violencia de xénero teñen dereito a matrícula gratuíta en universidades públicas. Os homes vítimas de violencia doméstica non teñen ese dereito.",
+            eu: "Genero-indarkeriaren biktimatzat aitortutako emakumeek unibertsitate publikoetan matrikula doakoa jasotzeko eskubidea dute. Etxeko indarkeriaren biktima diren gizonek ez dute eskubide hori.",
+            oc: "Eras hemnas reconegudes coma victimas de violéncia de gènre an dret a matricula gratuita en universitats publiques. Es òmes victimas de violéncia domestica non an aguest dret."
+        },
         ref: "Normativa Autonómica Andalucía/UNED"
     },
     {
         cat: "VIVIENDA",
-        title: "Prioridad en Acceso a Vivienda Protegida",
-        desc: "Para víctimas de violencia de género.",
-        asym: "Las mujeres víctimas de violencia de género tienen prioridad en el acceso a viviendas protegidas y residencias públicas. Los hombres víctimas de violencia doméstica no cuentan con esta prioridad.",
+        title: {
+            es: "Prioridad en Acceso a Vivienda Protegida",
+            ca: "Prioritat en l'Accés a Habitatge Protegit",
+            gl: "Prioridade no Acceso a Vivenda Protexida",
+            eu: "Babes Ofizialeko Etxebizitzarako Sarbide Lehentasuna",
+            oc: "Prioritat en Accès a Abitatge Protegit"
+        },
+        desc: {
+            es: "Para víctimas de violencia de género.",
+            ca: "Per a víctimes de violència de gènere.",
+            gl: "Para vítimas de violencia de xénero.",
+            eu: "Genero-indarkeriaren biktimentzat.",
+            oc: "Entà victimas de violéncia de gènre."
+        },
+        asym: {
+            es: "Las mujeres víctimas de violencia de género tienen prioridad en el acceso a viviendas protegidas y residencias públicas. Los hombres víctimas de violencia doméstica no cuentan con esta prioridad.",
+            ca: "Les dones víctimes de violència de gènere tenen prioritat en l'accés a habitatges protegits i residències públiques. Els homes víctimes de violència domèstica no compten amb aquesta prioritat.",
+            gl: "As mulleres vítimas de violencia de xénero teñen prioridade no acceso a vivendas protexidas e residencias públicas. Os homes vítimas de violencia doméstica non contan con esta prioridade.",
+            eu: "Genero-indarkeriaren biktima diren emakumeek lehentasuna dute babes ofizialeko etxebizitzetara eta egoitza publikoetara sartzeko. Etxeko indarkeriaren biktima diren gizonek ez dute lehentasun hori.",
+            oc: "Eras hemnas victimas de violéncia de gènre an prioritat en accès a abitatges protegits e residéncies publiques. Es òmes victimas de violéncia domestica non compdan damb aguesta prioritat."
+        },
         ref: "Ley Orgánica 1/2004"
     },
     {
         cat: "ADMIN",
-        title: "Servicio 016 Exclusivo para Mujeres",
-        desc: "Servicio telefónico 24/7 en 52 idiomas.",
-        asym: "El servicio 016 de información y asesoramiento sobre violencia de género está disponible exclusivamente para mujeres, sin equivalente para hombres víctimas de violencia doméstica.",
+        title: {
+            es: "Servicio 016 Exclusivo para Mujeres",
+            ca: "Servei 016 Exclusiu per a Dones",
+            gl: "Servizo 016 Exclusivo para Mulleres",
+            eu: "016 Zerbitzua Emakumeentzat Esklusiboa",
+            oc: "Servici 016 Exclusiu entà Hemnas"
+        },
+        desc: {
+            es: "Servicio telefónico 24/7 en 52 idiomas.",
+            ca: "Servei telefònic 24/7 en 52 idiomes.",
+            gl: "Servizo telefónico 24/7 en 52 idiomas.",
+            eu: "24/7 telefono-zerbitzua, 52 hizkuntzatan.",
+            oc: "Servici telefonic 24/7 en 52 lengües."
+        },
+        asym: {
+            es: "El servicio 016 de información y asesoramiento sobre violencia de género está disponible exclusivamente para mujeres, sin equivalente para hombres víctimas de violencia doméstica.",
+            ca: "El servei 016 d'informació i assessorament sobre violència de gènere està disponible exclusivament per a dones, sense equivalent per a homes víctimes de violència domèstica.",
+            gl: "O servizo 016 de información e asesoramento sobre violencia de xénero está dispoñible exclusivamente para mulleres, sen equivalente para homes vítimas de violencia doméstica.",
+            eu: "Genero-indarkeriari buruzko informazio eta aholkularitza zerbitzua den 016 zenbakia emakumeentzat esklusiboki dago eskuragarri, etxeko indarkeriaren biktima diren gizonentzat baliokiderik gabe.",
+            oc: "Eth servici 016 d'informacion e conselh sus era violéncia de gènre ei disponible exclusivament entà hemnas, sense equivalent entà òmes victimas de violéncia domestica."
+        },
         ref: "Ministerio de Igualdad"
     },
     {
         cat: "SOCIAL",
-        title: "Anticipos por Impago de Pensiones Alimenticias",
-        desc: "Fondo de garantía de pago de pensiones.",
-        asym: "Prioridad y facilidades para mujeres víctimas de violencia de género en el acceso a anticipos por impago de pensiones alimenticias, sin equivalente para hombres en situaciones similares.",
+        title: {
+            es: "Anticipos por Impago de Pensiones Alimenticias",
+            ca: "Bestretes per Impagament de Pensions Alimentàries",
+            gl: "Anticipos por Impago de Pensións Alimenticias",
+            eu: "Elikadura Pentsioen Ordainketa-ezagatiko Aurrerakinak",
+            oc: "Avanças per Impagament de Pensions Alimentàrias"
+        },
+        desc: {
+            es: "Fondo de garantía de pago de pensiones.",
+            ca: "Fons de garantia de pagament de pensions.",
+            gl: "Fondo de garantía de pagamento de pensións.",
+            eu: "Pentsioen ordainketa bermatzeko funtsa.",
+            oc: "Fons de garantia de pagament de pensions."
+        },
+        asym: {
+            es: "Prioridad y facilidades para mujeres víctimas de violencia de género en el acceso a anticipos por impago de pensiones alimenticias, sin equivalente para hombres en situaciones similares.",
+            ca: "Prioritat i facilitats per a dones víctimes de violència de gènere en l'accés a bestretes per impagament de pensions alimentàries, sense equivalent per a homes en situacions similars.",
+            gl: "Prioridade e facilidades para mulleres vítimas de violencia de xénero no acceso a anticipos por impago de pensións alimenticias, sen equivalente para homes en situacións similares.",
+            eu: "Genero-indarkeriaren biktima diren emakumeentzako lehentasuna eta erraztasunak elikadura-pentsioen ordainketa-ezagatiko aurrerakinak eskuratzeko, antzeko egoeretan dauden gizonentzat baliokiderik gabe.",
+            oc: "Prioritat e facilitats entà hemnas victimas de violéncia de gènre en accès a avanças per impagament de pensions alimentàrias, sense equivalent entà òmes en situacions semblables."
+        },
         ref: "Real Decreto 1618/2007"
     },
     {
         cat: "EMPLEO",
-        title: "Incentivos para Empresas que Contraten Víctimas de Violencia de Género",
-        desc: "Bonificaciones de la Seguridad Social.",
-        asym: "Las empresas que contraten a mujeres víctimas de violencia de género reciben importantes bonificaciones. No existe incentivo equivalente para contratar a hombres víctimas de violencia doméstica.",
+        title: {
+            es: "Incentivos para Empresas que Contraten Víctimas de Violencia de Género",
+            ca: "Incentius per a Empreses que Contractin Víctimes de Violència de Gènere",
+            gl: "Incentivos para Empresas que Contraten Vítimas de Violencia de Xénero",
+            eu: "Genero Indarkeriaren Biktimak Kontratatzen Dituzten Enpresentzako Pizgarriak",
+            oc: "Incentius entà Empreses que Contracten Victimas de Violéncia de Gènre"
+        },
+        desc: {
+            es: "Bonificaciones de la Seguridad Social.",
+            ca: "Bonificacions de la Seguretat Social.",
+            gl: "Bonificacións da Seguridade Social.",
+            eu: "Gizarte Segurantzako bonifikazioak.",
+            oc: "Bonificacions dera Seguretat Sociau."
+        },
+        asym: {
+            es: "Las empresas que contraten a mujeres víctimas de violencia de género reciben importantes bonificaciones. No existe incentivo equivalente para contratar a hombres víctimas de violencia doméstica.",
+            ca: "Les empreses que contractin dones víctimes de violència de gènere reben importants bonificacions. No existeix un incentiu equivalent per contractar homes víctimes de violència domèstica.",
+            gl: "As empresas que contraten mulleres vítimas de violencia de xénero reciben importantes bonificacións. Non existe incentivo equivalente para contratar homes vítimas de violencia doméstica.",
+            eu: "Genero-indarkeriaren biktima diren emakumeak kontratatzen dituzten enpresek bonifikazio garrantzitsuak jasotzen dituzte. Ez dago pizgarri baliokiderik etxeko indarkeriaren biktima diren gizonak kontratatzeko.",
+            oc: "Eras empreses que contracten hemnas victimas de violéncia de gènre recebon bonificacions importantes. Non existís incentiu equivalent entà contractar òmes victimas de violéncia domestica."
+        },
         ref: "Ley Orgánica 1/2004, Art. 22"
     },
     {
         cat: "ADMIN",
-        title: "Autorización de Residencia por Violencia de Género",
-        desc: "Para mujeres extranjeras en situación irregular.",
-        asym: "Las mujeres extranjeras víctimas de violencia de género pueden obtener autorización de residencia y trabajo incluso estando en situación irregular. No existe mecanismo equivalente para hombres víctimas.",
+        title: {
+            es: "Autorización de Residencia por Violencia de Género",
+            ca: "Autorització de Residència per Violència de Gènere",
+            gl: "Autorización de Residencia por Violencia de Xénero",
+            eu: "Genero Indarkeriagatiko Bizileku Baimena",
+            oc: "Autorizacion de Residéncia per Violéncia de Gènre"
+        },
+        desc: {
+            es: "Para mujeres extranjeras en situación irregular.",
+            ca: "Per a dones estrangeres en situació irregular.",
+            gl: "Para mulleres estranxeiras en situación irregular.",
+            eu: "Egoera irregularrean dauden emakume atzerritarrentzat.",
+            oc: "Entà hemnas estrangères en situacion irregulara."
+        },
+        asym: {
+            es: "Las mujeres extranjeras víctimas de violencia de género pueden obtener autorización de residencia y trabajo incluso estando en situación irregular. No existe mecanismo equivalente para hombres víctimas.",
+            ca: "Les dones estrangeres víctimes de violència de gènere poden obtenir autorització de residència i treball fins i tot estant en situació irregular. No existeix un mecanisme equivalent per a homes víctimes.",
+            gl: "As mulleres estranxeiras vítimas de violencia de xénero poden obter autorización de residencia e traballo mesmo estando en situación irregular. Non existe mecanismo equivalente para homes vítimas.",
+            eu: "Genero-indarkeriaren biktima diren emakume atzerritarrek bizileku- eta lan-baimena lor dezakete egoera irregularrean egon arren. Ez dago biktima diren gizonentzako baliokiderik.",
+            oc: "Eras hemnas estrangères victimas de violéncia de gènre pòden obtier autorizacion de residéncia e trabalh mèma en situacion irregulara. Non existís mecanisme equivalent entà òmes victimas."
+        },
         ref: "Ley Orgánica 4/2000, modificada"
     },
     {
         cat: "EDUCACIÓN",
-        title: "Escolarización Inmediata Prioritaria",
-        desc: "Para hijos de víctimas de violencia de género.",
-        asym: "Los hijos de mujeres víctimas de violencia de género tienen derecho a escolarización inmediata con carácter prioritario. Los hijos de hombres víctimas de violencia doméstica no cuentan con esta prioridad.",
+        title: {
+            es: "Escolarización Inmediata Prioritaria",
+            ca: "Escolarització Immediata Prioritària",
+            gl: "Escolarización Inmediata Prioritaria",
+            eu: "Berehalako Eskolatze Lehentasunduna",
+            oc: "Escolarizacion Immediata Prioritària"
+        },
+        desc: {
+            es: "Para hijos de víctimas de violencia de género.",
+            ca: "Per a fills de víctimes de violència de gènere.",
+            gl: "Para fillos de vítimas de violencia de xénero.",
+            eu: "Genero-indarkeriaren biktimen seme-alabentzat.",
+            oc: "Entà hilhs de victimas de violéncia de gènre."
+        },
+        asym: {
+            es: "Los hijos de mujeres víctimas de violencia de género tienen derecho a escolarización inmediata con carácter prioritario. Los hijos de hombres víctimas de violencia doméstica no cuentan con esta prioridad.",
+            ca: "Els fills de dones víctimes de violència de gènere tenen dret a escolarització immediata amb caràcter prioritari. Els fills d'homes víctimes de violència domèstica no compten amb aquesta prioritat.",
+            gl: "Os fillos de mulleres vítimas de violencia de xénero teñen dereito a escolarización inmediata con carácter prioritario. Os fillos de homes vítimas de violencia doméstica non contan con esta prioridade.",
+            eu: "Genero-indarkeriaren biktima diren emakumeen seme-alabek berehala eta lehentasunez eskolatzeko eskubidea dute. Etxeko indarkeriaren biktima diren gizonen seme-alabek ez dute lehentasun hori.",
+            oc: "Es hilhs de hemnas victimas de violéncia de gènre an dret a escolarizacion immediata damb caractèr prioritari. Es hilhs d'òmes victimas de violéncia domestica non compdan damb aguesta prioritat."
+        },
         ref: "Ley Orgánica 1/2004, Art. 8"
     },
     {
         cat: "SOCIAL",
-        title: "Pensión de Viudedad sin Requisito de Pensión Compensatoria",
-        desc: "Para víctimas de violencia de género.",
-        asym: "Las mujeres víctimas de violencia de género tienen derecho a pensión de viudedad aunque no sean acreedoras de pensión compensatoria tras separación o divorcio. Los hombres no cuentan con este derecho en casos de violencia doméstica.",
+        title: {
+            es: "Pensión de Viudedad sin Requisito de Pensión Compensatoria",
+            ca: "Pensió de Viduïtat sense Requisit de Pensió Compensatòria",
+            gl: "Pensión de Viuvez sen Requisito de Pensión Compensatoria",
+            eu: "Alarguntza Pentsioa Konpentsazio Pentsioaren Baldintzarik Gabe",
+            oc: "Pension de Vidoetat sense Requesit de Pension Compensatòria"
+        },
+        desc: {
+            es: "Para víctimas de violencia de género.",
+            ca: "Per a víctimes de violència de gènere.",
+            gl: "Para vítimas de violencia de xénero.",
+            eu: "Genero-indarkeriaren biktimentzat.",
+            oc: "Entà victimas de violéncia de gènre."
+        },
+        asym: {
+            es: "Las mujeres víctimas de violencia de género tienen derecho a pensión de viudedad aunque no sean acreedoras de pensión compensatoria tras separación o divorcio. Los hombres no cuentan con este derecho en casos de violencia doméstica.",
+            ca: "Les dones víctimes de violència de gènere tenen dret a pensió de viduïtat encara que no siguin creditores de pensió compensatòria després de separació o divorci. Els homes no compten amb aquest dret en casos de violència domèstica.",
+            gl: "As mulleres vítimas de violencia de xénero teñen dereito a pensión de viuvez aínda que non sexan acredoras de pensión compensatoria tras separación ou divorcio. Os homes non contan con este dereito en casos de violencia doméstica.",
+            eu: "Genero-indarkeriaren biktima diren emakumeek alarguntza-pentsiorako eskubidea dute, banantze edo dibortzio ondoren konpentsazio-pentsiorik jaso ez arren. Gizonek ez dute eskubide hori etxeko indarkeria kasuetan.",
+            oc: "Eras hemnas victimas de violéncia de gènre an dret a pension de vidoetat mèma se non son creditrices de pension compensatòria après separacion o divòrci. Es òmes non compdan damb aguest dret en cas de violéncia domestica."
+        },
         ref: "Ley General de la Seguridad Social"
     },
     {
         cat: "EMPLEO",
-        title: "Movilidad Geográfica para Víctimas de Violencia de Género",
-        desc: "En el empleo público y privado.",
-        asym: "Las trabajadoras víctimas de violencia de género tienen derecho preferente a la movilidad geográfica y al cambio de centro de trabajo. Los trabajadores víctimas de violencia doméstica no tienen reconocido este derecho de forma explícita.",
+        title: {
+            es: "Movilidad Geográfica para Víctimas de Violencia de Género",
+            ca: "Mobilitat Geogràfica per a Víctimes de Violència de Gènere",
+            gl: "Mobilidade Xeográfica para Vítimas de Violencia de Xénero",
+            eu: "Mugikortasun Geografikoa Genero Indarkeriaren Biktimentzat",
+            oc: "Mobilitat Geografica entà Victimas de Violéncia de Gènre"
+        },
+        desc: {
+            es: "En el empleo público y privado.",
+            ca: "En l'ocupació pública i privada.",
+            gl: "No emprego público e privado.",
+            eu: "Enplegu publikoan eta pribatuan.",
+            oc: "En emplec public e privat."
+        },
+        asym: {
+            es: "Las trabajadoras víctimas de violencia de género tienen derecho preferente a la movilidad geográfica y al cambio de centro de trabajo. Los trabajadores víctimas de violencia doméstica no tienen reconocido este derecho de forma explícita.",
+            ca: "Les treballadores víctimes de violència de gènere tenen dret preferent a la mobilitat geogràfica i al canvi de centre de treball. Els treballadors víctimes de violència domèstica no tenen reconegut aquest dret de forma explícita.",
+            gl: "As traballadoras vítimas de violencia de xénero teñen dereito preferente á mobilidade xeográfica e ao cambio de centro de traballo. Os traballadores vítimas de violencia doméstica non teñen recoñecido este dereito de forma explícita.",
+            eu: "Genero-indarkeriaren biktima diren langile emakumeek mugikortasun geografikorako eta lantokia aldatzeko lehentasunezko eskubidea dute. Etxeko indarkeriaren biktima diren gizon langileek ez dute eskubide hori esplizituki aitortuta.",
+            oc: "Eras trabalhadoras victimas de violéncia de gènre an dret preferent ara mobilitat geografica e ath cambi de centre de trabalh. Es trabalhadors victimas de violéncia domestica non an reconegut aguest dret de manèra explicita."
+        },
         ref: "Estatuto de los Trabajadores, Art. 40"
     }
 ];
@@ -233,10 +595,16 @@ function highlightText(text: string, query: string) {
     return text.replace(regex, '<mark>$1</mark>');
 }
 
+function currentLang(): keyof LangText {
+    const lang = (window as any).TEH_i18n ? (window as any).TEH_i18n.currentLang() : 'es';
+    return (['es', 'ca', 'gl', 'eu', 'oc'].includes(lang) ? lang : 'es') as keyof LangText;
+}
+
 function render(filter = 'all', query = '') {
     container.innerHTML = '';
     noResults.style.display = 'none';
 
+    const lang = currentLang();
     const queryLower = query.toLowerCase();
 
     const filtered = laws.filter((l) => {
@@ -247,9 +615,9 @@ function render(filter = 'all', query = '') {
 
         let matchesQuery = false;
 
-        if (searchTitle.checked && l.title.toLowerCase().includes(queryLower)) matchesQuery = true;
-        if (searchDesc.checked && l.desc.toLowerCase().includes(queryLower)) matchesQuery = true;
-        if (searchAsym.checked && l.asym.toLowerCase().includes(queryLower)) matchesQuery = true;
+        if (searchTitle.checked && l.title[lang].toLowerCase().includes(queryLower)) matchesQuery = true;
+        if (searchDesc.checked && l.desc[lang].toLowerCase().includes(queryLower)) matchesQuery = true;
+        if (searchAsym.checked && l.asym[lang].toLowerCase().includes(queryLower)) matchesQuery = true;
         if (searchRef.checked && l.ref.toLowerCase().includes(queryLower)) matchesQuery = true;
 
         return matchesQuery;
@@ -284,11 +652,11 @@ function render(filter = 'all', query = '') {
 
         div.innerHTML = `
             <span class="tag">${l.cat}</span>
-            <h2>${highlightText(l.title, query)}</h2>
-            <p><strong>${ctxLabel}</strong> ${highlightText(l.desc, query)}</p>
+            <h2>${highlightText(l.title[lang], query)}</h2>
+            <p><strong>${ctxLabel}</strong> ${highlightText(l.desc[lang], query)}</p>
             <div class="asymmetry-box">
                 <strong>${asymLabel}</strong>
-                ${highlightText(l.asym, query)}
+                ${highlightText(l.asym[lang], query)}
             </div>
             <a href="https://www.boe.es/buscar/doc.php?id=${l.ref}" class="source-link" target="_blank" rel="noopener">${srcLabel} ${highlightText(l.ref, query)} →</a>
         `;
