@@ -6,6 +6,11 @@ date: "2 Abril 2026"
 excerpt: "28.552 personas sin hogar en España. El 76,7% son hombres. Tres de cada cuatro personas durmiendo en la calle son varones. 60% presenta síntomas depresivos. 40% lleva más de 3 años en la calle. Sin embargo, el sinhogarismo masculino sigue siendo un problema invisible."
 featured: false
 footerCopy: "TODOS ESOS HOMBRES © 2026 — FUENTES: INE, HOGAR SÍ, ACCEM, ARRELS FUNDACIÓ"
+heroImage:
+  src: "images/posts/invisibles-calle-murillo.webp"
+  alt: "El joven mendigo, de Bartolomé Esteban Murillo: un niño sentado en el suelo de una habitación pobre y en penumbra, con la ropa rota, examinándose algo en las manos junto a un cántaro y restos de comida."
+  credit: "Bartolomé Esteban Murillo — El joven mendigo, c. 1645-1650 — Museo del Louvre, París · dominio público"
+  story: "Murillo retrató la pobreza real de la Sevilla del siglo XVII sin idealizarla: ropa remendada, pies descalzos, una habitación casi vacía. Es una de las primeras veces que el arte europeo pone a una persona pobre, sin nombre ni relato heroico, como único protagonista de un cuadro. Casi cuatro siglos después, ese mismo gesto de mirar de frente lo que preferimos no ver es el que falta cuando hablamos del sinhogarismo masculino."
 stats:
   - number: "76,7%"
     label: "Sin hogar son hombres"
