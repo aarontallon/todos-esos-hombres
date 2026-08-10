@@ -16,6 +16,7 @@ const posts = defineCollection({
         src: z.string(),
         alt: z.string(),
         credit: z.string(),
+        story: z.string(),
       })
       .optional(),
     stats: z.array(

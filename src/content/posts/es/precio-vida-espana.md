@@ -8,8 +8,9 @@ featured: true
 footerCopy: "TODOS ESOS HOMBRES © 2026 — FUENTES: INE, SEPE, MINISTERIO DE TRABAJO"
 heroImage:
   src: "images/posts/precio-vida-espana-goya.webp"
-  alt: "El tres de mayo de 1808, de Francisco de Goya (1814, Museo del Prado). Un hombre de camisa blanca, con los brazos alzados, encara a un pelotón de fusilamiento francés momentos antes de morir, junto a otros civiles condenados; en primer plano yacen ya los cuerpos de las víctimas anteriores. Goya pintó la ejecución de civiles madrileños tras el levantamiento del 2 de mayo de 1808 contra la ocupación napoleónica, sin idealizar la muerte como gesta heroica: es la representación de una vida anónima extinguida por decisión del Estado, la misma pregunta que recorre este artículo."
+  alt: "El tres de mayo de 1808, de Francisco de Goya: un hombre de camisa blanca, con los brazos alzados, encara a un pelotón de fusilamiento francés, junto a otros civiles condenados y los cuerpos de las víctimas anteriores."
   credit: "Francisco de Goya — El tres de mayo de 1808 (1814) — Museo del Prado, Madrid · dominio público"
+  story: "Goya pintó la ejecución de civiles madrileños tras el levantamiento del 2 de mayo de 1808 contra la ocupación napoleónica, sin idealizar la muerte como gesta heroica. Es la representación de una vida anónima extinguida por decisión del Estado — la misma pregunta que recorre este artículo: quién decide qué vidas cuentan, y cuánto."
 stats:
   - number: "3.953"
     label: "Suicidios anuales"
