@@ -6,6 +6,11 @@ date: "30 Marzo 2026"
 excerpt: "En 2024, 3.953 personas murieron por suicidio en España. El 73,4% eran hombres. Es la principal causa de muerte no natural. Sin embargo, la inversión pública en prevención es de 4.500€ por fallecimiento (suicidio), frente a 3.600.000€ por víctima de violencia de género. Una comparación que plantea preguntas incómodas sobre cómo priorizamos las vidas."
 featured: true
 footerCopy: "TODOS ESOS HOMBRES © 2026 — FUENTES: INE, SEPE, MINISTERIO DE TRABAJO"
+heroImage:
+  src: "images/posts/precio-vida-espana-goya.webp"
+  alt: "El tres de mayo de 1808, de Francisco de Goya: un hombre de camisa blanca, con los brazos alzados, encara a un pelotón de fusilamiento francés, junto a otros civiles condenados y los cuerpos de las víctimas anteriores."
+  credit: "Francisco de Goya — El tres de mayo de 1808 (1814) — Museo del Prado, Madrid · dominio público"
+  story: "Goya pintó la ejecución de civiles madrileños tras el levantamiento del 2 de mayo de 1808 contra la ocupación napoleónica, sin idealizar la muerte como gesta heroica. Es la representación de una vida anónima extinguida por decisión del Estado — la misma pregunta que recorre este artículo: quién decide qué vidas cuentan, y cuánto."
 stats:
   - number: "3.953"
     label: "Suicidios anuales"

@@ -11,6 +11,14 @@ const posts = defineCollection({
     excerpt: z.string(),
     featured: z.boolean().default(false),
     footerCopy: z.string().optional(),
+    heroImage: z
+      .object({
+        src: z.string(),
+        alt: z.string(),
+        credit: z.string(),
+        story: z.string(),
+      })
+      .optional(),
     stats: z.array(
       z.object({
         number: z.string(),

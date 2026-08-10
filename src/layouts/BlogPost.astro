@@ -6,6 +6,13 @@ interface Source {
     url: string;
 }
 
+interface HeroImage {
+    src: string;
+    alt: string;
+    credit: string;
+    story: string;
+}
+
 interface Props {
     langs: string[];
     titles: Record<string, string>;
@@ -14,6 +21,7 @@ interface Props {
     date: string;
     footerCopy?: string;
     sources?: Source[];
+    heroImage?: HeroImage;
 }
 
 const {
@@ -24,6 +32,7 @@ const {
     date,
     footerCopy = 'TODOS ESOS HOMBRES © 2026 — FUENTES: INE, SEPE, MINISTERIO DE TRABAJO',
     sources = [],
+    heroImage,
 } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
@@ -40,6 +49,18 @@ const base = import.meta.env.BASE_URL;
 <Nav />
 
 <header class="article-header">
+    {heroImage && (
+        <div class="art-frame">
+            <div class="art-hover">
+                <img src={`${base}${heroImage.src}`} alt={heroImage.alt} class="art-image" loading="eager" tabindex="0" />
+                <div class="art-tooltip">
+                    <p class="art-tooltip-credit">{heroImage.credit}</p>
+                    <p class="art-tooltip-story">{heroImage.story}</p>
+                </div>
+            </div>
+            <p class="art-caption">{heroImage.credit}</p>
+        </div>
+    )}
     <h1 class="article-title">
         {langs.map((locale) => <span data-lang-block={locale}>{titles[locale]}</span>)}
     </h1>
@@ -87,6 +108,69 @@ const base = import.meta.env.BASE_URL;
         color: #fff;
         padding: 14rem 2rem 5rem;
         text-align: center;
+    }
+
+    .art-frame {
+        max-width: 720px;
+        margin: 0 auto 2.5rem;
+    }
+
+    .art-hover {
+        position: relative;
+    }
+
+    .art-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 3px solid #fff;
+        cursor: help;
+    }
+
+    .art-caption {
+        margin-top: 0.9rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.4px;
+        opacity: 0.55;
+        text-transform: none;
+    }
+
+    .art-tooltip {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.94) 38%);
+        color: #fff;
+        text-align: left;
+        padding: 3.5rem 1.5rem 1.5rem;
+        opacity: 0;
+        transform: translateY(6px);
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .art-hover:hover .art-tooltip,
+    .art-hover:focus-within .art-tooltip {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .art-tooltip-credit {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        opacity: 0.7;
+        margin-bottom: 0.5rem;
+    }
+
+    .art-tooltip-story {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        text-transform: none;
+        margin-bottom: 0;
     }
 
     .article-title {

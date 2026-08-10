@@ -6,6 +6,11 @@ date: "31 Marzo 2026"
 excerpt: "Una orden de alejamiento puede dictarse en 72 horas, sin juicio previo, sin pruebas. Solo el 15% de las denuncias por violencia de género terminan en condena. Pero las medidas cautelares ya han destruido vidas, empleos y relaciones familiares. ¿Dónde queda la presunción de inocencia?"
 featured: false
 footerCopy: "TODOS ESOS HOMBRES © 2026 — FUENTES: BOE, CGPJ, TRIBUNAL SUPREMO"
+heroImage:
+  src: "images/posts/presuncion-inocencia-goya.webp"
+  alt: "Auto de fe de la Inquisición, de Francisco de Goya: acusados con corozas y sambenitos sentados ante un tribunal eclesiástico, en una sala abovedada llena de público."
+  credit: "Francisco de Goya — Auto de fe de la Inquisición, c. 1812-1819 — Real Academia de Bellas Artes de San Fernando, Madrid · dominio público"
+  story: "Los acusados llevan la coroza y el sambenito: la condena empieza por la humillación pública, antes incluso de que se lea la sentencia. Goya pintó el tribunal de la Inquisición como una maquinaria que juzga la apariencia y castiga la reputación tanto como el delito. Salvando los siglos, es la misma dinámica que describe este artículo: la orden de alejamiento y el estigma social llegan antes que el juicio, y a veces sin él."
 stats:
   - number: "≈15%"
     label: "Denuncias que acaban en condena"
