@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<Layout title="Página no encontrada — Todos esos hombres" description="La página que buscas no existe o ha cambiado de dirección.">
+    <div class="nf">
+        <p class="nf-code">404</p>
+        <h1 class="nf-title">PÁGINA NO ENCONTRADA</h1>
+        <p class="nf-text">La dirección que buscas no existe o ha cambiado de sitio.</p>
+        <p class="nf-links">
+            <a href={base}>INICIO</a>
+            <a href={`${base}estadisticas/`}>ESTADÍSTICAS</a>
+            <a href={`${base}blog/`}>BLOG</a>
+        </p>
+    </div>
+</Layout>
+
+<style>
+    .nf {
+        min-height: 80vh;
+        padding: 14rem 2rem 6rem;
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto;
+    }
+    .nf-code { font-family: 'Bebas Neue', sans-serif; font-size: clamp(6rem, 22vw, 12rem); line-height: 0.9; }
+    .nf-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 6vw, 3.2rem); letter-spacing: 1px; margin: 1rem 0; }
+    .nf-text { margin-bottom: 2.5rem; }
+    .nf-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .nf-links a {
+        color: #000; text-decoration: none; font-weight: 700; font-size: 0.85rem;
+        border: 3px solid #000; padding: 0.7rem 1.4rem; letter-spacing: 0.5px;
+    }
+    .nf-links a:hover { background: #000; color: #fff; }
+</style>

@@ -1,5 +1,8 @@
 ---
+import Head from '../components/Head.astro';
 import Nav from '../components/Nav.astro';
+import sharp from 'sharp';
+import { join } from 'node:path';
 
 interface Source {
     name: string;
@@ -22,6 +25,7 @@ interface Props {
     footerCopy?: string;
     sources?: Source[];
     heroImage?: HeroImage;
+    description?: string;
 }
 
 const {
@@ -33,18 +37,60 @@ const {
     footerCopy = 'TODOS ESOS HOMBRES © 2026 — FUENTES: INE, SEPE, MINISTERIO DE TRABAJO',
     sources = [],
     heroImage,
+    description,
 } = Astro.props;
 const base = import.meta.env.BASE_URL;
+
+// Dimensiones reales de la imagen de cabecera, para reservar su hueco y evitar saltos de maquetación.
+let heroSize: { width?: number; height?: number } = {};
+if (heroImage) {
+    try {
+        const meta = await sharp(join(process.cwd(), 'public', heroImage.src)).metadata();
+        heroSize = { width: meta.width, height: meta.height };
+    } catch {
+        heroSize = {};
+    }
+}
+
+// "1 Abril 2026" → "2026-04-01" (para metadatos); si no se reconoce, se omite.
+const MONTHS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+function toIso(text: string) {
+    const m = text.trim().match(/^(\d{1,2})\s+(\p{L}+)\s+(\d{4})$/u);
+    if (!m) return undefined;
+    const month = MONTHS.indexOf(m[2].toLowerCase());
+    if (month < 0) return undefined;
+    return `${m[3]}-${String(month + 1).padStart(2, '0')}-${m[1].padStart(2, '0')}`;
+}
+const isoDate = toIso(date);
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+const articleLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: titles.es,
+    ...(subtitles.es ? { alternativeHeadline: subtitles.es } : {}),
+    ...(isoDate ? { datePublished: isoDate } : {}),
+    inLanguage: 'es',
+    mainEntityOfPage: pageUrl,
+    ...(heroImage ? { image: new URL(heroImage.src, Astro.site).href } : {}),
+    publisher: { '@type': 'Organization', name: 'Todos esos hombres' },
+};
 ---
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{titles.es} — Blog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <Head
+        title={`${titles.es} — Todos esos hombres`}
+        description={description}
+        image={heroImage ? `/${heroImage.src}` : undefined}
+        imageAlt={heroImage?.alt}
+        type="article"
+        publishedTime={isoDate}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
 </head>
 <body>
+
+<a href="#contenido" class="skip-link">Saltar al contenido</a>
 
 <Nav />
 
@@ -52,7 +98,7 @@ const base = import.meta.env.BASE_URL;
     {heroImage && (
         <div class="art-frame">
             <div class="art-hover">
-                <img src={`${base}${heroImage.src}`} alt={heroImage.alt} class="art-image" loading="eager" tabindex="0" />
+                <img src={`${base}${heroImage.src}`} alt={heroImage.alt} class="art-image" width={heroSize.width} height={heroSize.height} loading="eager" fetchpriority="high" decoding="async" tabindex="0" />
                 <div class="art-tooltip">
                     <p class="art-tooltip-credit">{heroImage.credit}</p>
                     <p class="art-tooltip-story">{heroImage.story}</p>
@@ -72,6 +118,7 @@ const base = import.meta.env.BASE_URL;
     </div>
 </header>
 
+<main id="contenido">
 <article class="container">
     <slot />
 
@@ -89,6 +136,7 @@ const base = import.meta.env.BASE_URL;
         </div>
     )}
 </article>
+</main>
 
 <footer>
     <p data-i18n="blog.footer.precio">{footerCopy}</p>
@@ -102,6 +150,33 @@ const base = import.meta.env.BASE_URL;
 
     /* Evita el parpadeo de todos los idiomas apilados antes de que cargue teh_i18n.js */
     [data-lang-block]:not([data-lang-block="es"]) { display: none; }
+
+    /* Accesibilidad: salto al contenido, foco visible y menos movimiento */
+    .skip-link {
+        position: absolute;
+        left: 1rem;
+        top: -4rem;
+        z-index: 2000;
+        background: #000;
+        color: #fff;
+        padding: 0.75rem 1.25rem;
+        font-weight: 700;
+        text-decoration: none;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    :focus-visible { outline: 3px solid #000; outline-offset: 3px; }
+    .skip-link:focus-visible,
+    .article-header :focus-visible { outline-color: #fff; }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
 
     .article-header {
         background: #000;

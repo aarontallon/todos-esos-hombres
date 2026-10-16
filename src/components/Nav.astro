@@ -7,16 +7,16 @@ function isActive(href: string) {
     return path.startsWith(href);
 }
 ---
-<nav>
-    <a href={base} class="logo">
+<nav aria-label="Navegación principal">
+    <a href={base} class="logo" aria-label="Todos esos hombres — inicio">
         TODOS<br>ESOS<br>HOMBRES
     </a>
     <ul>
-        <li><a href={base} class:list={{ active: isActive(base) }} data-i18n="nav.inicio">INICIO</a></li>
-        <li><a href={`${base}estadisticas/`} class:list={{ active: isActive(`${base}estadisticas/`) }} data-i18n="nav.estadisticas">ESTADÍSTICAS</a></li>
-        <li><a href={`${base}asimetrias/`} class:list={{ active: isActive(`${base}asimetrias/`) }} data-i18n="nav.asimetrias">ASIMETRÍAS</a></li>
-        <li><a href={`${base}blog/`} class:list={{ active: isActive(`${base}blog/`) }} data-i18n="nav.blog">BLOG</a></li>
-        <li><a href={`${base}proposito/`} class:list={{ active: isActive(`${base}proposito/`) }} data-i18n="nav.proposito">PROPÓSITO</a></li>
+        <li><a href={base} class:list={{ active: isActive(base) }} aria-current={isActive(base) ? 'page' : undefined} data-i18n="nav.inicio">INICIO</a></li>
+        <li><a href={`${base}estadisticas/`} class:list={{ active: isActive(`${base}estadisticas/`) }} aria-current={isActive(`${base}estadisticas/`) ? 'page' : undefined} data-i18n="nav.estadisticas">ESTADÍSTICAS</a></li>
+        <li><a href={`${base}asimetrias/`} class:list={{ active: isActive(`${base}asimetrias/`) }} aria-current={isActive(`${base}asimetrias/`) ? 'page' : undefined} data-i18n="nav.asimetrias">ASIMETRÍAS</a></li>
+        <li><a href={`${base}blog/`} class:list={{ active: isActive(`${base}blog/`) }} aria-current={isActive(`${base}blog/`) ? 'page' : undefined} data-i18n="nav.blog">BLOG</a></li>
+        <li><a href={`${base}proposito/`} class:list={{ active: isActive(`${base}proposito/`) }} aria-current={isActive(`${base}proposito/`) ? 'page' : undefined} data-i18n="nav.proposito">PROPÓSITO</a></li>
     </ul>
 </nav>
 

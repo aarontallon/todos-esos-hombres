@@ -1,0 +1,92 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# --- Redirecciones de las URLs antiguas (.html) a las nuevas -----------------
+# 301 permanentes para conservar enlaces y posicionamiento.
+
+[[redirects]]
+  from = "/teh_estadisticas.html"
+  to = "/estadisticas/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/teh_asimetrias.html"
+  to = "/asimetrias/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/teh_proposito.html"
+  to = "/proposito/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/teh_blog_dynamic.html"
+  to = "/blog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/teh_blog_precio_una_vida_españa.html"
+  to = "/blog/precio-vida-espana/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/teh_blog_precio_una_vida_espa%C3%B1a.html"
+  to = "/blog/precio-vida-espana/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/teh_blog_presuncion_inocencia.html"
+  to = "/blog/presuncion-inocencia/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/teh_blog_techo_cemento.html"
+  to = "/blog/techo-cemento/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/teh_blog_invisibles_calle.html"
+  to = "/blog/invisibles-calle/"
+  status = 301
+  force = true
+
+# --- Cabeceras ----------------------------------------------------------------
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+# Ficheros con hash en el nombre (CSS/JS/fuentes generados por Astro): caché eterna.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Imágenes de los artículos: un día en navegador, revalidación después.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+# El script de idiomas no lleva hash: que siempre se revalide.
+[[headers]]
+  for = "/teh_i18n.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
