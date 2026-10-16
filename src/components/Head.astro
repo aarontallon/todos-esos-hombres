@@ -1,0 +1,64 @@
+---
+import '@fontsource/bebas-neue/400.css';
+import '@fontsource/space-mono/400.css';
+import '@fontsource/space-mono/700.css';
+
+interface Props {
+    title: string;
+    description?: string;
+    /** Ruta absoluta o relativa a /public. Por defecto, la imagen genérica del sitio. */
+    image?: string;
+    imageAlt?: string;
+    type?: 'website' | 'article';
+    /** Fecha ISO (solo artículos). */
+    publishedTime?: string;
+}
+
+const SITE_NAME = 'Todos esos hombres';
+const DEFAULT_DESCRIPTION =
+    'Plataforma dedicada a cuestionar las narrativas actuales sobre la masculinidad, la justicia y las brechas sociales mediante datos y análisis oficiales.';
+
+/** Recorta a ~160 caracteres sin cortar palabras. */
+function clip(text: string, max = 160) {
+    const clean = text.replace(/\s+/g, ' ').trim();
+    if (clean.length <= max) return clean;
+    return clean.slice(0, max - 1).replace(/\s+\S*$/, '').replace(/[\s.,;:]+$/, '') + '…';
+}
+
+const {
+    title,
+    description = DEFAULT_DESCRIPTION,
+    image = '/og-default.png',
+    imageAlt = 'Todos esos hombres — datos oficiales sobre masculinidad, justicia y brechas sociales',
+    type = 'website',
+    publishedTime,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const imageUrl = new URL(image, Astro.site).href;
+const desc = clip(description);
+---
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<meta name="description" content={desc}>
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href={canonical}>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="sitemap" href="/sitemap-index.xml">
+
+<meta property="og:site_name" content={SITE_NAME}>
+<meta property="og:locale" content="es_ES">
+<meta property="og:type" content={type}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={desc}>
+<meta property="og:url" content={canonical}>
+<meta property="og:image" content={imageUrl}>
+<meta property="og:image:alt" content={imageAlt}>
+{type === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime}>}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={desc}>
+<meta name="twitter:image" content={imageUrl}>
+<meta name="twitter:image:alt" content={imageAlt}>

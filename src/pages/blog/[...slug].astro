@@ -39,6 +39,7 @@ const rendered = await Promise.all(
     footerCopy={es.data.footerCopy}
     sources={es.data.sources}
     heroImage={es.data.heroImage}
+    description={es.data.excerpt}
 >
     {rendered.map(({ locale, Content }) => (
         <div data-lang-block={locale} class="lang-body">

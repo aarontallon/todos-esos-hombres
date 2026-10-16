@@ -19,7 +19,10 @@ function localeOf(langs: Record<string, CollectionEntry<'posts'>>, locale: strin
     return langs[locale] ?? langs.es;
 }
 ---
-<Layout title="TODOS ESOS HOMBRES — Inicio">
+<Layout
+    title="TODOS ESOS HOMBRES — Datos oficiales sobre masculinidad, justicia y brechas sociales"
+    description="Datos oficiales del INE, SEPE y el Ministerio de Trabajo sobre las áreas donde los hombres sufren más, mueren más y reciben menos atención: suicidio, accidentes laborales, sinhogarismo y justicia."
+>
     <header class="hero">
         <div class="hero-inner">
             <div class="hero-left">
@@ -142,7 +145,7 @@ function localeOf(langs: Record<string, CollectionEntry<'posts'>>, locale: strin
         font-weight: 700;
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        opacity: 0.5;
+        opacity: 0.6;
         margin-bottom: 1.5rem;
     }
 
@@ -417,7 +420,7 @@ function localeOf(langs: Record<string, CollectionEntry<'posts'>>, locale: strin
     /* ============ MOBILE ============ */
     @media (max-width: 968px) {
         .hero {
-            padding: 19rem 1.5rem 4rem;
+            padding: 13.5rem 1.5rem 4rem;
         }
 
         .hero-inner {

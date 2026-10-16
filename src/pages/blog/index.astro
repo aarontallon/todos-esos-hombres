@@ -26,7 +26,7 @@ function localeOf(langs: Record<string, CollectionEntry<'posts'>>, locale: strin
     return langs[locale] ?? langs.es;
 }
 ---
-<Layout title="Blog — Todos esos hombres">
+<Layout title="Blog — Todos esos hombres" description="Análisis, datos y reflexiones sobre las realidades que no aparecen en los titulares, documentados con fuentes oficiales.">
     <div class="container">
 
         <div class="header-section">
@@ -338,7 +338,7 @@ function localeOf(langs: Record<string, CollectionEntry<'posts'>>, locale: strin
 
     @media (max-width: 968px) {
         .container {
-            padding: 17rem 1.5rem 4rem;
+            padding: 11.5rem 1.5rem 4rem;
         }
 
         .header-section {

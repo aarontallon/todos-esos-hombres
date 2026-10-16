@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Estadísticas — Todos esos hombres" footerCopy="TODOS ESOS HOMBRES © 2026 — FUENTES: INE, INSST, MINISTERIO DE TRABAJO">
+<Layout title="Estadísticas — Todos esos hombres" description="Datos oficiales del INE, Ministerio de Trabajo, INSST y otras fuentes sobre áreas donde los hombres enfrentan desventajas sistemáticas: salud mental, trabajo, sinhogarismo y más." footerCopy="TODOS ESOS HOMBRES © 2026 — FUENTES: INE, INSST, MINISTERIO DE TRABAJO">
     <div class="container">
         <div class="header-section">
             <div class="header-text">
@@ -83,19 +83,24 @@ import Layout from '../layouts/Layout.astro';
         <div class="form-section" id="formulario-datos">
             <h3 data-i18n="est.form.title">ENVIAR NUEVA ESTADÍSTICA</h3>
             <p style="margin-bottom: 2rem;" data-i18n="est.form.intro">Si conoces una estadística oficial que no aparece aquí, envíanosla con su fuente.</p>
-            <form id="statsForm">
-                <div class="form-group"><label data-i18n="est.form.cat">Categoría *</label><input type="text" data-i18n-placeholder="est.form.cat.ph" placeholder="ej: Salud, Empleo, Educación..." required></div>
-                <div class="form-group"><label data-i18n="est.form.dato">Dato Estadístico *</label><input type="text" data-i18n-placeholder="est.form.dato.ph" placeholder="ej: 85% de..." required></div>
-                <div class="form-group"><label data-i18n="est.form.desc">Descripción Detallada *</label><textarea rows="4" data-i18n-placeholder="est.form.desc.ph" placeholder="Contexto y detalles del dato..." required></textarea></div>
-                <div class="form-group"><label data-i18n="est.form.fuente">Fuente Oficial *</label><input type="text" data-i18n-placeholder="est.form.fuente.ph" placeholder="INE, Ministerio X, Instituto Y..." required></div>
-                <div class="form-group"><label data-i18n="est.form.enlace">Enlace a la Fuente</label><input type="url" placeholder="https://..."></div>
+            <form id="statsForm" name="estadisticas" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="estadisticas">
+                <p class="hp" aria-hidden="true"><label>No rellenar: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                <div class="form-group"><label for="est-cat" data-i18n="est.form.cat">Categoría *</label><input id="est-cat" name="categoria" type="text" data-i18n-placeholder="est.form.cat.ph" placeholder="ej: Salud, Empleo, Educación..." required></div>
+                <div class="form-group"><label for="est-dato" data-i18n="est.form.dato">Dato Estadístico *</label><input id="est-dato" name="dato" type="text" data-i18n-placeholder="est.form.dato.ph" placeholder="ej: 85% de..." required></div>
+                <div class="form-group"><label for="est-desc" data-i18n="est.form.desc">Descripción Detallada *</label><textarea id="est-desc" name="descripcion" rows="4" data-i18n-placeholder="est.form.desc.ph" placeholder="Contexto y detalles del dato..." required></textarea></div>
+                <div class="form-group"><label for="est-fuente" data-i18n="est.form.fuente">Fuente Oficial *</label><input id="est-fuente" name="fuente" type="text" data-i18n-placeholder="est.form.fuente.ph" placeholder="INE, Ministerio X, Instituto Y..." required></div>
+                <div class="form-group"><label for="est-enlace" data-i18n="est.form.enlace">Enlace a la Fuente</label><input id="est-enlace" name="enlace" type="url" placeholder="https://..."></div>
                 <button type="submit" class="submit-btn" data-i18n="est.form.submit">ENVIAR PARA REVISIÓN</button>
+                <p class="form-status" role="status" aria-live="polite"></p>
             </form>
         </div>
     </div>
 </Layout>
 
 <script>
+import { sendForm } from '../scripts/send-form';
+
 document.getElementById('btnSubmitTop')?.addEventListener('click', function (e) {
     e.preventDefault();
     document.querySelector('#formulario-datos')?.scrollIntoView({
@@ -106,12 +111,13 @@ document.getElementById('btnSubmitTop')?.addEventListener('click', function (e) 
 
 document.getElementById('statsForm')?.addEventListener('submit', function (e) {
     e.preventDefault();
-    const msg = (window as any).TEH_i18n ? (window as any).TEH_i18n.t('est.form.alert') : 'Función de envío en desarrollo. Gracias por tu interés en contribuir.';
-    alert(msg);
+    sendForm(this as HTMLFormElement, 'est.form.alert');
 });
 </script>
 
 <style>
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .form-status { margin-top: 1rem; min-height: 1.5em; font-weight: 700; }
     .container { max-width: 1100px; margin: 0 auto; padding: 11rem 2rem 4rem; }
 
     .header-section {
@@ -229,7 +235,7 @@ document.getElementById('statsForm')?.addEventListener('submit', function (e) {
         margin-top: 1rem;
         padding-top: 1rem;
         border-top: 1px solid #ddd;
-        color: #777;
+        color: #666;
     }
 
     .coming-soon {
@@ -293,7 +299,7 @@ document.getElementById('statsForm')?.addEventListener('submit', function (e) {
 
     @media (max-width: 768px) {
         .container {
-            padding: 17rem 1.5rem 4rem;
+            padding: 11.5rem 1.5rem 4rem;
         }
 
         .header-section {
