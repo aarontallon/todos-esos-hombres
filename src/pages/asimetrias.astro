@@ -54,17 +54,22 @@ import Layout from '../layouts/Layout.astro';
         <div class="form-section" id="formulario-envio">
             <h3 data-i18n="asym.form.title">ENVIAR NUEVA ASIMETRÍA</h3>
             <p style="margin-bottom: 2rem;" data-i18n="asym.form.intro">Si conoces una ley oficial que falte, envíala indicando la referencia del BOE.</p>
-            <form id="asymmetryForm">
-                <div class="form-group"><label data-i18n="asym.form.ley">Título de la Ley *</label><input type="text" required></div>
-                <div class="form-group"><label data-i18n="asym.form.desc">Descripción Detallada *</label><textarea rows="4" required></textarea></div>
-                <div class="form-group"><label data-i18n="asym.form.enlace">Enlace BOE / Oficial *</label><input type="url" required></div>
+            <form id="asymmetryForm" name="asimetrias" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="asimetrias">
+                <p class="hp" aria-hidden="true"><label>No rellenar: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                <div class="form-group"><label for="asym-ley" data-i18n="asym.form.ley">Título de la Ley *</label><input id="asym-ley" name="ley" type="text" required></div>
+                <div class="form-group"><label for="asym-desc" data-i18n="asym.form.desc">Descripción Detallada *</label><textarea id="asym-desc" name="descripcion" rows="4" required></textarea></div>
+                <div class="form-group"><label for="asym-enlace" data-i18n="asym.form.enlace">Enlace BOE / Oficial *</label><input id="asym-enlace" name="enlace" type="url" required></div>
                 <button type="submit" class="submit-btn" data-i18n="asym.form.submit">ENVIAR PARA REVISIÓN</button>
+                <p class="form-status" role="status" aria-live="polite"></p>
             </form>
         </div>
     </div>
 </Layout>
 
 <script>
+import { sendForm } from '../scripts/send-form';
+
 type LangText = { es: string; ca: string; gl: string; eu: string; oc: string };
 
 interface Law {
@@ -705,12 +710,13 @@ window.addEventListener('langchange', function () {
 
 document.getElementById('asymmetryForm')?.addEventListener('submit', function (e) {
     e.preventDefault();
-    const msg = (window as any).TEH_i18n ? (window as any).TEH_i18n.t('asym.form.alert') : 'Función de envío en desarrollo.';
-    alert(msg);
+    sendForm(this as HTMLFormElement, 'asym.form.alert');
 });
 </script>
 
 <style>
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .form-status { margin-top: 1rem; min-height: 1.5em; font-weight: 700; }
     .container { max-width: 1100px; margin: 0 auto; padding: 11rem 2rem 4rem; }
 
     .header-section {
@@ -796,7 +802,7 @@ document.getElementById('asymmetryForm')?.addEventListener('submit', function (e
 
     @media (max-width: 768px) {
         .container {
-            padding: 17rem 1.5rem 4rem;
+            padding: 11.5rem 1.5rem 4rem;
         }
 
         .header-section {

@@ -129,7 +129,7 @@
         'est.form.fuente.ph':  { es: 'INE, Ministerio X, Instituto Y...', ca: 'INE, Ministeri X, Institut Y...', gl: 'INE, Ministerio X, Instituto Y...', eu: 'INE, X Ministerioa, Y Institutua...', oc: 'INE, Ministèri X, Institut Y...' },
         'est.form.enlace':     { es: 'Enlace a la Fuente', ca: 'Enllaç a la Font', gl: 'Enlace á Fonte', eu: 'Iturrirako esteka', oc: 'Ligam ara Font' },
         'est.form.submit':     { es: 'ENVIAR PARA REVISIÓN', ca: 'ENVIAR PER A REVISIÓ', gl: 'ENVIAR PARA REVISIÓN', eu: 'BERRIKUSTEKO BIDALI', oc: 'ENVIAR ENTÀ REVISION' },
-        'est.form.alert':      { es: 'Función de envío en desarrollo. Gracias por tu interés en contribuir.', ca: 'Funció d\'enviament en desenvolupament. Gràcies pel teu interès a contribuir.', gl: 'Función de envío en desenvolvemento. Grazas polo teu interese en contribuír.', eu: 'Bidalketa-funtzioa garatzen. Eskerrik asko laguntzen duzun interesagatik.', oc: 'Foncion d\'enviament en desvolopament. Mercès per ton interès a contribuir.' },
+        'est.form.alert':      { es: 'Enviado. Gracias por contribuir: lo revisaremos antes de publicarlo.', ca: 'Enviat. Gràcies per contribuir: ho revisarem abans de publicar-ho.', gl: 'Enviado. Grazas por contribuír: revisarémolo antes de publicalo.', eu: 'Bidalita. Eskerrik asko lagundu izanagatik: argitaratu aurretik berrikusiko dugu.', oc: 'Mandat. Mercés per contribuir: ac revisarem abans de publicar-ac.' },
 
         // =====================================================================
         // ASIMETRÍAS PAGE
@@ -160,7 +160,8 @@
         'asym.card.asimetria': { es: 'La Asimetría Legal:', ca: 'L\'Asimetria Legal:', gl: 'A Asimetría Legal:', eu: 'Legezko Asimetria:', oc: 'L\'Asimetria Legau:' },
         'asym.card.fuente':    { es: 'FUENTE:', ca: 'FONT:', gl: 'FONTE:', eu: 'ITURRIA:', oc: 'FONT:' },
         'asym.results':        { es: 'Se encontraron {n} resultado{s} para "{q}"', ca: 'S\'han trobat {n} resultat{s} per a "{q}"', gl: 'Atopáronse {n} resultado{s} para "{q}"', eu: '{n} emaitza aurkitu d{s2}ra "{q}" bilaketarako', oc: 'Se son trobat{s} {n} resultat{s} entà "{q}"' },
-        'asym.form.alert':     { es: 'Función de envío en desarrollo. Gracias por tu interés en contribuir.', ca: 'Funció d\'enviament en desenvolupament. Gràcies pel teu interès a contribuir.', gl: 'Función de envío en desenvolvemento. Grazas polo teu interese en contribuír.', eu: 'Bidalketa-funtzioa garatzen. Eskerrik asko laguntzen duzun interesagatik.', oc: 'Foncion d\'enviament en desvolopament. Mercès per ton interès a contribuir.' },
+        'asym.form.alert':     { es: 'Enviado. Gracias por contribuir: lo revisaremos antes de publicarlo.', ca: 'Enviat. Gràcies per contribuir: ho revisarem abans de publicar-ho.', gl: 'Enviado. Grazas por contribuír: revisarémolo antes de publicalo.', eu: 'Bidalita. Eskerrik asko lagundu izanagatik: argitaratu aurretik berrikusiko dugu.', oc: 'Mandat. Mercés per contribuir: ac revisarem abans de publicar-ac.' },
+        'form.error':          { es: 'No se ha podido enviar. Inténtalo de nuevo en unos minutos.', ca: 'No s\'ha pogut enviar. Torna-ho a provar d\'aquí a uns minuts.', gl: 'Non se puido enviar. Téntao de novo en uns minutos.', eu: 'Ezin izan da bidali. Saiatu berriro minutu batzuk barru.', oc: 'Non s\'a pogut enviar. Tornatz a ensajar d\'aciu a quauqui minutes.' },
 
         // =====================================================================
         // PROPÓSITO PAGE
